@@ -1,0 +1,21 @@
+{
+  "roots": [
+    "src"
+  ],
+  "bail": false,
+  "collectCoverage": true,
+  "coverageDirectory": "./coverage",
+  "coveragePathIgnorePatterns": [
+    "coverage",
+    ".eslintrc",
+    "jest.setup"
+  ],
+  "collectCoverageFrom" : ["**/*.{js,jsx}"],
+  "transform": {
+    ".*": "babel-jest"
+  },
+  "setupFiles": [
+    "raf/polyfill",
+    "./jest.setup"
+  ]
+}

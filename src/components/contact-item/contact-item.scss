@@ -1,0 +1,24 @@
+.contact-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  text-decoration: none;
+
+  .contact-name {
+    font-size: 2.5rem;
+  }
+}
+
+
+.contact-item {
+  color: $teal-color;
+  float: left;
+  font-size: 2em;
+  font-weight: bold;
+  text-align: center;
+
+  .contact-name {
+    margin: 0 auto;
+    text-decoration: none;
+  }
+}

@@ -1,0 +1,85 @@
+
+html {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  color: $teal-color;
+  font-family: 'Quicksand', sans-serif;
+  font-size: 1rem;
+  height: 100%;
+  text-align: center;
+}
+
+body {
+  background: $white-color;
+  background-color: $navy-color;
+  font-family: Quicksand;
+  margin: 0;
+  min-height: 100%;
+}
+
+.app-container {
+  font-size: 12pt;
+}
+
+.menu-header {
+  h3 {
+    margin-top: 0;
+  }
+}
+
+.header-menu {
+  background-color: $orange-color;
+
+  a {
+    color: $navy-color;
+    font-size: 2em;
+    text-decoration: none;
+  }
+
+  h2 {
+    margin: 10px 0;
+  }
+}
+
+.header {
+  color:  $teal-color;
+  margin: 0 auto;
+  text-align: center;
+  width: 100%;
+
+  a {
+    color: $navy-color;
+    font-size: 2em;
+    text-decoration: none;
+  }
+
+  .header-text {
+    color: $teal-color;
+    margin: 10px 0;
+  }
+}
+
+.grid {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+}
+
+.icon-container {
+  color: $teal-color;
+  font-size: 3.5em;
+  height: 200px;
+  width: 200px;
+}
+
+
+@media only screen and (min-width : 500px) {
+
+  .icon-container {
+    color: $teal-color;
+    font-size: 3.5em;
+  }
+}

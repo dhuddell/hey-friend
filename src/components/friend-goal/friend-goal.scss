@@ -1,0 +1,18 @@
+.friend-goal {
+  background-color: $light-khaki-color;
+  border-radius: 50px;
+  width: 30%;
+
+  .goal-icon {
+    font-size: 6em;
+  }
+
+  .goal-text {
+    font-size: 5em;
+    margin: 0;
+  }
+
+  .goal-arrow {
+    font-size: 4em;
+  }
+}

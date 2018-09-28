@@ -1,6 +1,6 @@
 import React from 'react';
-import { Header, HeaderMenu, ContactItems } from './components';
-import MockData from '../__mocks__/fileMock';
+import { Header, NavMenu, ContactItems } from './components';
+import MockData from './__mocks__/fileMock';
 
 class Home extends React.Component {
   constructor() {
@@ -23,7 +23,7 @@ class Home extends React.Component {
     return (
       <div>
         <Header />
-        <HeaderMenu />
+        <NavMenu />
         <ContactItems contacts={this.state.contacts} />
       </div>
     );

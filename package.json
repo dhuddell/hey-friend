@@ -26,8 +26,6 @@
   "author": "dhuddell",
   "license": "UNLICENSED",
   "devDependencies": {
-    "@lmig/claim-ui-components": "^0.4.2",
-    "@lmig/eslint-config-eclaims": "^0.2.3",
     "amqplib": "^0.3.2",
     "babel-core": "^6.26.0",
     "babel-eslint": "^8.1.2",

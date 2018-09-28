@@ -4,7 +4,7 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
 import './main.scss';
 import Home from './home';
-import { Friend, Menu } from './components';
+import { Friend, Settings } from './components';
 
 class App extends Component {
   render() {
@@ -13,7 +13,7 @@ class App extends Component {
         <div className="app-container">
           <Switch>
             <Route exact path="/" component={Home} />
-            <Route path="/menu" component={Menu} />
+            <Route path="/settings" component={Settings} />
             <Route path="/contacts/:contactId" component={Friend} />
           </Switch>
         </div>

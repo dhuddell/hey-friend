@@ -3,21 +3,19 @@
   flex-wrap: wrap;
   justify-content: center;
   text-decoration: none;
-
-  .contact-name {
-    font-size: 2.5rem;
-  }
-}
-
-
-.contact-item {
+  margin: 2rem 1rem 0;
   color: $teal-color;
   float: left;
-  font-size: 2em;
+  padding-top: 20px;
+  font-size: 1em;
+  border: 1px solid $teal-color;
+  border-radius: 15px;
   font-weight: bold;
   text-align: center;
 
+  
   .contact-name {
+    font-size: 2.5rem;
     margin: 0 auto;
     text-decoration: none;
   }

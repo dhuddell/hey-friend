@@ -4,14 +4,27 @@ import { Link } from 'react-router-dom';
 
 class ContactItem extends Component {
   render() {
-    const { name, icon, id } = this.props.details;
+    const { name, icon, id, activity } = this.props.details;
+
+    const percentClass = () => {
+      if(activity === 0) return 'zero';
+      if(activity === 25) return 'twenty-five';
+      if(activity === 50) return 'fifty';
+      if(activity === 75) return 'seventy-five';
+      if(activity === 100) return 'one-hundred';
+      return 'seventy-five';
+    }
 
     return (
       <Link to={`/contacts/${id}`} className="contact-wrapper">
         <div className='contact-item'>
           <p className='contact-name'>{name}</p>
           <div className='icon-container'>
-            <i className={`fa ${icon} contact-icon`} />
+            <div className='icon-outer-circle'>
+              <div className={`inner-icon-container ${percentClass()}`}>
+                <i className={`fa ${icon} contact-icon inner-contact-icon`} />
+              </div>
+            </div>
           </div>
         </div>
       </Link>

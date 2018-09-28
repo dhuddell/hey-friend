@@ -24,26 +24,6 @@ body {
   font-size: 12pt;
 }
 
-.menu-header {
-  h3 {
-    margin-top: 0;
-  }
-}
-
-.header-menu {
-  background-color: $orange-color;
-
-  a {
-    color: $navy-color;
-    font-size: 2em;
-    text-decoration: none;
-  }
-
-  h2 {
-    margin: 10px 0;
-  }
-}
-
 .header {
   color:  $teal-color;
   margin: 0 auto;
@@ -66,20 +46,71 @@ body {
   display: flex;
   flex-wrap: wrap;
   width: 100%;
+  justify-content: space-around;
+  margin-bottom: 5rem;
 }
 
 .icon-container {
-  color: $teal-color;
-  font-size: 3.5em;
-  height: 200px;
-  width: 200px;
+  height: 120px;
+  width: 180px;
+  margin: 1rem auto;
+  display: flex;
+  justify-content: center;
+
+  .icon-outer-circle {
+    background: $white-color;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 120px;
+    width: 120px;    
+  }
+
+  .inner-icon-container {
+    background: $teal-color;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    color: $navy-color;
+  }
 }
 
 
+.zero {
+  height: 2%;
+  width: 2%;
+  
+  .inner-contact-icon {
+    display: none;
+  }
+}
+
+.twenty-five {
+  font-size: 1em;
+  height: 25%;
+  width: 25%;
+}
+
+.fifty {
+  font-size: 2em;
+  height: 50%;
+  width: 50%;
+}
+
+.seventy-five {
+  font-size: 2.5em;
+  height: 75%;
+  width: 75%;
+}
+
+.one-hundred {
+  font-size: 3em;
+  height: 100%;
+  width: 100%;
+}
+
 @media only screen and (min-width : 500px) {
 
-  .icon-container {
-    color: $teal-color;
-    font-size: 3.5em;
-  }
 }

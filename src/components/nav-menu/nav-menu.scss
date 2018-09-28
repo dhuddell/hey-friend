@@ -1,0 +1,20 @@
+.nav-menu {
+  background-color: $orange-color;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  min-height: 3rem;
+  overflow: hidden;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  z-index: 1000;
+
+  .nav-menu-link {
+    color: $navy-color;
+    font-size: 2em;
+    text-decoration: none;
+    font-weight: bold;
+  }
+}
+  

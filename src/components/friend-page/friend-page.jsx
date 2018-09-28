@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import { Header, HeaderMenu, FriendGoal } from '..';
+import { Header, NavMenu, FriendGoal } from '..';
 import PropTypes from 'prop-types';
-import MockData from '../../../__mocks__/fileMock';
+import MockData from '../../__mocks__/fileMock';
 
 class Friend extends Component {
   constructor(props) {
@@ -20,7 +20,7 @@ class Friend extends Component {
     return (
       <div>
         <Header />
-        <HeaderMenu />
+        <NavMenu />
         <div className="bio-space">
           <div className="friend-info">
             <h1 className="friend-title">{contact.name}</h1>

@@ -1,15 +1,14 @@
 
 .bio-space {
   align-items: center;
-  border-bottom: 2px solid $light-khaki-color ;
-  color: $teal-color;
+  color: $blue-color;
   display: flex;
   flex-wrap: wrap;
   font-size: 2em;
   font-weight: bold;
-  height: 125px;
   justify-content: space-evenly;
   margin: 0 auto;
+  min-height: 150px;
   padding: 20px 0;
   text-align: center;
   width: 100%;
@@ -21,7 +20,6 @@
 
 
   .friend-icon {
-    color: $teal-color;
     font-size: 3.5em;
     max-height: 125px;
     max-width: 125px;
@@ -40,10 +38,12 @@
 }
 
 .goal-space {
+  color: $blue-color;
+
   .goal-title {
     font-size: 2.5rem;
     letter-spacing: 10px;
-    margin: 20px;
+    padding: 20px;
   }
 }
 
@@ -51,4 +51,8 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
+
+  .friend-goal {
+    background-color: $lime-color;
+  }
 }

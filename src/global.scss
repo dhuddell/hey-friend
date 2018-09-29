@@ -12,7 +12,6 @@ body {
 }
 
 body {
-  background: $white-color;
   background-color: $navy-color;
   font-family: Quicksand;
   margin: 0;
@@ -58,7 +57,8 @@ body {
 
   .icon-outer-circle {
     align-items: center;
-    background: $white-color;
+    background-color: $white-alpha-color;
+    border: 2px solid $teal-color;
     border-radius: 50%;
     display: flex;
     height: 120px;

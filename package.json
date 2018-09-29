@@ -18,10 +18,9 @@
     "url": "ssh://git@git.forge.lmig.com:7999/~n0271235/react-starter.git"
   },
   "keywords": [
-    "rabbitmq",
-    "upload",
-    "components",
-    "drag and drop"
+    "friends",
+    "social management",
+    "contact"
   ],
   "author": "dhuddell",
   "license": "UNLICENSED",
@@ -37,6 +36,7 @@
     "enzyme": "^3.2.0",
     "enzyme-adapter-react-16": "^1.1.1",
     "eslint": "^4.14.0",
+    "eslint-config-react": "^1.1.7",
     "eslint-plugin-import": "^2.8.0",
     "eslint-plugin-jest": "^21.5.0",
     "eslint-plugin-react": "^7.5.1",

@@ -30,21 +30,21 @@ class Friend extends Component {
             <i className={`fa ${contact.icon} contact-icon`} />
           </div>
         </div>
-        <div className='goal-space'>
+        <div className="goal-space">
           <h1 className="goal-title">{'Current'}</h1>
           <div className="friend-goals">
-            <FriendGoal 
-              type="phone" 
+            <FriendGoal
+              type="phone"
               target={goalTargets.phone}
               current={goalCurrents.phone}
             />
-            <FriendGoal 
-              type="comment" 
+            <FriendGoal
+              type="comment"
               target={goalTargets.text}
-              current={goalCurrents.text}  
+              current={goalCurrents.text}
             />
-            <FriendGoal 
-              type="beer" 
+            <FriendGoal
+              type="beer"
               target={goalTargets.beer}
               current={goalCurrents.beer}
             />

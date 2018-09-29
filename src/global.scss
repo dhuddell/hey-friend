@@ -1,4 +1,3 @@
-
 html {
   box-sizing: border-box;
 }
@@ -45,35 +44,35 @@ body {
 .grid {
   display: flex;
   flex-wrap: wrap;
-  width: 100%;
   justify-content: space-around;
   margin-bottom: 5rem;
+  width: 100%;
 }
 
 .icon-container {
-  height: 120px;
-  width: 180px;
-  margin: 1rem auto;
   display: flex;
+  height: 120px;
   justify-content: center;
+  margin: 1rem auto;
+  width: 180px;
 
   .icon-outer-circle {
+    align-items: center;
     background: $white-color;
     border-radius: 50%;
     display: flex;
-    justify-content: center;
-    align-items: center;
     height: 120px;
-    width: 120px;    
+    justify-content: center;
+    width: 120px;
   }
 
   .inner-icon-container {
-    background: $teal-color;
-    display: flex;
-    justify-content: center;
     align-items: center;
+    background: $teal-color;
     border-radius: 50%;
     color: $navy-color;
+    display: flex;
+    justify-content: center;
   }
 }
 
@@ -81,7 +80,7 @@ body {
 .zero {
   height: 2%;
   width: 2%;
-  
+
   .inner-contact-icon {
     display: none;
   }
@@ -111,6 +110,6 @@ body {
   width: 100%;
 }
 
-@media only screen and (min-width : 500px) {
+// @media only screen and (min-width : 500px) {
 
-}
+// }

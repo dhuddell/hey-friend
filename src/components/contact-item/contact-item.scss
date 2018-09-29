@@ -1,19 +1,18 @@
 .contact-wrapper {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  text-decoration: none;
-  margin: 2rem 1rem 0;
-  color: $teal-color;
-  float: left;
-  padding-top: 20px;
-  font-size: 1em;
   border: 1px solid $teal-color;
   border-radius: 15px;
+  color: $teal-color;
+  display: flex;
+  flex-wrap: wrap;
+  float: left;
+  font-size: 1em;
   font-weight: bold;
+  justify-content: center;
+  margin: 2rem 1rem 0;
+  padding-top: 20px;
   text-align: center;
+  text-decoration: none;
 
-  
   .contact-name {
     font-size: 2.5rem;
     margin: 0 auto;

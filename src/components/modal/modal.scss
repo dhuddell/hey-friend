@@ -1,0 +1,34 @@
+.modal {
+  background: $modal-overlay-grey;
+  height: 100%;
+  left: 0;
+  position: fixed;
+  top: 0;
+  width: 100%;
+
+  .modal-main {
+    background: $white-color;
+    color: $orange-color;
+    border: solid 2px $navy-color;
+    border-radius: 20px;
+    height: auto;
+    left: 50%;
+    position: fixed;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 80%;
+  }
+}
+
+.modal-btn {
+  background-color: $navy-color;
+  color: $teal-color;
+}
+
+.display-block {
+  display: block;
+}
+
+.display-none {
+  display: none;
+}

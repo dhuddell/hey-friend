@@ -1,0 +1,17 @@
+.header {
+  color:  $teal-color;
+  margin: 0 auto;
+  text-align: center;
+  width: 100%;
+
+  a {
+    color: $navy-color;
+    font-size: 2em;
+    text-decoration: none;
+  }
+
+  .header-text {
+    color: $teal-color;
+    margin: 10px 0;
+  }
+}

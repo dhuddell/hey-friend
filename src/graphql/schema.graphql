@@ -1,0 +1,39 @@
+
+User: {
+  id: int
+  username: string
+  password: string
+  friends: [friend]
+}
+
+Friend: {
+  id: int
+  userId: foreign key ? int ?
+  nickname: string
+  description: string
+  iconCode: string
+  currentState: currentState
+  goalState: goalState
+}
+
+CurrentState: {
+  friendId: foreign key ?  int ?
+  texts: int
+  calls: int
+  beers: int
+  cadence: enum
+}
+
+type enum Cadence {
+  week
+  month
+  year
+}
+
+GoalState: {
+  friendId: foreign key ?  int ?
+  texts: int
+  calls: int
+  beers: int
+  cadence: enum
+}

@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Header, NavMenu, FriendGoal } from '..';
 import PropTypes from 'prop-types';
 import MockData from '../../__mocks__/fileMock';
+import percentMapper from '../../helpers/percent-mapper';
 
 class Friend extends Component {
   constructor(props) {
@@ -26,12 +27,16 @@ class Friend extends Component {
             <h1 className="friend-title">{contact.name}</h1>
             <h5 className="friend-text">{contact.description}</h5>
           </div>
-          <div className="icon-container friend-icon">
-            <i className={`fa ${contact.icon} contact-icon`} />
+          <div className="icon-container">
+            <div className="icon-outer-circle">
+              <div className={`inner-icon-container ${percentMapper(contact.activity)}`}>
+                <i className={`fa ${contact.icon} contact-icon inner-contact-icon`} />
+              </div>
+            </div>
           </div>
         </div>
         <div className="goal-space">
-          <h1 className="goal-title">{'Current'}</h1>
+          <h1 className="goal-title">{'Current amounts'}</h1>
           <div className="friend-goals">
             <FriendGoal
               type="phone"
@@ -49,7 +54,7 @@ class Friend extends Component {
               current={goalCurrents.beer}
             />
           </div>
-          <h1 className="goal-title">{'Goal'}</h1>
+          <h1 className="goal-title">{'Monthly goals'}</h1>
         </div>
       </div>
     );

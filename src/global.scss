@@ -48,11 +48,25 @@ body {
   width: 100%;
 }
 
+@keyframes scale-up-icons {
+  0% {
+    transform: scale(0.001);
+  }
+
+  80% {
+    transform: scale(1.1);
+  }
+
+  100% {
+    transform: scale(1);
+  }
+}
+
 .icon-container {
   display: flex;
   height: 120px;
   justify-content: center;
-  margin: 1rem auto;
+  margin: 1rem 0;
   width: 180px;
 
   .icon-outer-circle {
@@ -68,6 +82,7 @@ body {
 
   .inner-icon-container {
     align-items: center;
+    animation: scale-up-icons 1.5s;
     background: $teal-color;
     border-radius: 50%;
     color: $navy-color;

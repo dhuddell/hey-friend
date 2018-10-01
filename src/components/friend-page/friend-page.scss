@@ -1,7 +1,8 @@
 
 .bio-space {
   align-items: center;
-  color: $blue-color;
+  background-color: $orange-color;
+  color: $navy-color;
   display: flex;
   flex-wrap: wrap;
   font-size: 2em;
@@ -18,15 +19,17 @@
     width: 200px;
   }
 
+  .icon-container {
+    font-size: 1rem;
 
-  .friend-icon {
-    font-size: 3.5em;
-    max-height: 125px;
-    max-width: 125px;
-    padding: 0 10px;
+    .icon-outer-circle {
+      border-color: $navy-color;
+      color: $navy-color;
+    }
 
-    .contact-icon {
-      vertical-align: top;
+    .inner-icon-container {
+      background-color: $navy-color;
+      color: $orange-color;
     }
   }
 }
@@ -38,11 +41,9 @@
 }
 
 .goal-space {
-  color: $blue-color;
-
   .goal-title {
     font-size: 2.5rem;
-    letter-spacing: 10px;
+    letter-spacing: 5px;
     padding: 20px;
   }
 }
@@ -51,8 +52,4 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
-
-  .friend-goal {
-    background-color: $lime-color;
-  }
 }

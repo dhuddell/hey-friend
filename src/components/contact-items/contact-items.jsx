@@ -10,7 +10,7 @@ class ContactItems extends Component {
     }
 
     return (
-      <div className="grid">
+      <div className="contact-items content-wrapper">
         {this.props.contacts.map((details) => <ContactItem details={details} key={details.id} />)}
       </div>
     );

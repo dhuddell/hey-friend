@@ -22,37 +22,34 @@ body {
   font-size: 12pt;
 }
 
-.header {
-  color:  $teal-color;
-  margin: 0 auto;
-  text-align: center;
-  width: 100%;
+.content-wrapper {
+  margin-bottom: 5rem;
+}
 
-  a {
-    color: $navy-color;
-    font-size: 2em;
-    text-decoration: none;
-  }
+.btn {
+  border: solid 1px $teal-color;
+  border-radius: 20px;
+  font-size: 1.2rem;
+  height: 50px;
+  margin: 0.5rem;
+  min-width: 40%;
 
-  .header-text {
-    color: $teal-color;
-    margin: 10px 0;
+  .btn-icon {
+    padding-left: 0.5rem;
   }
 }
 
-.grid {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-around;
-  margin-bottom: 5rem;
-  width: 100%;
+
+.btn-secondary {
+  background-color: $navy-color;
+  color: $teal-color;
 }
 
 .icon-container {
   display: flex;
   height: 120px;
   justify-content: center;
-  margin: 1rem auto;
+  margin: 1rem 0;
   width: 180px;
 
   .icon-outer-circle {
@@ -68,6 +65,7 @@ body {
 
   .inner-icon-container {
     align-items: center;
+    animation: scale-up-icons 1.5s;
     background: $teal-color;
     border-radius: 50%;
     color: $navy-color;

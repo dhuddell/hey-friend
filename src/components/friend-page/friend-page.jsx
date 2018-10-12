@@ -3,6 +3,7 @@ import { Header, NavMenu, Modal, FriendGoal } from '..';
 import PropTypes from 'prop-types';
 import MockData from '../../__mocks__/fileMock';
 import percentMapper from '../../helpers/percent-mapper';
+// import { observer } from mobx-react
 
 class Friend extends Component {
   constructor(props) {
@@ -22,6 +23,12 @@ class Friend extends Component {
     this.setState({ show: false });
   }
 
+  handleSubmit = (e) => {
+    e.preventDefault();
+    this.setState({ show: false });
+    // saveEditGoals('do shit with the store') mobx
+  }
+
   render() {
     const contact = this.state.contact;
     const goalTargets = contact.goals.target;
@@ -32,8 +39,27 @@ class Friend extends Component {
         <Header />
         <NavMenu />
         <Modal show={this.state.show} handleClose={this.hideModal}>
-          <p>this</p>
-          <p>that</p>
+          <form onSubmit={this.handleSubmit}>
+            <input
+              type="text"
+              placeholder="this is 1 thing"
+            />
+            <input
+              type="text"
+              placeholder="this is 2 thing"
+            />
+            <input
+              type="text"
+              placeholder="this is 3 thing"
+            />
+            <input
+              type="text"
+              placeholder="this is 4 thing"
+            />
+            <button type="submit" className="btn modal-btn">
+              set goals!
+            </button>
+          </form>
         </Modal>
         <div className="content-wrapper">
           <div className="bio-space">

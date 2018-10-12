@@ -7,11 +7,11 @@ const Modal = ({ handleClose, show, children }) => {
   return (
     <div className={showHideClassName}>
       <section className="modal-main">
-        <h1>{'Hi i\'m a modal'}</h1>
+        <div className="modal-header">
+          <span clasaName="modal-header-title">{'Hi i\'m a modal'}</span>
+          <button className="modal-close-btn fa fa-close" onClick={handleClose} />
+        </div>
         {children}
-        <button className="btn modal-btn" onClick={handleClose}>
-          {'Close'}
-        </button>
       </section>
     </div>
   );
@@ -20,7 +20,7 @@ const Modal = ({ handleClose, show, children }) => {
 Modal.propTypes = {
   handleClose: PropTypes.func.isRequired,
   show: PropTypes.bool.isRequired,
-  children: PropTypes.array,
+  children: PropTypes.object,
 };
 
 export default Modal;

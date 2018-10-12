@@ -17,12 +17,26 @@
     top: 50%;
     transform: translate(-50%, -50%);
     width: 80%;
+
+    .modal-header {
+      border-radius: 20px;
+      display: flex;
+      font-size: 2rem;
+      justify-content: space-between;
+      margin: 0 auto;
+      max-width: 90%;
+    }
   }
 }
 
 .modal-btn {
   background-color: $navy-color;
   color: $teal-color;
+}
+
+.modal-close-btn {
+  background: $white-color;
+  border: 0;
 }
 
 .display-block {

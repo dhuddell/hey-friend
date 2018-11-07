@@ -4,7 +4,7 @@
   "description": "a place to help you keep in touch",
   "main": "src/index.js",
   "scripts": {
-    "build": "node-sass --output-style compressed src/app.scss dist/FriendZone.css",
+    "build": "node-sass --output-style compressed src/app.scss dist/imissyou.css",
     "lint": "eslint --ext js --ext jsx .",
     "lint:fix": "eslint --ext js --ext jsx --fix .",
     "lint:sass": "sass-lint -c '.sass-lint.yml' -v 'lib/**/*.scss, src/**/*.scss'",

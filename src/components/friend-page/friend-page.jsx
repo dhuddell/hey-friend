@@ -3,6 +3,7 @@ import { Header, NavMenu, Modal, FriendGoal } from '..';
 import PropTypes from 'prop-types';
 import MockData from '../../__mocks__/fileMock';
 import percentMapper from '../../helpers/percent-mapper';
+// import { observer } from mobx-react
 
 class Friend extends Component {
   constructor(props) {
@@ -22,6 +23,12 @@ class Friend extends Component {
     this.setState({ show: false });
   }
 
+  handleSubmit = (e) => {
+    e.preventDefault();
+    this.setState({ show: false });
+    // saveEditGoals('do shit with the store') mobx
+  }
+
   render() {
     const contact = this.state.contact;
     const goalTargets = contact.goals.target;
@@ -32,8 +39,83 @@ class Friend extends Component {
         <Header />
         <NavMenu />
         <Modal show={this.state.show} handleClose={this.hideModal}>
-          <p>this</p>
-          <p>that</p>
+          <form className="modal-form" onSubmit={this.handleSubmit}>
+            <div className="modal-form-row">
+              <div className="modal-form-cell">
+                <p>How many phone?</p>
+                <select className="modal-select">
+                  <option disabled selected hidden>Choose!</option>
+                  <option value="0">0</option>
+                  <option value="1">1</option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                  <option value="4">4</option>
+                  <option value="5">5</option>
+                  <option value="6">6</option>
+                  <option value="7">7</option>
+                  <option value="8">8</option>
+                  <option value="9">9</option>
+                  <option value="10">10</option>
+                </select>
+              </div>
+              <div className="modal-form-cell">
+                <p>How many text?</p>
+                <select className="modal-select">
+                  <option disabled selected hidden>Choose!</option>
+                  <option value="0">0</option>
+                  <option value="1">1</option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                  <option value="4">4</option>
+                  <option value="5">5</option>
+                  <option value="6">6</option>
+                  <option value="7">7</option>
+                  <option value="8">8</option>
+                  <option value="9">9</option>
+                  <option value="10">10</option>
+                </select>
+              </div>
+            </div>
+            <div className="modal-form-row">
+              <div className="modal-form-cell">
+                <p>How many beers?</p>
+                <select className="modal-select">
+                  <option disabled selected hidden>Choose!</option>
+                  <option value="0">0</option>
+                  <option value="1">1</option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                  <option value="4">4</option>
+                  <option value="5">5</option>
+                  <option value="6">6</option>
+                  <option value="7">7</option>
+                  <option value="8">8</option>
+                  <option value="9">9</option>
+                  <option value="10">10</option>
+                </select>
+              </div>
+              <div className="modal-form-cell">
+                <p>{'What\'s the cadence?'}</p>
+                <select className="modal-select">
+                  <option disabled selected hidden>Choose!</option>
+                  <option value="0">0</option>
+                  <option value="1">1</option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                  <option value="4">4</option>
+                  <option value="5">5</option>
+                  <option value="6">6</option>
+                  <option value="7">7</option>
+                  <option value="8">8</option>
+                  <option value="9">9</option>
+                  <option value="10">10</option>
+                </select>
+              </div>
+            </div>
+            <button type="submit" className="btn modal-btn">
+              set goals!
+            </button>
+          </form>
         </Modal>
         <div className="content-wrapper">
           <div className="bio-space">

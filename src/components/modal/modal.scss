@@ -8,21 +8,36 @@
 
   .modal-main {
     background: $white-color;
-    color: $orange-color;
     border: solid 2px $navy-color;
     border-radius: 20px;
+    color: $orange-color;
     height: auto;
     left: 50%;
+    padding: 1rem;
     position: fixed;
     top: 50%;
     transform: translate(-50%, -50%);
     width: 80%;
+
+    .modal-header {
+      border-radius: 20px;
+      display: flex;
+      font-size: 2rem;
+      justify-content: space-between;
+      margin: 0 auto;
+      max-width: 90%;
+    }
   }
 }
 
 .modal-btn {
   background-color: $navy-color;
   color: $teal-color;
+}
+
+.modal-close-btn {
+  background: $white-color;
+  border: 0;
 }
 
 .display-block {

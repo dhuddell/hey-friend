@@ -3,7 +3,7 @@
   background-color: $orange-color;
   bottom: 0;
   display: flex;
-  justify-content: space-around;
+  justify-content: center;
   min-height: 3rem;
   overflow: hidden;
   position: fixed;
@@ -14,7 +14,16 @@
     color: $navy-color;
     font-size: 2em;
     font-weight: bold;
+    margin: 0 3rem;
     text-decoration: none;
+  }
+
+  .scroll-up-arrow {
+    position: relative;
+  }
+
+  .scroll-up-wrapper {
+    min-width: 2rem;
   }
 }
   

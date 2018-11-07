@@ -34,6 +34,31 @@
   }
 }
 
+.modal-form {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+
+  .modal-form-row {
+    display: flex;
+    justify-content: center;
+
+    .modal-form-cell {
+      width: 100%;
+    }
+  }
+
+  .modal-select {
+    border: $black-color 2px solid;
+    color: $black-color;
+    font-size: 1rem;
+    margin: 0.5rem;
+    min-height: 2rem;
+    width: 40%;
+  }
+}
+
+
 .friend-title,
 .goal-title,
 .friend-text {

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-
+import ScrollToTop from 'react-scroll-up';
 
 class NavMenu extends Component {
   constructor(props) {
@@ -10,24 +10,15 @@ class NavMenu extends Component {
     };
   }
 
-  applyRef = (ref) => {
-    this.vn = ref;
-    this.vn.addEventListener('scroll', this.handleScroll);
-  }
-
-
-  handleScroll(e) {
-    console.log('HANDLINGGGGGG');
-    if (window.pageYOffset > 50) {
-      console.log('scrolled');
-      this.setState({
-        showBanner: true,
-      });
-    } else {
-      this.setState({
-        showBanner: false,
-      });
-    }
+  arrowStyle = {
+    position: 'relative',
+    bottom: '0',
+    right: '0',
+    display: 'inline',
+    cursor: 'pointer',
+    transitionDuration: '0.2s',
+    transitionTimingFunction: 'linear',
+    transitionDelay: '0s',
   }
 
   render() {
@@ -36,12 +27,10 @@ class NavMenu extends Component {
         <Link className="nav-menu-link" to="/">
           <span className="fa fa-users" />
         </Link>
-        <span className="nav-menu-link" ref={this.applyRef}>
-          {
-            this.state.showBanner ?
-              <a href="#0" className="fa fa-arrow-circle-up" /> :
-              null
-          }
+        <span className="nav-menu-link" >
+          <ScrollToTop style={this.arrowStyle} showUnder={160}>
+            <span className="fa fa-chevron-circle-up" />
+          </ScrollToTop>
         </span>
         <Link className="nav-menu-link" to="/settings">
           <span className="fa fa-gear" />

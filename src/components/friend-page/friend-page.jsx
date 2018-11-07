@@ -43,8 +43,8 @@ class Friend extends Component {
             <div className="modal-form-row">
               <div className="modal-form-cell">
                 <p>How many phone?</p>
-                <select className="modal-select">
-                  <option disabled selected hidden>Choose!</option>
+                <select defaultValue="default" className="modal-select">
+                  <option disabled value="default" hidden>Choose!</option>
                   <option value="0">0</option>
                   <option value="1">1</option>
                   <option value="2">2</option>
@@ -60,8 +60,8 @@ class Friend extends Component {
               </div>
               <div className="modal-form-cell">
                 <p>How many text?</p>
-                <select className="modal-select">
-                  <option disabled selected hidden>Choose!</option>
+                <select defaultValue="default" className="modal-select">
+                  <option disabled value="default" hidden>Choose!</option>
                   <option value="0">0</option>
                   <option value="1">1</option>
                   <option value="2">2</option>
@@ -79,8 +79,8 @@ class Friend extends Component {
             <div className="modal-form-row">
               <div className="modal-form-cell">
                 <p>How many beers?</p>
-                <select className="modal-select">
-                  <option disabled selected hidden>Choose!</option>
+                <select defaultValue="default" className="modal-select">
+                  <option disabled value="default" hidden>Choose!</option>
                   <option value="0">0</option>
                   <option value="1">1</option>
                   <option value="2">2</option>
@@ -96,8 +96,8 @@ class Friend extends Component {
               </div>
               <div className="modal-form-cell">
                 <p>{'What\'s the cadence?'}</p>
-                <select className="modal-select">
-                  <option disabled selected hidden>Choose!</option>
+                <select defaultValue="default" className="modal-select">
+                  <option disabled value="default" hidden>Choose!</option>
                   <option value="0">0</option>
                   <option value="1">1</option>
                   <option value="2">2</option>
@@ -113,7 +113,7 @@ class Friend extends Component {
               </div>
             </div>
             <button type="submit" className="btn modal-btn">
-              set goals!
+              Set your goals!
             </button>
           </form>
         </Modal>

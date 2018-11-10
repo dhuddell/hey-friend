@@ -1,0 +1,5 @@
+query GetUserData {
+  getUserData {
+    userData: UserData!
+  }
+}

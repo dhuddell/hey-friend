@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import ModalContent from '../../components';
 
 const Modal = ({ handleClose, show, children }) => {
   const showHideClassName = show ? 'modal display-block' : 'modal display-none';
@@ -12,7 +13,7 @@ const Modal = ({ handleClose, show, children }) => {
           <button className="modal-close-btn fa fa-close" onClick={handleClose} />
         </div>
         <div className="modal-content">
-          {children}
+          <ModalContent />
         </div>
       </section>
     </div>

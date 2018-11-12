@@ -6,4 +6,4 @@ export { default as FriendGoal } from './friend-goal/friend-goal';
 export { default as Header } from './header/header';
 export { default as NavMenu } from './nav-menu/nav-menu';
 export { default as Modal } from './modal/modal';
-
+export { default as ModalContent } from './modal-content/modal-content';

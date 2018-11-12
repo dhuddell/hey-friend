@@ -38,7 +38,11 @@ class Friend extends Component {
       <div>
         <Header />
         <NavMenu />
-        <Modal show={this.state.show} handleClose={this.hideModal} />
+        <Modal
+          handleClose={this.hideModal}
+          show={this.state.show}
+          handleSubmit={this.handleSubmit}
+        />
         <div className="content-wrapper">
           <div className="bio-space">
             <div className="friend-info">

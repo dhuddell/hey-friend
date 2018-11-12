@@ -1,10 +1,11 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
-const ModalContent = () => (
-  <form className="modal-form" onSubmit={this.handleSubmit}>
+const ModalContent = ({ handleSubmit }) => (
+  <form className="modal-form" onSubmit={handleSubmit}>
     <div className="modal-form-row">
       <div className="modal-form-cell">
-        <p>How many phone cals?</p>
+        <p>How many phone calls?</p>
         <select defaultValue="default" className="modal-select">
           <option disabled value="default" hidden>Choose!</option>
           <option value="0">0</option>
@@ -72,5 +73,9 @@ const ModalContent = () => (
     </button>
   </form>
 );
+
+ModalContent.propTypes = {
+  handleSubmit: PropTypes.func,
+};
 
 export default ModalContent;

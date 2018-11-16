@@ -51,7 +51,7 @@ class Friend extends Component {
             </div>
             <div className="icon-container">
               <div className="icon-outer-circle">
-                <div className={`inner-icon-container ${percentMapper(contact.activity)}`}>
+                <div className={`inner-icon-container ${percentMapper(contact.friendScore)}`}>
                   <i className={`fa ${contact.icon} contact-icon inner-contact-icon`} />
                 </div>
               </div>

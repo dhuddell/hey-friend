@@ -25,14 +25,51 @@
       font-size: 2rem;
       justify-content: space-between;
       margin: 0 auto;
-      max-width: 90%;
+      max-width: 95%;
     }
   }
 }
 
+
+.modal-form {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+
+  .modal-form-selects {
+    padding-left: 2%;
+  }
+
+  .modal-form-row {
+    display: flex;
+    text-align: left;
+
+    .modal-form-cell {
+      width: 100%;
+
+      .modal-form-cell-label {
+        font-size: 14pt;
+        font-weight: $font-weight-bold;
+      }
+    }
+  }
+
+  .modal-select {
+    border: $black-color 2px solid;
+    color: $black-color;
+    font-size: 1rem;
+    margin: 0;
+    min-height: 2rem;
+    width: 60%;
+  }
+}
+
+
+
 .modal-btn {
   background-color: $navy-color;
   color: $teal-color;
+  margin-top: 2rem;
 }
 
 .modal-close-btn {

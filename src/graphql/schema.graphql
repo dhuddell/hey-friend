@@ -8,6 +8,7 @@ type Friend {
   name: string
   icon: string
   id: int
+  friendScore: int
   description: string
   currentGoal: Goal
   targetGoal: Goal
@@ -18,6 +19,6 @@ type UserData {
   setting: string 
 }
 
-query getUserData {
+type Query {
   userData: UserData!
 }

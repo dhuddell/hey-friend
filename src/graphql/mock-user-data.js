@@ -1,5 +1,5 @@
-module.exports = {
-  contacts:
+export default {
+  friends:
   [
     {
       name: 'Jim',
@@ -8,12 +8,12 @@ module.exports = {
       description: 'best bro',
       friendScore: 0,
       goals: {
-        target: {
+        targetGoal: {
           phone: '1',
           text: '5',
           beer: '2',
         },
-        current: {
+        currentGoal: {
           phone: '0',
           text: '2',
           beer: '0',
@@ -27,12 +27,12 @@ module.exports = {
       description: 'basic beach',
       friendScore: 25,
       goals: {
-        target: {
+        targetGoal: {
           phone: '1',
           text: '5',
           beer: '2',
         },
-        current: {
+        currentGoal: {
           phone: '0',
           text: '2',
           beer: '0',
@@ -46,12 +46,12 @@ module.exports = {
       description: 'wingman ofc',
       friendScore: 50,
       goals: {
-        target: {
+        targetGoal: {
           phone: '1',
           text: '5',
           beer: '2',
         },
-        current: {
+        currentGoal: {
           phone: '0',
           text: '2',
           beer: '0',
@@ -65,12 +65,12 @@ module.exports = {
       description: 'a wise old cricket',
       friendScore: 75,
       goals: {
-        target: {
+        targetGoal: {
           phone: '1',
           text: '5',
           beer: '2',
         },
-        current: {
+        currentGoal: {
           phone: '0',
           text: '2',
           beer: '0',
@@ -84,12 +84,12 @@ module.exports = {
       description: 'an invader',
       friendScore: 50,
       goals: {
-        target: {
+        targetGoal: {
           phone: '1',
           text: '5',
           beer: '2',
         },
-        current: {
+        currentGoal: {
           phone: '0',
           text: '2',
           beer: '0',
@@ -103,12 +103,12 @@ module.exports = {
       description: 'who knows',
       friendScore: 100,
       goals: {
-        target: {
+        targetGoal: {
           phone: '1',
           text: '5',
           beer: '2',
         },
-        current: {
+        currentGoal: {
           phone: '0',
           text: '2',
           beer: '0',
@@ -122,12 +122,12 @@ module.exports = {
       description: 'goes to shows',
       friendScore: 75,
       goals: {
-        target: {
+        targetGoal: {
           phone: '1',
           text: '5',
           beer: '2',
         },
-        current: {
+        currentGoal: {
           phone: '0',
           text: '2',
           beer: '0',
@@ -141,12 +141,12 @@ module.exports = {
       description: 'x gon give it to ya',
       friendScore: 25,
       goals: {
-        target: {
+        targetGoal: {
           phone: '1',
           text: '5',
           beer: '2',
         },
-        current: {
+        currentGoal: {
           phone: '0',
           text: '2',
           beer: '0',
@@ -154,4 +154,5 @@ module.exports = {
       },
     },
   ],
+  setting: 'the best setting, foEVA',
 };

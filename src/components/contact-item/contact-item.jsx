@@ -5,7 +5,6 @@ import percentMapper from '../../helpers/percent-mapper';
 
 class ContactItem extends Component {
   render() {
-    console.log(this.props.details);
     const { name, icon, id, friendScore } = this.props.details;
 
     return (

@@ -19,7 +19,7 @@ const Home = () => (
           if (loading) return <AppLoading />;
           if (error) return <AppError />;
 
-          return <ContactItems contacts={data.user.friends} />;
+          return <ContactItems friends={data.user.friends} />;
         }
       }
     </Query>

@@ -1,33 +1,29 @@
 import React from 'react';
-import { Header, NavMenu, ContactItems } from '..';
-import MockData from '../../__mocks__/fileMock';
+import { Query } from 'react-apollo';
+import { GetUserQuery } from '../../graphql/queries';
+import {
+  AppLoading,
+  AppError,
+  Header,
+  NavMenu,
+  ContactItems,
+} from '..';
 
-class Home extends React.Component {
-  constructor() {
-    super();
-    this.state = { contacts: [] };
-  }
+const Home = () => (
+  <div>
+    <Header />
+    <NavMenu />
+    <Query query={GetUserQuery}>
+      {
+        ({ loading, error, data }) => {
+          if (loading) return <AppLoading />;
+          if (error) return <AppError />;
 
-  componentDidMount() {
-    this.loadContacts();
-  }
-
-  loadContacts() {
-    this.setState({
-      contacts: MockData.contacts,
-    });
-  }
-
-
-  render() {
-    return (
-      <div>
-        <Header />
-        <NavMenu />
-        <ContactItems contacts={this.state.contacts} />
-      </div>
-    );
-  }
-}
+          return <ContactItems contacts={data.user.friends} />;
+        }
+      }
+    </Query>
+  </div>
+);
 
 export default Home;

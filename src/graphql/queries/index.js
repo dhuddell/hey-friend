@@ -1,1 +1,1 @@
-export { default as GetUserDataQuery } from './get-user-data-query.graphql';
+export { default as GetUserQuery } from './get-user-query.graphql';

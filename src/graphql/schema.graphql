@@ -4,21 +4,25 @@ type Goal {
   beer: Float
 }
 
+type Goals {
+  currentGoal: Goal
+  targetGoal: Goal
+}
+
 type Friend {
   name: String
   icon: String
   id: Float
   friendScore: Float
   description: String
-  currentGoal: Goal
-  targetGoal: Goal
+  goals: Goals
 }
 
-type UserData {
+type User {
   friends: [Friend]
   setting: String 
 }
 
 type Query {
-  userData: UserData!
+  user: User
 }

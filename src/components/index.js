@@ -1,4 +1,6 @@
 export { default as Home } from './home/home';
+export { default as AppLoading } from './app-loading/app-loading';
+export { default as AppError } from './app-error/app-error';
 export { default as Settings } from './settings/settings';
 export { default as ContactItem } from './contact-item/contact-item';
 export { default as ContactItems } from './contact-items/contact-items';

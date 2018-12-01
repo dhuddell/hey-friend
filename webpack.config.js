@@ -11,7 +11,7 @@ module.exports = (env) => {
       historyApiFallback: true,
     },
 
-    entry: './src/index.js',
+    entry: './src/app.js',
     output: {
       publicPath: '/',
     },
@@ -23,6 +23,11 @@ module.exports = (env) => {
           use: {
             loader: 'babel-loader',
           },
+        },
+        {
+          exclude: /node_modules/,
+          test: /\.graphql$/,
+          loader: 'graphql-tag/loader',
         },
         {
           test: /\.scss$/,
@@ -50,17 +55,9 @@ module.exports = (env) => {
 
   if (env && env.GRAPHQL_MOCK) {
     config.plugins.push(new webpack.NormalModuleReplacementPlugin(
-      /graphql\/links\/http-link.js/,
-      '../mock-data/schema-link.js'
+      /graphql\/http-link.js/,
+      './schema-link.js'
     ));
-    config.plugins.push(new webpack.NormalModuleReplacementPlugin(
-      /..\/node_modules\/axios\/index.js/,
-      '../../src/__mocks__/axios-mock.js'
-    ));
-    config.module.rules.push({
-      include: /..\/node_modules\/axios\/index.js/,
-      use: { loader: 'babel-loader' },
-    });
   }
 
   return config;

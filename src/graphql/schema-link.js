@@ -1,12 +1,17 @@
-import SchemaLink from 'apollo-link-schema';
+import { SchemaLink } from 'apollo-link-schema';
 import { makeExecutableSchema, addMockFunctionsToSchema } from 'graphql-tools';
 
 import typeDefs from './schema.graphql';
 import userData from './mock-user-data';
 
-const schema = makeExecutableSchema(
-  typeDefs
-);
+const resolverValidationOptions = {
+  requireResolversForResolveType: false,
+};
+
+const schema = makeExecutableSchema({
+  typeDefs,
+  resolverValidationOptions,
+});
 
 let latency = 0;
 

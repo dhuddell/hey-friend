@@ -1,22 +1,22 @@
 type Goal {
-  phone: int
-  text: int
-  beer: int
+  phone: Float
+  text: Float
+  beer: Float
 }
 
 type Friend {
-  name: string
-  icon: string
-  id: int
-  friendScore: int
-  description: string
+  name: String
+  icon: String
+  id: Float
+  friendScore: Float
+  description: String
   currentGoal: Goal
   targetGoal: Goal
 }
 
 type UserData {
   friends: [Friend]
-  setting: string 
+  setting: String 
 }
 
 type Query {

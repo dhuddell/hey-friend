@@ -1,6 +1,6 @@
 import React from 'react';
-import { Header, NavMenu, ContactItems } from './components';
-import MockData from './__mocks__/fileMock';
+import { Header, NavMenu, ContactItems } from '..';
+import MockData from '../../__mocks__/fileMock';
 
 class Home extends React.Component {
   constructor() {

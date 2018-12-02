@@ -25,4 +25,6 @@ type User {
 
 type Query {
   user: User
+  friend(id: String!): Friend
 }
+

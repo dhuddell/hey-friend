@@ -8,9 +8,9 @@ import percentMapper from '../../helpers/percent-mapper';
 class Friend extends Component {
   constructor(props) {
     super(props);
-    const contact = MockData.contacts.find((x) => x.id === this.props.match.params.contactId);
+    const friend = MockData.friends.find((x) => x.id === this.props.match.params.friendId);
     this.state = {
-      contact,
+      friend,
       show: false,
     };
   }
@@ -30,9 +30,9 @@ class Friend extends Component {
   }
 
   render() {
-    const contact = this.state.contact;
-    const goalTargets = contact.goals.target;
-    const goalCurrents = contact.goals.target;
+    const friend = this.state.friend;
+    const goalTargets = friend.goals.target;
+    const goalCurrents = friend.goals.target;
 
     return (
       <div>
@@ -46,13 +46,13 @@ class Friend extends Component {
         <div className="content-wrapper">
           <div className="bio-space">
             <div className="friend-info">
-              <h1 className="friend-title">{contact.name}</h1>
-              <h5 className="friend-text">{contact.description}</h5>
+              <h1 className="friend-title">{friend.name}</h1>
+              <h5 className="friend-text">{friend.description}</h5>
             </div>
             <div className="icon-container">
               <div className="icon-outer-circle">
-                <div className={`inner-icon-container ${percentMapper(contact.friendScore)}`}>
-                  <i className={`fa ${contact.icon} contact-icon inner-contact-icon`} />
+                <div className={`inner-icon-container ${percentMapper(friend.friendScore)}`}>
+                  <i className={`fa ${friend.icon} friend-icon inner-friend-icon`} />
                 </div>
               </div>
             </div>
@@ -91,7 +91,7 @@ class Friend extends Component {
 }
 
 Friend.propTypes = {
-  contact: PropTypes.object,
+  friend: PropTypes.object,
   match: PropTypes.shape(),
 };
 

@@ -38,85 +38,11 @@ class Friend extends Component {
       <div>
         <Header />
         <NavMenu />
-        <Modal show={this.state.show} handleClose={this.hideModal}>
-          <form className="modal-form" onSubmit={this.handleSubmit}>
-            <div className="modal-form-row">
-              <div className="modal-form-cell">
-                <p>How many phone?</p>
-                <select defaultValue="default" className="modal-select">
-                  <option disabled value="default" hidden>Choose!</option>
-                  <option value="0">0</option>
-                  <option value="1">1</option>
-                  <option value="2">2</option>
-                  <option value="3">3</option>
-                  <option value="4">4</option>
-                  <option value="5">5</option>
-                  <option value="6">6</option>
-                  <option value="7">7</option>
-                  <option value="8">8</option>
-                  <option value="9">9</option>
-                  <option value="10">10</option>
-                </select>
-              </div>
-              <div className="modal-form-cell">
-                <p>How many text?</p>
-                <select defaultValue="default" className="modal-select">
-                  <option disabled value="default" hidden>Choose!</option>
-                  <option value="0">0</option>
-                  <option value="1">1</option>
-                  <option value="2">2</option>
-                  <option value="3">3</option>
-                  <option value="4">4</option>
-                  <option value="5">5</option>
-                  <option value="6">6</option>
-                  <option value="7">7</option>
-                  <option value="8">8</option>
-                  <option value="9">9</option>
-                  <option value="10">10</option>
-                </select>
-              </div>
-            </div>
-            <div className="modal-form-row">
-              <div className="modal-form-cell">
-                <p>How many beers?</p>
-                <select defaultValue="default" className="modal-select">
-                  <option disabled value="default" hidden>Choose!</option>
-                  <option value="0">0</option>
-                  <option value="1">1</option>
-                  <option value="2">2</option>
-                  <option value="3">3</option>
-                  <option value="4">4</option>
-                  <option value="5">5</option>
-                  <option value="6">6</option>
-                  <option value="7">7</option>
-                  <option value="8">8</option>
-                  <option value="9">9</option>
-                  <option value="10">10</option>
-                </select>
-              </div>
-              <div className="modal-form-cell">
-                <p>{'What\'s the cadence?'}</p>
-                <select defaultValue="default" className="modal-select">
-                  <option disabled value="default" hidden>Choose!</option>
-                  <option value="0">0</option>
-                  <option value="1">1</option>
-                  <option value="2">2</option>
-                  <option value="3">3</option>
-                  <option value="4">4</option>
-                  <option value="5">5</option>
-                  <option value="6">6</option>
-                  <option value="7">7</option>
-                  <option value="8">8</option>
-                  <option value="9">9</option>
-                  <option value="10">10</option>
-                </select>
-              </div>
-            </div>
-            <button type="submit" className="btn modal-btn">
-              Set your goals!
-            </button>
-          </form>
-        </Modal>
+        <Modal
+          handleClose={this.hideModal}
+          show={this.state.show}
+          handleSubmit={this.handleSubmit}
+        />
         <div className="content-wrapper">
           <div className="bio-space">
             <div className="friend-info">
@@ -125,7 +51,7 @@ class Friend extends Component {
             </div>
             <div className="icon-container">
               <div className="icon-outer-circle">
-                <div className={`inner-icon-container ${percentMapper(contact.activity)}`}>
+                <div className={`inner-icon-container ${percentMapper(contact.friendScore)}`}>
                   <i className={`fa ${contact.icon} contact-icon inner-contact-icon`} />
                 </div>
               </div>

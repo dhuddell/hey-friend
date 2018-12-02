@@ -1,23 +1,28 @@
 type Goal {
-  phone: int
-  text: int
-  beer: int
+  phone: Float
+  text: Float
+  beer: Float
 }
 
-type Friend {
-  name: string
-  icon: string
-  id: int
-  description: string
+type Goals {
   currentGoal: Goal
   targetGoal: Goal
 }
 
-type UserData {
-  friends: [Friend]
-  setting: string 
+type Friend {
+  name: String
+  icon: String
+  id: Float
+  friendScore: Float
+  description: String
+  goals: Goals
 }
 
-query getUserData {
-  userData: UserData!
+type User {
+  friends: [Friend]
+  setting: String 
+}
+
+type Query {
+  user: User
 }

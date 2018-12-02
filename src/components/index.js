@@ -1,3 +1,6 @@
+export { default as Home } from './home/home';
+export { default as AppLoading } from './app-loading/app-loading';
+export { default as AppError } from './app-error/app-error';
 export { default as Settings } from './settings/settings';
 export { default as ContactItem } from './contact-item/contact-item';
 export { default as ContactItems } from './contact-items/contact-items';
@@ -6,4 +9,4 @@ export { default as FriendGoal } from './friend-goal/friend-goal';
 export { default as Header } from './header/header';
 export { default as NavMenu } from './nav-menu/nav-menu';
 export { default as Modal } from './modal/modal';
-
+export { default as ModalContent } from './modal-content/modal-content';

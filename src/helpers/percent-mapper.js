@@ -1,5 +1,5 @@
-export default (activity) => {
-  switch (activity) {
+export default (friendScore) => {
+  switch (friendScore) {
   case 0:
     return 'zero';
   case 25:

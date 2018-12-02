@@ -5,7 +5,7 @@ import percentMapper from '../../helpers/percent-mapper';
 
 class ContactItem extends Component {
   render() {
-    const { name, icon, id, activity } = this.props.details;
+    const { name, icon, id, friendScore } = this.props.details;
 
     return (
       <Link to={`/contacts/${id}`} className="contact-wrapper">
@@ -13,7 +13,7 @@ class ContactItem extends Component {
           <p className="contact-name">{name}</p>
           <div className="icon-container">
             <div className="icon-outer-circle">
-              <div className={`inner-icon-container ${percentMapper(activity)}`}>
+              <div className={`inner-icon-container ${percentMapper(friendScore)}`}>
                 <i className={`fa ${icon} contact-icon inner-contact-icon`} />
               </div>
             </div>

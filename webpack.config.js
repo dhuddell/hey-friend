@@ -18,14 +18,22 @@ module.exports = (env) => {
     module: {
       rules: [
         {
-          exclude: /node_modules/,
+          exclude: [
+            /node_modules/,
+            /dist/,
+            /coverage/,
+          ],
           test: /\.(js|jsx)$/,
           use: {
             loader: 'babel-loader',
           },
         },
         {
-          exclude: /node_modules/,
+          exclude: [
+            /node_modules/,
+            /dist/,
+            /coverage/,
+          ],
           test: /\.graphql$/,
           loader: 'graphql-tag/loader',
         },

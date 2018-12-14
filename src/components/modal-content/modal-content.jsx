@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const ModalContent = ({ handleSubmit }) => (
+const ModalContent = ({ handleSubmit }) => ( // needs to read goals and then mutate values
   <form className="modal-form" onSubmit={handleSubmit}>
     <div className="modal-form-selects">
       <div className="modal-form-row">

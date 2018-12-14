@@ -1,31 +1,34 @@
-import React, { Component } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import percentMapper from '../../helpers/percent-mapper';
 
-class FriendItem extends Component {
-  render() {
-    const { name, icon, id, friendScore } = this.props.details;
+const FriendItem = ({ data }) => {
+  const { name, icon, id, friendScore } = data;
 
-    return (
-      <Link to={`/friends/${id}`} className="friend-wrapper">
-        <div className="friend-item">
-          <p className="friend-name">{name}</p>
-          <div className="icon-container">
-            <div className="icon-outer-circle">
-              <div className={`inner-icon-container ${percentMapper(friendScore)}`}>
-                <i className={`fa ${icon} friend-icon inner-friend-icon`} />
-              </div>
+  return (
+    <Link to={`/friends/${id}`} className="friend-wrapper">
+      <div className="friend-item">
+        <p className="friend-name">{name}</p>
+        <div className="icon-container">
+          <div className="icon-outer-circle">
+            <div className={`inner-icon-container ${percentMapper(friendScore)}`}>
+              <i className={`fa ${icon} friend-icon inner-friend-icon`} />
             </div>
           </div>
         </div>
-      </Link>
-    );
-  }
-}
+      </div>
+    </Link>
+  );
+};
 
 FriendItem.propTypes = {
-  details: PropTypes.object,
+  data: PropTypes.shape({
+    name: PropTypes.string.isRequired,
+    icon: PropTypes.string.isRequired,
+    friendScore: PropTypes.string.isRequired,
+    id: PropTypes.string.isRequired,
+  }),
 };
 
 export default FriendItem;

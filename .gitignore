@@ -1,7 +1,10 @@
 node_modules
+/coverage
+coverage
 build
 npm-debug.log
 .env
 .DS_Store
 dist
-coverage
+/coverage.data
+/coverage/

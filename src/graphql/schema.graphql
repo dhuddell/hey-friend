@@ -12,7 +12,7 @@ type Goals {
 type Friend {
   name: String
   icon: String
-  id: Float
+  id: String
   friendScore: Float
   description: String
   goals: Goals

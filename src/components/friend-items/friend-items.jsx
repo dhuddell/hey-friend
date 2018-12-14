@@ -5,7 +5,7 @@ import { FriendItem } from '..';
 
 const FriendItems = ({ friends }) => (
   <div className="friend-items content-wrapper">
-    {friends.map((details) => <FriendItem details={details} key={details.id} />)}
+    {friends.map((data) => <FriendItem data={data} key={data.id} />)}
   </div>
 );
 

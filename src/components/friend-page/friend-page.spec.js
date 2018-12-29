@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import { Friend, AppLoading, AppError } from '..';
+import { Friend, AppLoading, AppError, FriendContent } from '..';
 import { Query } from 'react-apollo';
 import { GetFriendQuery } from '../../graphql/queries';
 
@@ -26,7 +26,14 @@ describe('Friend component', () => {
   });
 
   const data = {
-    friend: { id: '1', goals: [] },
+    friend: {
+      name: 'Yo g',
+      icon: 'boop',
+      friendScore: 30,
+      id: '1',
+      goals: {},
+      description: 'boooop',
+    },
   };
 
   const ChildComponent = query.props().children;
@@ -42,8 +49,37 @@ describe('Friend component', () => {
   describe('Loaded state, with errors', () => {
     const component = shallow(<ChildComponent loading={false} data={data} error={{}} />);
 
-    it('Does not show anything', () => {
+    it('should show error state', () => {
       expect(component.find(AppError)).toHaveLength(1);
+    });
+  });
+
+  describe('Loaded with no errors', () => {
+    const component = shallow(<ChildComponent loading={false} data={data} />);
+
+    it('should show children', () => {
+      expect(component.find(FriendContent)).toHaveLength(1);
+    });
+  });
+
+  describe('Friend component methods', () => {
+    const instance = wrapper.instance();
+    instance.setState = jest.fn();
+
+    it('should call setSate with show: true on showModal', () => {
+      instance.showModal();
+      expect(instance.setState).toBeCalledWith({ show: true });
+    });
+
+    it('should call setSate with show: false on hideModal', () => {
+      instance.hideModal();
+      expect(instance.setState).toBeCalledWith({ show: false });
+    });
+
+    it('should call setSate with show: false on handleSubmit', () => {
+      const e = { preventDefault: () => {} };
+      instance.handleSubmit(e);
+      expect(instance.setState).toBeCalledWith({ show: false });
     });
   });
 });

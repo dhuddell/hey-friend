@@ -7,7 +7,7 @@ describe('FriendGoal component', () => {
     name: 'TEMPIMONSTER',
     icon: 'fa-lalala',
     id: '2',
-    friendScore: '30',
+    friendScore: 30,
   };
 
   const wrapper = shallow(<FriendItem data={data} />);

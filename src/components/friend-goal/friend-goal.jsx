@@ -9,7 +9,6 @@ const FriendGoal = ({ type, target = 0, current = 0 }) => (
     <p className="current-goal-text goal-text">{`${current}`}</p>
     {/* <i className={`fa fa-caret-down goal-arrow`} /> */}
   </div>
-
 );
 
 FriendGoal.propTypes = {

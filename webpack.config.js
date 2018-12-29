@@ -27,6 +27,7 @@ module.exports = (env) => {
           use: {
             loader: 'babel-loader',
           },
+          query: { compact: false },
         },
         {
           exclude: [

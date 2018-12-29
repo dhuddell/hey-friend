@@ -16,15 +16,11 @@ describe('FriendGoal component', () => {
     expect(wrapper.find('.friend-wrapper').props().to).toEqual('/friends/2');
   });
 
-  // it('should display target value', () => {
-  //   expect(wrapper.find('.target-goal-text').text()).toEqual('4');
-  // });
+  it('should display target value', () => {
+    expect(wrapper.find('.friend-name').text()).toEqual('TEMPIMONSTER');
+  });
 
-  // it('should render dynamic icon', () => {
-  //   expect(wrapper.find('.fa-phone')).toHaveLength(1);
-  // });
-
-  // it('should handle missing optional param', () => {
-  //   expect(wrapper.find('.current-goal-text').text()).toEqual('0');
-  // });
+  it('should render dynamic icon', () => {
+    expect(wrapper.find('.fa-lalala')).toHaveLength(1);
+  });
 });

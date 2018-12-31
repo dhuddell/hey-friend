@@ -1,5 +1,5 @@
 module.exports = {
-  contacts:
+  friends:
   [
     {
       name: 'Jim',

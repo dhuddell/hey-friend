@@ -1,16 +1,23 @@
-import React, { Component } from 'react';
-import { Header, NavMenu, Modal, FriendGoal } from '..';
+import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
-import MockData from '../../__mocks__/fileMock';
-import percentMapper from '../../helpers/percent-mapper';
-// import { observer } from mobx-react
+import { Query } from 'react-apollo';
+// import MockData from '../../__mocks__/fileMock';
+import { GetFriendQuery } from '../../graphql/queries';
+import {
+  Header,
+  NavMenu,
+  Modal,
+  FriendContent,
+  AppLoading,
+  AppError,
+} from '..';
 
 class Friend extends Component {
   constructor(props) {
     super(props);
-    const contact = MockData.contacts.find((x) => x.id === this.props.match.params.contactId);
+    // const friend = MockData.friends.find((x) => x.id === );
     this.state = {
-      contact,
+      // id: this.props.match.params.friendId,
       show: false,
     };
   }
@@ -23,76 +30,45 @@ class Friend extends Component {
     this.setState({ show: false });
   }
 
-  handleSubmit = (e) => {
+  handleSubmit = (e) => { // does this need to be here?
     e.preventDefault();
     this.setState({ show: false });
-    // saveEditGoals('do shit with the store') mobx
+    // saveEditGoals('do shit') mutation
   }
 
   render() {
-    const contact = this.state.contact;
-    const goalTargets = contact.goals.target;
-    const goalCurrents = contact.goals.target;
-
     return (
       <div>
-        <Header />
-        <NavMenu />
-        <Modal
-          handleClose={this.hideModal}
-          show={this.state.show}
-          handleSubmit={this.handleSubmit}
-        />
-        <div className="content-wrapper">
-          <div className="bio-space">
-            <div className="friend-info">
-              <h1 className="friend-title">{contact.name}</h1>
-              <h5 className="friend-text">{contact.description}</h5>
-            </div>
-            <div className="icon-container">
-              <div className="icon-outer-circle">
-                <div className={`inner-icon-container ${percentMapper(contact.friendScore)}`}>
-                  <i className={`fa ${contact.icon} contact-icon inner-contact-icon`} />
-                </div>
-              </div>
-            </div>
-          </div>
-          <div className="goal-space">
-            <h1 className="goal-title">{'Current amounts'}</h1>
-            <div className="friend-goals">
-              <FriendGoal
-                type="phone"
-                target={goalTargets.phone}
-                current={goalCurrents.phone}
-              />
-              <FriendGoal
-                type="comment"
-                target={goalTargets.text}
-                current={goalCurrents.text}
-              />
-              <FriendGoal
-                type="beer"
-                target={goalTargets.beer}
-                current={goalCurrents.beer}
-              />
-            </div>
-            <h1 className="goal-title">{'Monthly goals'}</h1>
-          </div>
-          <div>
-            <button className="btn btn-secondary" onClick={this.showModal}>
-              {'Edit'}
-              <i className={'fa fa-pencil btn-icon'} />
-            </button>
-          </div>
-        </div>
+        <Query query={GetFriendQuery} variables={{ id: this.props.match.params.id }} >
+          {
+            ({ loading, error, data }) => {
+              if (loading) return <AppLoading />;
+              if (error) return <AppError />;
+
+              return (
+                <Fragment>
+                  <Header />
+                  <NavMenu />
+                  <Modal
+                    handleClose={this.hideModal}
+                    show={this.state.show}
+                    handleSubmit={this.handleSubmit}
+                    goals={data.friend.goals}
+                  />
+                  <FriendContent friend={data.friend} showModal={this.showModal} />
+                </Fragment>
+              );
+            }
+          }
+        </Query>
       </div>
     );
   }
 }
 
 Friend.propTypes = {
-  contact: PropTypes.object,
-  match: PropTypes.shape(),
+  friend: PropTypes.object,
+  match: PropTypes.object,
 };
 
 export default Friend;

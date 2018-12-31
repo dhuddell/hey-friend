@@ -6,7 +6,7 @@ import {
   AppError,
   Header,
   NavMenu,
-  ContactItems,
+  FriendItems,
 } from '..';
 
 const Home = () => (
@@ -19,7 +19,7 @@ const Home = () => (
           if (loading) return <AppLoading />;
           if (error) return <AppError />;
 
-          return <ContactItems friends={data.user.friends} />;
+          return <FriendItems friends={data.user.friends} />;
         }
       }
     </Query>

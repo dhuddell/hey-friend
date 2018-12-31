@@ -2,7 +2,8 @@ import { SchemaLink } from 'apollo-link-schema';
 import { makeExecutableSchema, addMockFunctionsToSchema } from 'graphql-tools';
 
 import typeDefs from './schema.graphql';
-import user from './mock-user-data';
+import user from './mocks/mock-user-data';
+import friend from './mocks/mock-friend-data';
 
 const resolverValidationOptions = {
   requireResolversForResolveType: false,
@@ -22,6 +23,7 @@ if (typeof process !== 'undefined') {
 const mocks = {
   Query: () => ({
     user: () => new Promise((resolve) => setTimeout(() => resolve(user), latency)),
+    friend: () => new Promise((resolve) => setTimeout(() => resolve(friend), latency)),
   }),
 };
 

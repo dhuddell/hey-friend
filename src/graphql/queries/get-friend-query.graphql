@@ -1,0 +1,21 @@
+query GetFriendData($id: String) {
+  friend(id:$id){
+    name
+    icon
+    id
+    description
+    friendScore
+    goals {
+      targetGoal {
+        phone
+        text
+        beer
+      }
+      currentGoal {
+        phone
+        text
+        beer
+      }
+    }
+  }
+}

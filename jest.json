@@ -12,8 +12,10 @@
   ],
   "collectCoverageFrom" : ["**/*.{js,jsx}"],
   "transform": {
+    "\\.(gql|graphql)$": "jest-transform-graphql",
     ".*": "babel-jest"
   },
+  "testURL": "http://localhost/",
   "setupFiles": [
     "raf/polyfill",
     "./jest.setup"

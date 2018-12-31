@@ -2,7 +2,7 @@ import React from 'react';
 import { Header, NavMenu } from '..';
 
 const Settings = () => (
-  <div>
+  <div className="settings-page" >
     <Header />
     <NavMenu />
     <div className="settings-header">

@@ -21,7 +21,6 @@ describe('FriendContent component', () => {
         beer: 0,
       },
     },
-
   };
   const showModal = () => {};
 

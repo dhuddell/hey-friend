@@ -1,7 +1,6 @@
 import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { Query } from 'react-apollo';
-// import MockData from '../../__mocks__/fileMock';
 import { GetFriendQuery } from '../../graphql/queries';
 import {
   Header,
@@ -15,9 +14,7 @@ import {
 class Friend extends Component {
   constructor(props) {
     super(props);
-    // const friend = MockData.friends.find((x) => x.id === );
     this.state = {
-      // id: this.props.match.params.friendId,
       show: false,
     };
   }
@@ -28,12 +25,6 @@ class Friend extends Component {
 
   hideModal = () => {
     this.setState({ show: false });
-  }
-
-  handleSubmit = (e) => { // does this need to be here?
-    e.preventDefault();
-    this.setState({ show: false });
-    // saveEditGoals('do shit') mutation
   }
 
   render() {
@@ -52,7 +43,6 @@ class Friend extends Component {
                   <Modal
                     handleClose={this.hideModal}
                     show={this.state.show}
-                    handleSubmit={this.handleSubmit}
                     goals={data.friend.goals}
                   />
                   <FriendContent friend={data.friend} showModal={this.showModal} />

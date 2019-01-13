@@ -1,12 +1,13 @@
-type Goal {
-  phone: Float
-  text: Float
-  beer: Float
+type GoalSet {
+  phone: String
+  text: String
+  beer: String
 }
 
 type Goals {
-  currentGoal: Goal
-  targetGoal: Goal
+  currentGoal: GoalSet
+  targetGoal: GoalSet
+  cadence: String
 }
 
 type Friend {

@@ -17,6 +17,7 @@ query GetUserData {
           text
           beer
         }
+        cadence
       }
     }
     setting

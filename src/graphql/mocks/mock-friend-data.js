@@ -15,5 +15,6 @@ export default {
       text: '2',
       beer: '0',
     },
+    cadence: 'monthly',
   },
 };

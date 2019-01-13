@@ -61,14 +61,14 @@ FriendContent.propTypes = {
     friendScore: PropTypes.number,
     goals: PropTypes.shape({
       targetGoal: PropTypes.shape({
-        text: PropTypes.number,
-        beer: PropTypes.number,
-        phone: PropTypes.number,
+        text: PropTypes.string,
+        beer: PropTypes.string,
+        phone: PropTypes.string,
       }),
       currentGoal: PropTypes.shape({
-        text: PropTypes.number,
-        beer: PropTypes.number,
-        phone: PropTypes.number,
+        text: PropTypes.string,
+        beer: PropTypes.string,
+        phone: PropTypes.string,
       }),
     }),
   }),

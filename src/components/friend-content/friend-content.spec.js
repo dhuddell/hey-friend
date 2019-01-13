@@ -11,14 +11,14 @@ describe('FriendContent component', () => {
     friendScore: 25,
     goals: {
       targetGoal: {
-        phone: 1,
-        text: 5,
-        beer: 2,
+        phone: '1',
+        text: '5',
+        beer: '2',
       },
       currentGoal: {
-        phone: 0,
-        text: 2,
-        beer: 0,
+        phone: '0',
+        text: '2',
+        beer: '0',
       },
     },
   };

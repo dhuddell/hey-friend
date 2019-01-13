@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { ModalContent } from '..';
 
-const Modal = ({ handleClose, show, handleSubmit, goals }) => {
+const Modal = ({ handleClose, show, goals }) => {
   const showHideClassName = show ? 'modal display-block' : 'modal display-none';
 
   return (
@@ -13,7 +13,7 @@ const Modal = ({ handleClose, show, handleSubmit, goals }) => {
           <button className="modal-close-btn fa fa-close" onClick={handleClose} />
         </div>
         <div className="modal-content">
-          <ModalContent handleSubmit={handleSubmit} goals={goals} />
+          <ModalContent goals={goals} />
         </div>
       </section>
     </div>
@@ -23,7 +23,6 @@ const Modal = ({ handleClose, show, handleSubmit, goals }) => {
 Modal.propTypes = {
   handleClose: PropTypes.func.isRequired,
   show: PropTypes.bool.isRequired,
-  handleSubmit: PropTypes.func,
   goals: PropTypes.object,
 };
 

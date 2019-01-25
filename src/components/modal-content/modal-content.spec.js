@@ -14,29 +14,10 @@ describe('Modal component', () => {
     cadence: 'Monthly',
   };
 
-  const wrapper = shallow(<ModalContent friendStore={friendStore} handleSubmit={handleSubmit} />);
+  const wrapper = shallow(<ModalContent friendStore={friendStore} handleSubmit={handleSubmit} />).dive();
 
   it('should display ModalContent', () => {
-    expect(wrapper.find(ModalContent)).toHaveLength(1);
+    expect(wrapper.find('.modal-form')).toHaveLength(1);
   });
 });
-
-// import React from 'react';
-// import { shallow } from 'enzyme';
-// import ModalContent from './modal-content';
-
-// describe('Modal component', () => {
-//   const props = {
-//     handleSubmit: jest.fn(),
-//     friendStore: {
-//       updateGoals: jest.fn(),
-//     },
-//   };
-
-//   const wrapper = shallow(<ModalContent {...props} />);
-
-//   it('should display ModalContent', () => {
-//     expect(wrapper.find(ModalContent)).toHaveLength(1);
-//   });
-// });
 

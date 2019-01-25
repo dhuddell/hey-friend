@@ -4,8 +4,8 @@ import percentMapper from '../../helpers/percent-mapper';
 import { FriendGoal } from '..';
 
 const FriendContent = ({ friend, showModal }) => {
-  const goalTargets = friend.goals.targetGoal;
-  const goalCurrents = friend.goals.currentGoal;
+  const goalTargets = friend.goals.targetGoals;
+  const goalCurrents = friend.goals.currentGoals;
 
   return (
     <div className="content-wrapper">
@@ -31,7 +31,7 @@ const FriendContent = ({ friend, showModal }) => {
             current={goalCurrents.phone}
           />
           <FriendGoal
-            type="comment"
+            type="text"
             target={goalTargets.text}
             current={goalCurrents.text}
           />
@@ -60,12 +60,12 @@ FriendContent.propTypes = {
     icon: PropTypes.string.isRequired,
     friendScore: PropTypes.number,
     goals: PropTypes.shape({
-      targetGoal: PropTypes.shape({
+      targetGoals: PropTypes.shape({
         text: PropTypes.string,
         beer: PropTypes.string,
         phone: PropTypes.string,
       }),
-      currentGoal: PropTypes.shape({
+      currentGoals: PropTypes.shape({
         text: PropTypes.string,
         beer: PropTypes.string,
         phone: PropTypes.string,

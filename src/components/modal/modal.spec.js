@@ -4,18 +4,17 @@ import Modal from './modal';
 
 describe('Modal component', () => {
   const goals = {
-    targetGoal: {
+    targetGoals: {
       phone: '1',
       text: '5',
       beer: '2',
     },
-    currentGoal: {
+    currentGoals: {
       phone: '0',
       text: '2',
       beer: '0',
     },
   };
-
   let wrapper;
   const handleSubmit = jest.fn();
   const handleClose = jest.fn();

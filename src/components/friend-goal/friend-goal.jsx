@@ -13,8 +13,8 @@ const FriendGoal = ({ type, target = 0, current = 0 }) => (
 
 FriendGoal.propTypes = {
   type: PropTypes.string.isRequired,
-  target: PropTypes.number,
-  current: PropTypes.number,
+  target: PropTypes.string,
+  current: PropTypes.string,
 };
 
 export default FriendGoal;

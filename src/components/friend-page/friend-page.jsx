@@ -27,6 +27,12 @@ class Friend extends Component {
     this.setState({ show: false });
   }
 
+  handleSubmit = (e) => { // does this need to be here?
+    e.preventDefault();
+    this.setState({ show: false });
+    // saveEditGoals('do shit') mutation
+  }
+
   render() {
     return (
       <div>
@@ -41,9 +47,11 @@ class Friend extends Component {
                   <Header />
                   <NavMenu />
                   <Modal
+                    handleSubmit={this.handleSubmit}
                     handleClose={this.hideModal}
                     show={this.state.show}
                     goals={data.friend.goals}
+                    id={data.friend.id}
                   />
                   <FriendContent friend={data.friend} showModal={this.showModal} />
                 </Fragment>

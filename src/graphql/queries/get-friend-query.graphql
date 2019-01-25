@@ -6,12 +6,12 @@ query GetFriendData($id: String) {
     description
     friendScore
     goals {
-      targetGoal {
+      targetGoals {
         phone
         text
         beer
       }
-      currentGoal {
+      currentGoals {
         phone
         text
         beer

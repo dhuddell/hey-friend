@@ -6,17 +6,17 @@ export default {
       icon: 'fa-bolt',
       id: '1',
       description: 'best bro',
-      friendScore: 0,
+      friendScore: '0',
       goals: {
-        targetGoal: {
-          phone: 1,
-          text: 5,
-          beer: 2,
+        targetGoals: {
+          phone: '1',
+          text: '5',
+          beer: '2',
         },
-        currentGoal: {
-          phone: 0,
-          text: 2,
-          beer: 0,
+        currentGoals: {
+          phone: '0',
+          text: '2',
+          beer: '0',
         },
         cadence: 'monthly',
       },
@@ -28,15 +28,15 @@ export default {
       description: 'basic beach',
       friendScore: 25,
       goals: {
-        targetGoal: {
-          phone: 1,
-          text: 5,
-          beer: 2,
+        targetGoals: {
+          phone: '1',
+          text: '5',
+          beer: '2',
         },
-        currentGoal: {
-          phone: 0,
-          text: 2,
-          beer: 0,
+        currentGoals: {
+          phone: '0',
+          text: '2',
+          beer: '0',
         },
         cadence: 'monthly',
       },
@@ -48,15 +48,15 @@ export default {
       description: 'wingman ofc',
       friendScore: 50,
       goals: {
-        targetGoal: {
-          phone: 1,
-          text: 5,
-          beer: 2,
+        targetGoals: {
+          phone: '1',
+          text: '5',
+          beer: '2',
         },
-        currentGoal: {
-          phone: 0,
-          text: 2,
-          beer: 0,
+        currentGoals: {
+          phone: '0',
+          text: '2',
+          beer: '0',
         },
         cadence: 'monthly',
       },
@@ -68,15 +68,15 @@ export default {
       description: 'a wise old cricket',
       friendScore: 75,
       goals: {
-        targetGoal: {
-          phone: 1,
-          text: 5,
-          beer: 2,
+        targetGoals: {
+          phone: '1',
+          text: '5',
+          beer: '2',
         },
-        currentGoal: {
-          phone: 0,
-          text: 2,
-          beer: 0,
+        currentGoals: {
+          phone: '0',
+          text: '2',
+          beer: '0',
         },
         cadence: 'monthly',
       },
@@ -88,15 +88,15 @@ export default {
       description: 'an invader',
       friendScore: 50,
       goals: {
-        targetGoal: {
-          phone: 1,
-          text: 5,
-          beer: 2,
+        targetGoals: {
+          phone: '1',
+          text: '5',
+          beer: '2',
         },
-        currentGoal: {
-          phone: 0,
-          text: 2,
-          beer: 0,
+        currentGoals: {
+          phone: '0',
+          text: '2',
+          beer: '0',
         },
         cadence: 'monthly',
       },
@@ -108,15 +108,15 @@ export default {
       description: 'who knows',
       friendScore: 100,
       goals: {
-        targetGoal: {
-          phone: 1,
-          text: 5,
-          beer: 2,
+        targetGoals: {
+          phone: '1',
+          text: '5',
+          beer: '2',
         },
-        currentGoal: {
-          phone: 0,
-          text: 2,
-          beer: 0,
+        currentGoals: {
+          phone: '0',
+          text: '2',
+          beer: '0',
         },
         cadence: 'monthly',
       },
@@ -128,15 +128,15 @@ export default {
       description: 'goes to shows',
       friendScore: 75,
       goals: {
-        targetGoal: {
-          phone: 1,
-          text: 5,
-          beer: 2,
+        targetGoals: {
+          phone: '1',
+          text: '5',
+          beer: '2',
         },
-        currentGoal: {
-          phone: 0,
-          text: 2,
-          beer: 0,
+        currentGoals: {
+          phone: '0',
+          text: '2',
+          beer: '0',
         },
         cadence: 'monthly',
       },
@@ -148,15 +148,15 @@ export default {
       description: 'x gon give it to ya',
       friendScore: 25,
       goals: {
-        targetGoal: {
-          phone: 1,
-          text: 5,
-          beer: 2,
+        targetGoals: {
+          phone: '1',
+          text: '5',
+          beer: '2',
         },
-        currentGoal: {
-          phone: 0,
-          text: 2,
-          beer: 0,
+        currentGoals: {
+          phone: '0',
+          text: '2',
+          beer: '0',
         },
         cadence: 'monthly',
       },

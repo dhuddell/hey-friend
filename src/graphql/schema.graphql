@@ -5,8 +5,13 @@ type GoalSet {
 }
 
 type Goals {
-  currentGoal: GoalSet
-  targetGoal: GoalSet
+  currentGoals: GoalSet
+  targetGoals: GoalSet
+  cadence: String
+}
+
+type GoalInputs {
+  targetGoals: GoalSet
   cadence: String
 }
 

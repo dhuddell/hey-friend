@@ -2,7 +2,7 @@
 
 import { action, observable } from 'mobx';
 import apolloClient from '../graphql/apollo-client';
-import { UpdateFriendGoals } from '../graphql/mutations';
+import { UpdateTargetFriendGoals } from '../graphql/mutations';
 
 
 export default class FriendStore {
@@ -11,10 +11,22 @@ export default class FriendStore {
   @observable goalTargets = [];
   @observable cadence = '';
 
+  @observable submitted = false;
+  @observable submitting = false;
+
+  @observable formFields = {
+    phoneGoal: 0,
+    textGoal: 0,
+    beerGoal: 0,
+    cadence: null,
+  };
+
+  @action updateFormFields = ({ key, value }) => { this.formFields[key] = value; };
+
   @action updateGoals = ({ id, goals }) => {
     try {
-      apolloClient.mutation({
-        mutation: UpdateFriendGoals,
+      apolloClient.mutate({
+        mutation: UpdateTargetFriendGoals,
         variables: {
           id,
           goals,
@@ -25,6 +37,3 @@ export default class FriendStore {
     }
   }
 }
-
-
-// THIS IS SUPER WIP. LIKE HOLY SHIT IT NEEDS WORK

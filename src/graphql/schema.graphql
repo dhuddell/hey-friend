@@ -4,14 +4,19 @@ type GoalSet {
   beer: String
 }
 
+input GoalSetInput {
+  phone: String
+  text: String
+  beer: String
+}
 type Goals {
   currentGoals: GoalSet
   targetGoals: GoalSet
   cadence: String
 }
 
-type GoalInputs {
-  targetGoals: GoalSet
+input GoalInputs {
+  targetGoals: GoalSetInput
   cadence: String
 }
 
@@ -26,7 +31,7 @@ type Friend {
 
 type User {
   friends: [Friend]
-  setting: String 
+  setting: String
 }
 
 type Query {
@@ -34,3 +39,6 @@ type Query {
   friend(id: String!): Friend
 }
 
+type Mutation {
+  updateTargetFriendGoals(id: String!, goals: GoalInputs): Friend
+}

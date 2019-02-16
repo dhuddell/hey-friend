@@ -25,6 +25,9 @@ const mocks = {
     user: () => new Promise((resolve) => setTimeout(() => resolve(user), latency)),
     friend: () => new Promise((resolve) => setTimeout(() => resolve(friend), latency)),
   }),
+  Mutation: () => ({
+    UpdateTargetFriendGoals: () => new Promise((resolve) => setTimeout(() => resolve(friend), latency)),
+  }),
 };
 
 addMockFunctionsToSchema({ schema, mocks });

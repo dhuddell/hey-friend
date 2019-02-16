@@ -1,0 +1,13 @@
+mutation UpdateTargetFriendGoals($id: String!, $goals: GoalInputs!) {
+  updateTargetFriendGoals(id: $id, goals: $goals){
+    id
+    goals {
+      targetGoals {
+        phone
+        text
+        beer
+      }
+      cadence
+    }
+  }
+}

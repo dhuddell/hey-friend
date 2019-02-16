@@ -27,12 +27,6 @@ class Friend extends Component {
     this.setState({ show: false });
   }
 
-  handleSubmit = (e) => { // does this need to be here?
-    e.preventDefault();
-    this.setState({ show: false });
-    // saveEditGoals('do shit') mutation
-  }
-
   render() {
     return (
       <div>
@@ -40,14 +34,13 @@ class Friend extends Component {
           {
             ({ loading, error, data }) => {
               if (loading) return <AppLoading />;
-              if (error) return <AppError />;
+              if (error) return <AppError error={error}/>;
 
               return (
                 <Fragment>
                   <Header />
                   <NavMenu />
                   <Modal
-                    handleSubmit={this.handleSubmit}
                     handleClose={this.hideModal}
                     show={this.state.show}
                     goals={data.friend.goals}

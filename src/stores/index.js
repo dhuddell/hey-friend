@@ -1,3 +1,3 @@
-import UserStore from './user-store';
+import FriendStore from './friend-store';
 
-export const userStore = new UserStore();
+export const friendStore = new FriendStore();

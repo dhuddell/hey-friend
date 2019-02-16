@@ -1,1 +1,1 @@
-export { default as UpdateFriendGoals } from './update-friend-goals.graphql';
+export { default as UpdateTargetFriendGoals } from './update-target-friend-goals.graphql';

@@ -2,7 +2,7 @@ import { HttpLink } from 'apollo-link-http';
 import fetch from 'unfetch';
 
 export default new HttpLink({
-  uri: '/graphql',
-  credentials: 'include',
+  uri: 'http://localhost:4000/graphql',
+  // credentials: 'include',
   fetch,
 });

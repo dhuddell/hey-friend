@@ -23,7 +23,9 @@ if (typeof process !== 'undefined') {
 const mocks = {
   Query: () => ({
     user: () => new Promise((resolve) => setTimeout(() => resolve(user), latency)),
+    users: () => new Promise((resolve) => setTimeout(() => resolve([user, user, user, user]), latency)),
     friend: () => new Promise((resolve) => setTimeout(() => resolve(friend), latency)),
+    friends: () => new Promise((resolve) => setTimeout(() => resolve([friend, friend, friend]), latency)),
   }),
   Mutation: () => ({
     UpdateTargetFriendGoals: () => new Promise((resolve) => setTimeout(() => resolve(friend), latency)),

@@ -1,0 +1,22 @@
+query GetFriendsData {
+  friends {
+    name
+    icon
+    id
+    description
+    friendScore
+    goals {
+      targetGoals {
+        phone
+        text
+        beer
+      }
+      currentGoals {
+        phone
+        text
+        beer
+      }
+      cadence
+    }
+  }
+}

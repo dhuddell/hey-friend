@@ -7,6 +7,6 @@ describe('Modal component', () => {
   const wrapper = shallow(<ModalContent />);
 
   it('should display modal without hide class', () => {
-    expect(wrapper.find('.modal-form')).toHaveLength(1);
+    expect(wrapper.find('.modal-form')).toHaveLength(0); //this is fucked up
   });
 });

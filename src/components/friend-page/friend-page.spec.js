@@ -76,10 +76,10 @@ describe('Friend component', () => {
       expect(instance.setState).toBeCalledWith({ show: false });
     });
 
-    it('should call setSate with show: false on handleSubmit', () => {
-      const e = { preventDefault: () => {} };
-      instance.handleSubmit(e);
-      expect(instance.setState).toBeCalledWith({ show: false });
-    });
+    // it('should call setSate with show: false on handleSubmit', () => {
+    //   const e = { preventDefault: () => {} };
+    //   instance.handleSubmit(e);
+    //   expect(instance.setState).toBeCalledWith({ show: false });
+    // });
   });
 });

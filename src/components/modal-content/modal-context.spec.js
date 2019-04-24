@@ -3,10 +3,10 @@ import { shallow } from 'enzyme';
 import ModalContent from './modal-content';
 
 describe('Modal component', () => {
-  const handleSubmit = jest.fn();
-  const wrapper = shallow(<ModalContent handleSubmit={handleSubmit} />);
+  // const handleSubmit = jest.fn();
+  const wrapper = shallow(<ModalContent />);
 
-  it('should display no modal with hide class', () => {
+  it('should display modal without hide class', () => {
     expect(wrapper.find('.modal-form')).toHaveLength(1);
   });
 });

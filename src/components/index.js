@@ -5,6 +5,7 @@ export { default as Settings } from './settings/settings';
 export { default as FriendItem } from './friend-item/friend-item';
 export { default as FriendItems } from './friend-items/friend-items';
 export { default as FriendContent } from './friend-content/friend-content';
+export { default as FriendCreationComponent } from './friend-creation/friend-creation-component';
 export { default as Friend } from './friend-page/friend-page';
 export { default as FriendGoal } from './friend-goal/friend-goal';
 export { default as Header } from './header/header';

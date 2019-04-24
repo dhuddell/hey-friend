@@ -1,5 +1,9 @@
-query GetUserData {
-  user {
+query GetUserData($username: String!) {
+  user(username:$username) {
+    username
+    password
+    name
+    setting
     friends {
       name
       icon
@@ -20,6 +24,5 @@ query GetUserData {
         cadence
       }
     }
-    setting
   }
 }

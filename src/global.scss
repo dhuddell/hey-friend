@@ -74,6 +74,18 @@ body {
   }
 }
 
+.tiny-friend-icon {
+  align-items: center;
+  animation: scale-up-icons 1.5s;
+  background: $teal-color;
+  border-radius: 50%;
+  color: $navy-color;
+  display: flex;
+  height: 120px;
+  justify-content: center;
+  margin: 1rem 0;
+  width: 180px;
+}
 
 .zero {
   height: 2%;

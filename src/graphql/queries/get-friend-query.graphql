@@ -1,17 +1,17 @@
-query GetFriendData($id: String) {
-  friend(id:$id){
+query GetFriendData($username: String!,$id: String) {
+  friend(username:$username, friendId:$id){
+    friendId
     name
     icon
-    id
     description
     friendScore
-    goals {
-      targetGoal {
+    goalSetCollection {
+      currentGoals {
         phone
         text
         beer
       }
-      currentGoal {
+      targetGoals {
         phone
         text
         beer

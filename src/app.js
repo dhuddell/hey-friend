@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { render } from 'react-dom';
-import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import { Router, Route, Switch } from 'react-router-dom';
 import { ApolloProvider } from 'react-apollo';
 import client from './graphql/apollo-client';
 
@@ -12,7 +12,7 @@ class App extends Component {
   render() {
     return (
       <ApolloProvider client={client}>
-        <BrowserRouter history={history}>
+        <Router history={history}>
           <div className="app-container">
             <Switch>
               <Route exact path="/" component={Home} />
@@ -20,7 +20,7 @@ class App extends Component {
               <Route path="/friends/:id" component={Friend} />
             </Switch>
           </div>
-        </BrowserRouter>
+        </Router>
       </ApolloProvider>
     );
   }

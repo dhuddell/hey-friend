@@ -6,7 +6,8 @@ import {
   Header,
   NavMenu,
   Modal,
-  FriendContent,
+  FriendCreationComponent,
+  // FriendContent,
   AppLoading,
   AppError,
 } from '..';
@@ -45,7 +46,9 @@ class Friend extends Component {
                     show={this.state.show}
                     goals={data.friend.goals}
                   />
-                  <FriendContent friend={data.friend} showModal={this.showModal} />
+
+                  <FriendCreationComponent showModal={this.showModal} />
+                  {/* <FriendContent friend={data.friend} showModal={this.showModal} /> */}
                 </Fragment>
               );
             }

@@ -5,11 +5,11 @@ import FriendContent from './friend-content';
 describe('FriendContent component', () => {
   const friend = {
     name: 'Yod Og',
-    id: '2',
+    friendId: '2',
     description: 'literally my dog tempi',
     icon: 'fa-lafel',
     friendScore: 25,
-    goals: {
+    goalSetCollection: {
       targetGoal: {
         phone: '1',
         text: '5',

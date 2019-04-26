@@ -1,5 +1,5 @@
-query GetFriendData($username: String!, $friendId: String) {
-  friend (username:$username, friendId:$friendId){
+query GetFriendsData ($username: String!) {
+  friends(username:$username){
     friendId
     name
     icon

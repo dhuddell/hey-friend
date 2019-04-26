@@ -1,6 +1,4 @@
 export default {
-  username: 'james',
-  password: 'password',
   friends:
   [
     {

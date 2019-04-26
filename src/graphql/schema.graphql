@@ -58,14 +58,14 @@
   }
 
   type Query {
-    user(username: String!): User
+    user: User
     users: [User]
     friend(username: String!, friendId: String!): Friend
     friends(username: String!): [Friend]
   }
 
   type Mutation {
-    updateTargetFriendGoals(username: String!, goalSetCollection: GoalSetCollectionInput): Friend
+    updateFriendGoals(username: String!, friendId: String!, goalSetCollection: GoalSetCollectionInput): Friend
 
     addFriendToUser(friendInput: FriendInput!): Friend
     removeFriend(username: String!, friendId: String!): String

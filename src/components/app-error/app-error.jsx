@@ -4,7 +4,7 @@ const AppError = (error) => {
   console.log(error); // eslint-disable-line
   return (
     <div>
-      <p>{error.message}</p>
+      <p>Error!</p>
     </div>
   );
 };

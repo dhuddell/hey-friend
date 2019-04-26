@@ -1,16 +1,16 @@
 export default {
   name: 'Friend!',
   icon: 'fa-bolt',
-  id: '3',
+  friendId: '3',
   description: 'who knows?',
   friendScore: 25,
-  goals: {
-    targetGoal: {
+  goalSetCollection: {
+    targetGoals: {
       phone: '1',
       text: '5',
       beer: '2',
     },
-    currentGoal: {
+    currentGoals: {
       phone: '0',
       text: '2',
       beer: '0',

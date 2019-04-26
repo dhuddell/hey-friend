@@ -3,11 +3,11 @@ import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import percentMapper from '../../helpers/percent-mapper';
 
-const FriendItem = ({ data }) => {
-  const { name, icon, id, friendScore } = data;
+const FriendItem = ({ data, username }) => {
+  const { name, icon, friendId, friendScore } = data;
 
   return (
-    <Link to={`/friends/${id}`} className="friend-wrapper">
+    <Link to={`${username}/friends/${friendId}`} className="friend-wrapper">
       <div className="friend-item">
         <p className="friend-name">{name}</p>
         <div className="icon-container">
@@ -27,8 +27,9 @@ FriendItem.propTypes = {
     name: PropTypes.string.isRequired,
     icon: PropTypes.string.isRequired,
     friendScore: PropTypes.number.isRequired,
-    id: PropTypes.string.isRequired,
+    friendId: PropTypes.string.isRequired,
   }),
+  username: PropTypes.string,
 };
 
 export default FriendItem;

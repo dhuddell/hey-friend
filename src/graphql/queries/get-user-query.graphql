@@ -1,5 +1,5 @@
-query GetUserData($username: String!) {
-  user(username:$username) {
+query GetUserData {
+  user {
     username
     password
     name
@@ -7,16 +7,16 @@ query GetUserData($username: String!) {
     friends {
       name
       icon
-      id
+      friendId
       description
       friendScore
-      goals {
-        targetGoal {
+      goalSetCollection {
+        targetGoals {
           phone
           text
           beer
         }
-        currentGoal {
+        currentGoals {
           phone
           text
           beer

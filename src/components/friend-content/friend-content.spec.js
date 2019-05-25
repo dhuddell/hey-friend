@@ -10,12 +10,12 @@ describe('FriendContent component', () => {
     icon: 'fa-lafel',
     friendScore: 25,
     goalSetCollection: {
-      targetGoal: {
+      targetGoals: {
         phone: '1',
         text: '5',
         beer: '2',
       },
-      currentGoal: {
+      currentGoals: {
         phone: '0',
         text: '2',
         beer: '0',

@@ -3,8 +3,6 @@ import PropTypes from 'prop-types';
 import { Query } from 'react-apollo';
 import { GetFriendQuery } from '../../graphql/queries';
 import {
-  Header,
-  NavMenu,
   Modal,
   // FriendCreationComponent,
   FriendContent,
@@ -46,8 +44,6 @@ class Friend extends Component {
 
               return (
                 <Fragment>
-                  <Header />
-                  <NavMenu />
                   <Modal
                     handleClose={this.hideModal}
                     show={this.state.show}

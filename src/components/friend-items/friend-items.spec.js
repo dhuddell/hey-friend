@@ -25,7 +25,7 @@ describe('FriendItems component', () => {
     },
   ];
 
-  const wrapper = shallow(<FriendItems friends={friends} />);
+  const wrapper = shallow(<FriendItems friends={friends} username="james" />);
 
   it('should display the bio section', () => {
     expect(wrapper.children()).toHaveLength(3);

@@ -24,7 +24,7 @@ if (typeof process !== 'undefined') {
 
 const mocks = {
   Muation: () => ({
-    updateFriendGoals: () => new Promise((resolve) => setTimeout(() => resolve(friend), latency)),
+    // updateFriendGoals: () => new Promise((resolve) => setTimeout(() => resolve(friend), latency)),
   }),
   Query: () => ({
     user: () => new Promise((resolve) => setTimeout(() => resolve(user), latency)),

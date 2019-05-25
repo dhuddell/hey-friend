@@ -7,7 +7,7 @@ const FriendItem = ({ data, username }) => {
   const { name, icon, friendId, friendScore } = data;
 
   return (
-    <Link to={`${username}/friends/${friendId}`} className="friend-wrapper">
+    <Link to={`/${username}/friends/${friendId}`} className="friend-wrapper">
       <div className="friend-item">
         <p className="friend-name">{name}</p>
         <div className="icon-container">

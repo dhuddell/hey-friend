@@ -23,6 +23,8 @@ describe('Modal component', () => {
   wrapper = shallow(
     <Modal
       handleClose={handleClose}
+      friendId={'1'}
+      username={'james'}
       show={false}
       handleSubmit={handleSubmit}
       goalSetCollection={goalSetCollection}
@@ -37,7 +39,9 @@ describe('Modal component', () => {
     wrapper = shallow(
       <Modal
         handleClose={handleClose}
-        show={true} // eslint-disable-line
+        friendId={'1'}
+        username={'james'}
+        show
         handleSubmit={handleSubmit}
         goalSetCollection={goalSetCollection}
       />

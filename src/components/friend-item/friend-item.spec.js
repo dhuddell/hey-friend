@@ -10,10 +10,10 @@ describe('FriendGoal component', () => {
     friendScore: 30,
   };
 
-  const wrapper = shallow(<FriendItem data={data} />);
+  const wrapper = shallow(<FriendItem data={data} username="joe" />);
 
   it('should render a link to the right friend', () => {
-    expect(wrapper.find('.friend-wrapper').props().to).toEqual('/friends/2');
+    expect(wrapper.find('.friend-wrapper').props().to).toEqual('joe/friends/2');
   });
 
   it('should display target value', () => {

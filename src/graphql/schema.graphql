@@ -67,6 +67,11 @@ type Friend {
   goalSetCollection: GoalSetCollection
 }
 
+input LoginInput {
+  username: String!
+  password: String!
+}
+
 input UserInput {
   username: String!
   password: String!
@@ -104,5 +109,5 @@ type Mutation {
   removeUser(userId: String): String
   registerUser(userInput: UserInput!): User
   removeUsers(ignoreString: String): String
-  loginUser(userInput: UserInput!): LoginResponse
+  loginUser(loginInput: LoginInput!): LoginResponse
 }

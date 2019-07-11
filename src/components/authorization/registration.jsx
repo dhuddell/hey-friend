@@ -5,6 +5,8 @@ import { Formik } from 'formik';
 import * as Yup from 'yup';
 import { RegisterUser } from '../../graphql/mutations';
 
+// LOOK AT FREAKING LOGIN IT"S DOPE AS FUCK
+
 const Registration = () => (
   <Mutation mutation={RegisterUser}>
     {(registerUser, { data }) => (
@@ -33,8 +35,8 @@ const Registration = () => (
               username: Yup.string().required('Required'),
               password: Yup.string().required('Required'),
             })}
-          >
-            {(formikProps) => {
+
+            render={(formikProps) => {
               const {
                 handleSubmit,
                 values,
@@ -52,7 +54,11 @@ const Registration = () => (
                     onBlur={handleBlur}
                   />
                   <div className="form-cell">Password</div>
-                  <input className="authorization-field" placeholder="..h4rdtoh4ck"/>
+                  <input
+                    className="authorization-field"
+                    type="password"
+                    placeholder="..h4rdtoh4ck"
+                  />
                   <button
                     type="submit"
                     disabled={isSubmitting}
@@ -62,7 +68,7 @@ const Registration = () => (
                 </form>
               );
             }}
-          </Formik>
+          />
         </div>
         <div className="login-link">
           <Link to="/login">Registered? Click here to login!</Link>

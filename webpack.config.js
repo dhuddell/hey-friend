@@ -9,9 +9,12 @@ module.exports = (env) => {
       compress: true,
       port: 3000,
       historyApiFallback: true,
+      proxy: {
+        '/graphql': process.env.SERVE_IMISSYOU,
+      },
     },
 
-    entry: './src/app.js',
+    entry: './src/app.jsx',
     output: {
       publicPath: '/',
     },
@@ -27,7 +30,7 @@ module.exports = (env) => {
           use: {
             loader: 'babel-loader',
           },
-          // query: { compact: false },
+          query: { compact: false },
         },
         {
           exclude: [
@@ -38,6 +41,7 @@ module.exports = (env) => {
           test: /\.graphql$/,
           loader: 'graphql-tag/loader',
         },
+
         {
           test: /\.scss$/,
           use: ['style-loader', 'css-loader', 'sass-loader', 'postcss-loader'],

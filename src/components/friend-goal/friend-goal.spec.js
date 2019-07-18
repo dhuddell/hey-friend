@@ -3,7 +3,7 @@ import { shallow } from 'enzyme';
 import FriendGoal from './friend-goal';
 
 describe('FriendGoal component', () => {
-  const wrapper = shallow(<FriendGoal type="phone" target={4} current={2}/>);
+  const wrapper = shallow(<FriendGoal type="phone" target="4" current="2"/>);
 
   it('should assign dynamic className', () => {
     expect(wrapper.find('.phone-goal')).toHaveLength(1);

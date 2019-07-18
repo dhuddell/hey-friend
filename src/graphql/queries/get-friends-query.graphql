@@ -19,3 +19,4 @@ query GetFriendsData ($username: String!) {
       cadence
     }
   }
+}

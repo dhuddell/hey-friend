@@ -3,7 +3,7 @@ import { shallow } from 'enzyme';
 import Modal from './modal';
 
 describe('Modal component', () => {
-  const goals = {
+  const goalSetCollection = {
     targetGoal: {
       phone: '1',
       text: '5',
@@ -23,9 +23,11 @@ describe('Modal component', () => {
   wrapper = shallow(
     <Modal
       handleClose={handleClose}
+      friendId={'1'}
+      username={'james'}
       show={false}
       handleSubmit={handleSubmit}
-      goals={goals}
+      goalSetCollection={goalSetCollection}
     />
   );
 
@@ -37,9 +39,11 @@ describe('Modal component', () => {
     wrapper = shallow(
       <Modal
         handleClose={handleClose}
-        show={true} // eslint-disable-line
+        friendId={'1'}
+        username={'james'}
+        show
         handleSubmit={handleSubmit}
-        goals={goals}
+        goalSetCollection={goalSetCollection}
       />
     );
     expect(wrapper.find('.display-block')).toHaveLength(1);

@@ -5,7 +5,7 @@ import { Query } from 'react-apollo';
 import { GetFriendQuery } from '../../graphql/queries';
 
 describe('Friend component', () => {
-  const match = { params: { id: '1' } };
+  const match = { params: { friendId: '1', username: 'james' } };
   const wrapper = shallow(<Friend match={match} />);
   const query = wrapper.find(Query);
 
@@ -21,7 +21,7 @@ describe('Friend component', () => {
     });
 
     it('should pass claimNumber as a variables object', () => {
-      expect(query.props().variables).toEqual({ id: '1' });
+      expect(query.props().variables).toEqual({ friendId: '1', username: 'james' });
     });
   });
 
@@ -30,7 +30,7 @@ describe('Friend component', () => {
       name: 'Yo g',
       icon: 'boop',
       friendScore: 30,
-      id: '1',
+      friendId: '1',
       goals: {},
       description: 'boooop',
     },

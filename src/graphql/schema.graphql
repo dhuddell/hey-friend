@@ -60,6 +60,7 @@ type User {
   name: String
   friends: [Friend]
   setting: String
+
 }
 
 type LoginResponse {

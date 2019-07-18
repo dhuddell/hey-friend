@@ -4,31 +4,6 @@ type GoalSet {
   beer: String
 }
 
-type Goals {
-  currentGoal: GoalSet
-  targetGoal: GoalSet
-  cadence: String
-}
-
-type Friend {
-  name: String
-  icon: String
-  id: String
-  friendScore: Float
-  description: String
-  goals: Goals
-}
-
-type User {
-  friends: [Friend]
-  setting: String
-}
-
-type Query {
-  user: User
-  friend(id: String!): Friend
-}
-
 input GoalSetInput {
   phone: String
   text: String
@@ -85,6 +60,7 @@ type User {
   name: String
   friends: [Friend]
   setting: String
+
 }
 
 type LoginResponse {

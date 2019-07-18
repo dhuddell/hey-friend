@@ -24,6 +24,5 @@ query GetUserData {
         cadence
       }
     }
-    setting
   }
 }

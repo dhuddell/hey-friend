@@ -1,13 +1,13 @@
-query UpdateFriendGoals($id: String!, $goals: Goals!) {
-  friend(id: $id, goals: $goals){
-    id
-    goals {
-      targetGoal {
+mutation UpdateFriendGoals($username: String!, $friendId: String!, $goalSetCollection: GoalSetCollectionInput!) {
+  updateFriendGoals (username:$username, friendId: $friendId, goalSetCollection: $goalSetCollection) {
+    friendId
+    goalSetCollection {
+      targetGoals {
         phone
         text
         beer
       }
-      currentGoal {
+      currentGoals {
         phone
         text
         beer

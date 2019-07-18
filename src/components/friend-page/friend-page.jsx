@@ -6,6 +6,7 @@ import {
   Header,
   NavMenu,
   Modal,
+  // FriendCreationComponent,
   FriendContent,
   AppLoading,
   AppError,
@@ -27,10 +28,17 @@ class Friend extends Component {
     this.setState({ show: false });
   }
 
+  username = this.props.match.params.username;
+
+  queryVariables = {
+    username: this.username,
+    friendId: this.props.match.params.friendId,
+  }
+
   render() {
     return (
       <div>
-        <Query query={GetFriendQuery} variables={{ id: this.props.match.params.id }} >
+        <Query query={GetFriendQuery} variables={this.queryVariables}>
           {
             ({ loading, error, data }) => {
               if (loading) return <AppLoading />;
@@ -43,8 +51,12 @@ class Friend extends Component {
                   <Modal
                     handleClose={this.hideModal}
                     show={this.state.show}
-                    goals={data.friend.goals}
+                    username={this.username}
+                    friendId={this.props.match.params.friendId}
+                    goalSetCollection={data.friend.goalSetCollection}
                   />
+
+                  {/* <FriendCreationComponent showModal={this.showModal} /> */}
                   <FriendContent friend={data.friend} showModal={this.showModal} />
                 </Fragment>
               );

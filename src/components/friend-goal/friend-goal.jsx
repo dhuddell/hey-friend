@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const FriendGoal = ({ type, target = 0, current = 0 }) => (
+const FriendGoal = ({ type, target = '0', current = '0' }) => (
   <div className={`${type}-goal friend-goal`}>
     <p className="target-goal-text goal-text">{`${target}`}</p>
     <i className={`fa fa-${type} goal-icon`} />
@@ -13,8 +13,8 @@ const FriendGoal = ({ type, target = 0, current = 0 }) => (
 
 FriendGoal.propTypes = {
   type: PropTypes.string.isRequired,
-  target: PropTypes.number,
-  current: PropTypes.number,
+  target: PropTypes.string,
+  current: PropTypes.string,
 };
 
 export default FriendGoal;

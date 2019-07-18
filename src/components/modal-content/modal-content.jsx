@@ -3,8 +3,18 @@ import PropTypes from 'prop-types';
 import { Mutation } from 'react-apollo';
 import { UpdateFriendGoals } from '../../graphql/mutations';
 
-const ModalContent = (goals) => {
-  let input;
+const ModalContent = (collectionInput) => {
+  const { cadence, username, friendId } = collectionInput;
+  const targetGoals = collectionInput.goalSetCollection.targetGoals;
+
+  const input = {
+    targetGoals: {
+      phone: '',
+      text: '',
+      beer: '',
+    },
+    cadence: '',
+  };
 
   return (
     <Mutation mutation={UpdateFriendGoals} >
@@ -13,16 +23,16 @@ const ModalContent = (goals) => {
           onSubmit={(e) => {
             e.preventDefault();
             // this.setState({ show: false });
-            updateGoals({ variables: { goals: input.value } });
+            updateGoals({ variables: { goalSetCollection: input, username, friendId } });
           }}
         >
           <div className="modal-form-selects">
             <div className="modal-form-row">
               <div className="modal-form-cell">
-                <p className="modal-form-cell-label">How many calls?</p>
+                <p className="modal-form-cell-label">How many calls?</p> {/* PHONEPHONEPHONEPHONEPHONE */}
                 <select
-                  defaultValue={goals ? goals.goalTargets.phone : null}
-                  ref={(value) => {input.goalTargets.phone = value;}}
+                  defaultValue={targetGoals ? targetGoals.phone : null}
+                  ref={(value) => {input.targetGoals.phone = value;}}
                   className="modal-select"
                 >
                   <option disabled value="default" hidden>Choose!</option>
@@ -40,10 +50,10 @@ const ModalContent = (goals) => {
                 </select>
               </div>
               <div className="modal-form-cell">
-                <p className="modal-form-cell-label">How many texts?</p>
+                <p className="modal-form-cell-label">How many texts?</p> {/* TEXT TEXT TEXT TEXT TEXT */}
                 <select
-                  defaultValue={goals ? goals.goalTargets.text : null}
-                  ref={(value) => {input.goalTargets.text = value;}}
+                  defaultValue={targetGoals ? targetGoals.text : null}
+                  ref={(value) => {input.targetGoals.text = value;}}
                   className="modal-select"
                 >
                   <option disabled value="default" hidden>Choose!</option>
@@ -63,10 +73,10 @@ const ModalContent = (goals) => {
             </div>
             <div className="modal-form-row">
               <div className="modal-form-cell">
-                <p className="modal-form-cell-label">How many beers?</p>
+                <p className="modal-form-cell-label">How many beers?</p> {/* BEEEEEEEEEEEER */}
                 <select
-                  defaultValue={goals ? goals.goalTargets.beer : null}
-                  ref={(value) => {input.goalTargets.beer = value;}}
+                  defaultValue={targetGoals ? targetGoals.beer : null}
+                  ref={(value) => {input.targetGoals.beer = value;}}
                   className="modal-select"
                 >
                   <option disabled value="default" hidden>Choose!</option>
@@ -84,10 +94,10 @@ const ModalContent = (goals) => {
                 </select>
               </div>
               <div className="modal-form-cell">
-                <p className="modal-form-cell-label">How often?</p>
+                <p className="modal-form-cell-label">How often?</p> {/* CADENCE */}
                 <select
-                  defaultValue={goals ? goals.cadence : null}
-                  ref={(value) => {input.goals.cadence = value;}}
+                  defaultValue={cadence ? cadence : null}
+                  ref={(value) => {input.cadence = value;}}
                   className="modal-select"
                 >
                   <option disabled value="default" hidden>Choose!</option>
@@ -109,9 +119,8 @@ const ModalContent = (goals) => {
 };
 
 ModalContent.propTypes = {
-  goals: PropTypes.shape({
-    goalTargets: PropTypes.object,
-    goalCurrents: PropTypes.object,
+  goalSetCollection: PropTypes.shape({
+    targetGoals: PropTypes.object,
     cadence: PropTypes.string,
   }),
 };

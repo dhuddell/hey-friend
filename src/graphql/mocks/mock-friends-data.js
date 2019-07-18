@@ -8,12 +8,12 @@ export default {
       description: 'best bro',
       friendScore: 0,
       goalSetCollection: {
-        targetGoal: {
+        targetGoals: {
           phone: 1,
           text: 5,
           beer: 2,
         },
-        currentGoal: {
+        currentGoals: {
           phone: 0,
           text: 2,
           beer: 0,
@@ -28,12 +28,12 @@ export default {
       description: 'basic beach',
       friendScore: 25,
       goalSetCollection: {
-        targetGoal: {
+        targetGoals: {
           phone: 1,
           text: 5,
           beer: 2,
         },
-        currentGoal: {
+        currentGoals: {
           phone: 0,
           text: 2,
           beer: 0,
@@ -48,12 +48,12 @@ export default {
       description: 'wingman ofc',
       friendScore: 50,
       goalSetCollection: {
-        targetGoal: {
+        targetGoals: {
           phone: 1,
           text: 5,
           beer: 2,
         },
-        currentGoal: {
+        currentGoals: {
           phone: 0,
           text: 2,
           beer: 0,
@@ -68,12 +68,12 @@ export default {
       description: 'a wise old cricket',
       friendScore: 75,
       goalSetCollection: {
-        targetGoal: {
+        targetGoals: {
           phone: 1,
           text: 5,
           beer: 2,
         },
-        currentGoal: {
+        currentGoals: {
           phone: 0,
           text: 2,
           beer: 0,
@@ -88,12 +88,12 @@ export default {
       description: 'an invader',
       friendScore: 50,
       goalSetCollection: {
-        targetGoal: {
+        targetGoals: {
           phone: 1,
           text: 5,
           beer: 2,
         },
-        currentGoal: {
+        currentGoals: {
           phone: 0,
           text: 2,
           beer: 0,
@@ -108,12 +108,12 @@ export default {
       description: 'who knows',
       friendScore: 100,
       goalSetCollection: {
-        targetGoal: {
+        targetGoals: {
           phone: 1,
           text: 5,
           beer: 2,
         },
-        currentGoal: {
+        currentGoals: {
           phone: 0,
           text: 2,
           beer: 0,
@@ -128,12 +128,12 @@ export default {
       description: 'goes to shows',
       friendScore: 75,
       goalSetCollection: {
-        targetGoal: {
+        targetGoals: {
           phone: 1,
           text: 5,
           beer: 2,
         },
-        currentGoal: {
+        currentGoals: {
           phone: 0,
           text: 2,
           beer: 0,
@@ -148,12 +148,12 @@ export default {
       description: 'x gon give it to ya',
       friendScore: 25,
       goalSetCollection: {
-        targetGoal: {
+        targetGoals: {
           phone: 1,
           text: 5,
           beer: 2,
         },
-        currentGoal: {
+        currentGoals: {
           phone: 0,
           text: 2,
           beer: 0,

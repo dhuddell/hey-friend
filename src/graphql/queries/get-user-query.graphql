@@ -1,18 +1,22 @@
 query GetUserData {
   user {
+    username
+    password
+    name
+    setting
     friends {
       name
       icon
-      id
+      friendId
       description
       friendScore
-      goals {
-        targetGoal {
+      goalSetCollection {
+        targetGoals {
           phone
           text
           beer
         }
-        currentGoal {
+        currentGoals {
           phone
           text
           beer

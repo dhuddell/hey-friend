@@ -21,7 +21,7 @@ type Friend {
 
 type User {
   friends: [Friend]
-  setting: String 
+  setting: String
 }
 
 type Query {
@@ -29,3 +29,74 @@ type Query {
   friend(id: String!): Friend
 }
 
+  input GoalSetInput {
+    phone: String
+    text: String
+    beer: String
+  }
+
+  type GoalSetCollection {
+    currentGoals: GoalSet
+    targetGoals: GoalSet
+    cadence: String
+  }
+
+  input GoalSetCollectionInput {
+    currentGoals: GoalSetInput
+    targetGoals: GoalSetInput
+    cadence: String
+  }
+
+  input FriendInput {
+    name: String!
+    icon: String
+    nickname: String
+    friendScore: Float
+    description: String
+    goalSetCollection: GoalSetCollectionInput
+    username: String
+  }
+
+  type Friend {
+    friendId: String
+    name: String
+    icon: String
+    nickname: String
+    friendScore: Float
+    description: String
+    goalSetCollection: GoalSetCollection
+  }
+
+  input UserInput {
+    username: String!
+    password: String!
+    name: String
+    setting: String
+  }
+
+  type User {
+    username: String!
+    password: String!
+    name: String
+    friends: [Friend]
+    setting: String
+  }
+
+  type Query {
+    user: User
+    users: [User]
+    friend(username: String!, friendId: String!): Friend
+    friends(username: String!): [Friend]
+  }
+
+  type Mutation {
+    updateFriendGoals(username: String!, friendId: String!, goalSetCollection: GoalSetCollectionInput): Friend
+
+    addFriendToUser(friendInput: FriendInput!): Friend
+    removeFriend(username: String!, friendId: String!): String
+    removeAllFriends(username: String!): String
+
+    registerUser(userInput: UserInput!): User
+    removeUser(username: String): String
+    removeAllUsers: String
+  }

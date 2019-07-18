@@ -1,6 +1,6 @@
 import React from 'react';
 import { Query } from 'react-apollo';
-import { Redirect } from 'react-router-dom';
+// import { Redirect } from 'react-router-dom';
 import { GetUserQuery } from '../../graphql/queries';
 import {
   AppLoading,
@@ -17,7 +17,7 @@ const Home = () => (
         ({ loading, error, data }) => {
           if (loading) return <AppLoading />;
           if (error) {
-            if (error.networkError.statusCode === '401') return <Redirect to="/registration" />;
+            // if (error.networkError.statusCode === '401') return <Redirect to="/registration" />;
             return <AppError />;
           }
 

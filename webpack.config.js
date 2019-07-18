@@ -30,7 +30,7 @@ module.exports = (env) => {
           use: {
             loader: 'babel-loader',
           },
-          // query: { compact: false },
+          query: { compact: false },
         },
         {
           exclude: [
@@ -41,6 +41,7 @@ module.exports = (env) => {
           test: /\.graphql$/,
           loader: 'graphql-tag/loader',
         },
+
         {
           test: /\.scss$/,
           use: ['style-loader', 'css-loader', 'sass-loader', 'postcss-loader'],

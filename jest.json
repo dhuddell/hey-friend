@@ -10,7 +10,7 @@
     ".eslintrc",
     "jest.setup"
   ],
-  "collectCoverageFrom" : ["**/*.{js,jsx}"],
+  "collectCoverageFrom" : ["**/*.{js,jsx}", "!**/graphql/**", "!**/mocks/**"],
   "transform": {
     "\\.(gql|graphql)$": "jest-transform-graphql",
     ".*": "babel-jest"

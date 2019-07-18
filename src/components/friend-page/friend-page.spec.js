@@ -5,7 +5,7 @@ import { Query } from 'react-apollo';
 import { GetFriendQuery } from '../../graphql/queries';
 
 describe('Friend component', () => {
-  const match = { params: { friendId: '1' } };
+  const match = { params: { friendId: '1', username: 'james' } };
   const wrapper = shallow(<Friend match={match} />);
   const query = wrapper.find(Query);
 
@@ -21,7 +21,7 @@ describe('Friend component', () => {
     });
 
     it('should pass claimNumber as a variables object', () => {
-      expect(query.props().variables).toEqual({ friendId: '1' });
+      expect(query.props().variables).toEqual({ friendId: '1', username: 'james' });
     });
   });
 
@@ -31,7 +31,7 @@ describe('Friend component', () => {
       icon: 'boop',
       friendScore: 30,
       friendId: '1',
-      goalSetCollection: {},
+      goals: {},
       description: 'boooop',
     },
   };
@@ -54,13 +54,14 @@ describe('Friend component', () => {
     });
   });
 
-  describe('Loaded with no errors', () => {
-    // const component = shallow(<ChildComponent loading={false} data={data} />); // FRIEND CONTENT IS FUCKED UP
+  // Under construction
+  // describe('Loaded with no errors', () => {
+  //   const component = shallow(<ChildComponent loading={false} data={data} />);
 
-    // it('should show children', () => {
-    //   expect(component.find(FriendContent)).toHaveLength(1);
-    // });
-  });
+  //   it('should show children', () => {
+  //     expect(component.find(FriendContent)).toHaveLength(1);
+  //   });
+  // });
 
   describe('Friend component methods', () => {
     const instance = wrapper.instance();
@@ -76,7 +77,7 @@ describe('Friend component', () => {
       expect(instance.setState).toBeCalledWith({ show: false });
     });
 
-    // it('should call setSate with show: false on handleSubmit', () => { BROKEN
+    // it('should call setSate with show: false on handleSubmit', () => {
     //   const e = { preventDefault: () => {} };
     //   instance.handleSubmit(e);
     //   expect(instance.setState).toBeCalledWith({ show: false });

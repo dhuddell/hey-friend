@@ -1,16 +1,32 @@
 import React from 'react';
 import { shallow } from 'enzyme';
+import { Mutation } from 'react-apollo';
 import ModalContent from './modal-content';
 
-describe('Modal component', () => {
-  // const handleSubmit = jest.fn();
-  const wrapper = shallow(<ModalContent />);
+describe('Modal content component', () => {
+  const goalSetCollection = {
+    targetGoals: {
+      phone: '1',
+      text: '3',
+      beer: '5',
+    },
+    currentGoals: {
+      phone: '1',
+      text: '3',
+      beer: '5',
+    },
+    cadence: 'monthly',
+  };
 
-  // it('should display modal without hide class', () => { // THIS IS FUCKED UP??
-  //   expect(wrapper.find('.modal-form')).toHaveLength(0);
-  // const wrapper = shallow(<ModalContent friendStore={friendStore} friendId={'2'} handleSubmit={handleSubmit} />).dive();
+  const wrapper = shallow(
+    <ModalContent
+      username={'joe'}
+      friendId={'2'}
+      goalSetCollection={goalSetCollection}
+    />
+  );
 
   it('should display ModalContent', () => {
-    expect(wrapper.find('.modal-form')).toHaveLength(1);
+    expect(wrapper.find(Mutation)).toHaveLength(1);
   });
 });

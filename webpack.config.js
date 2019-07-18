@@ -9,9 +9,12 @@ module.exports = (env) => {
       compress: true,
       port: 3000,
       historyApiFallback: true,
+      proxy: {
+        '/graphql': process.env.SERVE_IMISSYOU,
+      },
     },
 
-    entry: './src/app.js',
+    entry: './src/app.jsx',
     output: {
       publicPath: '/',
     },

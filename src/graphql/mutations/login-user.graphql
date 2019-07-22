@@ -1,6 +1,0 @@
-mutation LoginUser($loginInput: LoginInput!) {
-  loginUser (loginInput: $loginInput) {
-    message
-    token
-  }
-}

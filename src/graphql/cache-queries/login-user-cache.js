@@ -1,8 +1,8 @@
 import gql from 'graphql-tag';
 
 export default gql`
-  mutation LoginUser($loginInput: LoginInput!) {
-    loginUser (loginInput: $loginInput) {
+  query loginUser {
+    loginUser {
       message
       username
       token

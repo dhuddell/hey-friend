@@ -36,7 +36,7 @@ export default gql`
   }
 
   type Friend {
-    _id: String
+    id: String
     name: String
     icon: String
     nickname: String
@@ -68,6 +68,7 @@ export default gql`
 
   type LoginResponse {
     message: String!
+    username: String!
     token: String
   }
 

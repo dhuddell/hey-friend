@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { Mutation } from 'react-apollo';
 import { Formik } from 'formik';
 import * as Yup from 'yup';
-import { RegisterUser } from '../../graphql/mutations';
+import { RegisterUser } from '../../../graphql/mutations';
 
 // LOOK AT FREAKING LOGIN IT"S DOPE AS FUCK
 

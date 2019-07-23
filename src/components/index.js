@@ -11,6 +11,6 @@ export { default as Header } from './header/header';
 export { default as Modal } from './modal/modal';
 export { default as NavMenu } from './nav-menu/nav-menu';
 export { default as ModalContent } from './modal-content/modal-content';
-export { default as Registration } from './authorization/registration';
-export { default as Login } from './authorization/login';
+export { default as Registration } from './authorization/registration/registration';
+export { default as Login } from './authorization/login/login';
 export { default as Settings } from './settings/settings';

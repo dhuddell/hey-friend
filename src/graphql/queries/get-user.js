@@ -2,17 +2,18 @@ import gql from 'graphql-tag';
 
 export default gql`
   query user ($username: String!) {
-    user {
+    user (username: $username) {
       username
       password
       name
       setting
       friends {
+        id
         name
         icon
-        friendId
-        description
+        nickname
         friendScore
+        description
         goalSetCollection {
           targetGoals {
             phone

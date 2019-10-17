@@ -1,22 +1,20 @@
-query GetUserData {
-  user {
-    username
-    password
-    name
-    setting
-    friends {
+import gql from 'graphql-tag';
+
+export default gql`
+  query GetFriendsData ($username: String!) {
+    friends(username:$username){
+      friendId
       name
       icon
-      friendId
       description
       friendScore
       goalSetCollection {
-        targetGoals {
+        currentGoals {
           phone
           text
           beer
         }
-        currentGoals {
+        targetGoals {
           phone
           text
           beer
@@ -25,4 +23,4 @@ query GetUserData {
       }
     }
   }
-}
+`;

@@ -2,21 +2,27 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { Mutation } from 'react-apollo';
 import { Formik, Form, Field } from 'formik';
-import { LoginUser } from '../../graphql/mutations';
+import { LOGIN_USER } from '../../graphql/mutations';
+import { USER_QUERY } from '../../graphql/queries';
 
-// kill this.
-const GET_TODOS = 'A CONSTANT REPPING A QUERY DOT GRAPHQL';
+let username;
 
 const Login = () => (
   <Mutation
-    mutation={LoginUser}
+    mutation={LOGIN_USER}
     // THIS IS NEXT: HANDLE SUBMITTING, ERROR, SUCCESS
     // ALSO TODO RENAME ALL MUTATIONS AND QUERY WITH CAPITALS
-    update={(cache, { data: { addTodo } }) => {
-      const { todos } = cache.readQuery({ query: GET_TODOS });
+    update={(cache, { data: { loginUser } }) => {
+
+
+      // WIP to handle cache. unsure how to handle the data back versus the data being passed to update (loginUser)
+
+
+      const { user } = cache.readQuery({ query: USER_QUERY, variables: { username } });
       cache.writeQuery({
-        query: GET_TODOS,
-        data: { todos: todos.concat([addTodo]) },
+        query: USER_QUERY,
+        // variables: { username },
+        data: { user },
       });
     }}
   >
@@ -41,6 +47,7 @@ const Login = () => (
                     },
                   },
                 });
+                username = values.username;
                 actions.setSubmitting(false);
               }}
               render={({ errors, status, touched, isSubmitting }) => (

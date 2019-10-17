@@ -1,3 +1,3 @@
-export { default as UpdateFriendGoals } from './update-friend-goals.graphql';
-export { default as RegisterUser } from './register-user.graphql';
-export { default as LoginUser } from './login-user.graphql';
+export { default as UPDATE_FRIEND_GOALS } from './update-friend-goals.js';
+export { default as REGISTER_USER } from './register-user.js';
+export { default as LOGIN_USER } from './login-user.js';

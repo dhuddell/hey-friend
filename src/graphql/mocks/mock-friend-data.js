@@ -1,7 +1,7 @@
 export default {
   name: 'Friend!',
   icon: 'fa-bolt',
-  friendId: '3',
+  id: '3',
   description: 'who knows?',
   friendScore: 25,
   goalSetCollection: {

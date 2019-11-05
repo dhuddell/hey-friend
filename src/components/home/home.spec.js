@@ -9,7 +9,40 @@ import {
   FriendItems,
 } from '..';
 
-describe('Header component', () => {
+// HALPEPLPLEPAKEPAKJPQKMSOAKN
+
+import { MockedProvider, renderer } from '@apollo/react-testing';
+
+// The component AND the query need to be exported
+import { GET_DOG_QUERY, Dog } from './dog';
+
+const mocks = [
+  {
+    request: {
+      query: GET_DOG_QUERY,
+      variables: {
+        name: 'Buck',
+      },
+    },
+    result: {
+      data: {
+        dog: { id: '1', name: 'Buck', breed: 'bulldog' },
+      },
+    },
+  },
+];
+
+it('renders without error', () => {
+  renderer.create(
+    <MockedProvider mocks={mocks} addTypename={false}>
+      <Dog name="Buck" />
+    </MockedProvider>,
+  );
+});
+
+// old stuff below
+
+describe('Home component', () => {
   const wrapper = shallow(<Home />);
   const query = wrapper.find(Query);
   const ChildComponent = query.props().children;

@@ -1,7 +1,7 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import { Query } from 'react-apollo';
-import { GetUserQuery } from '../../graphql/queries';
+import { USER_QUERY } from '../../graphql/queries';
 import {
   Home,
   AppError,
@@ -24,7 +24,7 @@ describe('Header component', () => {
   });
 
   it('should pass ClaimRepQuery to Query component', () => {
-    expect(query.props().query).toEqual(GetUserQuery);
+    expect(query.props().query).toEqual(USER_QUERY);
   });
 
   describe('Loading state', () => {

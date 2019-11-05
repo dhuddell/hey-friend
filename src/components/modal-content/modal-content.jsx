@@ -29,7 +29,7 @@ class ModalContent extends Component {
             onSubmit={(e) => {
               e.preventDefault();
               // this.setState({ show: false });
-              console.log(this.input, this.props.username, this.props.friendId);
+              // console.log(this.input, this.props.username, this.props.friendId);
               updateFriendGoals({
                 variables:
                 {

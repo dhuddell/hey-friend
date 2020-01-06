@@ -26,19 +26,19 @@ const Login = () => (
               </div> :
               <Formik
                 intialValues={{ username: '', password: '' }}
-                onSubmit={ async ({ username, password }, { props, setSubmitting, setErrors }) => {
+                onSubmit={async ({ username, password }, { props, setSubmitting, setErrors }) => {
                   const loginInput = {
                     variables: { loginInput: { username, password } },
-                  }
+                  };
 
                   try {
                     const response = await loginUser(loginInput);
                     window.localStorage.setItem('token', response.data.loginUser.token);
                   } catch (e) {
-                    const errors = e.graphQLErrors.map(error => error.message);
-                    console.log(errors);
+                    const errors = e.graphQLErrors.map((error) => error.message);
+                    console.log(errors); // eslint-disable-line
                     setSubmitting(false);
-                    setErrors({ username, password, form: errors }) ;
+                    setErrors({ username, password, form: errors });
                   }
                 }}
 
@@ -72,11 +72,11 @@ const Login = () => (
               />
             }
           </div>
-          { 
+          {
             !data ?
-            <div className="login-link">
-              <Link to="/registration">Not Registered? Click here to register!</Link>
-            </div> : null
+              <div className="login-link">
+                <Link to="/registration">Not Registered? Click here to register!</Link>
+              </div> : null
           }
         </div>
 

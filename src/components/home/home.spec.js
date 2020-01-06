@@ -20,14 +20,13 @@ const mocks = [
 ];
 
 describe('Home component', () => {
-
   const component = renderer.create(
     <MockedProvider mocks={mocks} addTypename={false}>
-      <Home username='James' />
+      <Home username="James" />
     </MockedProvider>,
   );
   const componentInstance = component.root;
-  console.log(componentInstance)
+  console.log(componentInstance); // eslint-disable-line
   const query = component.findByType(Query);
   const ChildComponent = query.props.children;
   const data = {

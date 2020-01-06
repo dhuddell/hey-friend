@@ -16,7 +16,7 @@ module.exports = (env) => {
     devtool: '#eval-source-map',
     entry: [
       'webpack-dev-server/client?http://localhost:3000/',
-      './src/app.jsx'
+      './src/app.jsx',
     ],
     output: {
       publicPath: '/',

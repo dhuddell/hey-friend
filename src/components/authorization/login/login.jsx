@@ -3,17 +3,10 @@ import { Link } from 'react-router-dom';
 import { Mutation } from 'react-apollo';
 import { Formik, Form, Field } from 'formik';
 import { LOGIN_USER } from '../../../graphql/mutations';
-import { LOGIN_USER_CACHE_QUERY } from '../../../graphql/cache-queries';
 
 const Login = () => (
   <Mutation
     mutation={LOGIN_USER}
-    // WIP to handle cache. writing token and username to cache
-    update={(cache, { data }) => {
-      cache.writeData({ data });
-      const loginUserResponse = cache.readQuery({ query: LOGIN_USER_CACHE_QUERY });
-      console.log(loginUserResponse); // eslint-disable-line
-    }}
   >
     {
       (loginUser, { data }) => (
@@ -33,17 +26,22 @@ const Login = () => (
               </div> :
               <Formik
                 intialValues={{ username: '', password: '' }}
-                onSubmit={(values, actions) => {
-                  loginUser({
-                    variables: {
-                      loginInput: {
-                        username: values.username,
-                        password: values.password,
-                      },
-                    },
-                  });
-                  actions.setSubmitting(false);
+                onSubmit={ async ({ username, password }, { props, setSubmitting, setErrors }) => {
+                  const loginInput = {
+                    variables: { loginInput: { username, password } },
+                  }
+
+                  try {
+                    const response = await loginUser(loginInput);
+                    window.localStorage.setItem('token', response.data.loginUser.token);
+                  } catch (e) {
+                    const errors = e.graphQLErrors.map(error => error.message);
+                    console.log(errors);
+                    setSubmitting(false);
+                    setErrors({ username, password, form: errors }) ;
+                  }
                 }}
+
                 render={({ errors, status, touched, isSubmitting }) => (
                   <Form>
                     <div className="form-cell">Username</div>
@@ -52,7 +50,7 @@ const Login = () => (
                       className="authorization-field"
                       placeholder="..clever247"
                     />
-                    {errors.username && touched.username && <div>{errors.username}</div>}
+                    { errors.username && touched.username && <div>{errors.username}</div> }
                     <div className="form-cell">Password</div>
                     <Field
                       name="password"
@@ -60,8 +58,8 @@ const Login = () => (
                       className="authorization-field"
                       placeholder="..h4rdtoh4ck"
                     />
-                    {errors.password && touched.password && <div>{errors.password}</div>}
-                    {status && status.msg && <div>{status.msg}</div>}
+                    { errors.password && touched.password && <div>{errors.password}</div> }
+                    { status && status.msg && <div>{status.msg}</div> }
                     <button
                       type="submit"
                       disabled={isSubmitting}
@@ -74,7 +72,8 @@ const Login = () => (
               />
             }
           </div>
-          { !data ?
+          { 
+            !data ?
             <div className="login-link">
               <Link to="/registration">Not Registered? Click here to register!</Link>
             </div> : null

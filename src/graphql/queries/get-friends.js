@@ -1,7 +1,7 @@
 import gql from 'graphql-tag';
 
 export default gql`
-  query friends ($username: String!) {
+  query Friends ($username: String!) {
     friends(username:$username){
       friendId
       name

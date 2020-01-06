@@ -8,11 +8,17 @@ import {
   AppError,
   FriendItems,
 } from '..';
-// import { LOGIN_USER_CACHE_QUERY } from '../../graphql/cache-queries';
+
+// NEED TO DECIDE IF GRAPHQL MIDDLEWARE CAN HANDLE THIS COMPLETELY
+const checkToken = () => {
+  console.log('user token is:', window.localStorage.getItem('user_token'));
+  // here we would check localStorage
+  // hit the db to verify it matches the encrypted token in the database
+  // then load that shit or reroute to login
+}
 
 const Home = ({ username = 'james' }) => {
-  // console.log(LOGIN_USER_CACHE_QUERY); // eslint-disable-line
-
+  checkToken();
   const { data, error, loading } = useQuery(USER_QUERY, {
     variables: { username },
   });

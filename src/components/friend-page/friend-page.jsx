@@ -30,7 +30,7 @@ class Friend extends Component {
 
   queryVariables = {
     username: this.username,
-    friendId: this.props.match.params.friendId,
+    id: this.props.match.params.id,
   }
 
   render() {

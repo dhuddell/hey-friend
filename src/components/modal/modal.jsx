@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { ModalContent } from '..';
 
-const Modal = ({ handleClose, show, goalSetCollection, username, friendId }) => {
+const Modal = ({ handleClose, show, goalSetCollection, username, id }) => {
   const showHideClassName = show ? 'modal display-block' : 'modal display-none';
 
   return (
@@ -16,7 +16,7 @@ const Modal = ({ handleClose, show, goalSetCollection, username, friendId }) => 
           <ModalContent
             goalSetCollection={goalSetCollection}
             username={username}
-            friendId={friendId}
+            id={id}
           />
         </div>
       </section>
@@ -25,7 +25,7 @@ const Modal = ({ handleClose, show, goalSetCollection, username, friendId }) => 
 };
 
 Modal.propTypes = {
-  friendId: PropTypes.string.isRequired,
+  id: PropTypes.string.isRequired,
   handleClose: PropTypes.func.isRequired,
   show: PropTypes.bool.isRequired,
   goalSetCollection: PropTypes.object,

@@ -29,7 +29,7 @@ class App extends Component {
               <Route path="/settings" component={Settings} />
               <Route path="/registration" component={Registration} />
               <Route path="/login" component={Login} />
-              <Route path="/:username/friends/:friendId" component={Friend} />
+              <Route path="/:username/friends/:id" component={Friend} />
             </Switch>
           </div>
         </Router>

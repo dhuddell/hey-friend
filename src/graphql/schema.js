@@ -39,22 +39,21 @@ export default gql`
     id: String
     name: String
     icon: String
-    nickname: String
-    friendScore: Float
     description: String
+    friendScore: Float
     goalSetCollection: GoalSetCollection
   }
+
+
 
   input LoginInput {
     username: String!
     password: String!
   }
 
-  input UserInput {
+  input RegistrationInput {
     username: String!
     password: String!
-    name: String
-    setting: String
   }
 
   type User {
@@ -63,10 +62,9 @@ export default gql`
     name: String
     friends: [Friend]
     setting: String
-
   }
 
-  type LoginResponse {
+  type AuthResponse {
     message: String!
     username: String!
     token: String
@@ -75,7 +73,7 @@ export default gql`
   type Query {
     user(username: String!): User
     users: [User]
-    friend(id: String!): Friend
+    friend(username: String!, id: String!): Friend
     friends: [Friend]
   }
 
@@ -87,8 +85,8 @@ export default gql`
     removeFriends(ignoreString: String): String
 
     removeUser(username: String): String
-    registerUser(userInput: UserInput!): User
+    registerUser(registrationInput: RegistrationInput!): AuthResponse
     removeUsers(ignoreString: String): String
-    loginUser(loginInput: LoginInput!): LoginResponse
+    loginUser(loginInput: LoginInput!): AuthResponse
   }
 `;

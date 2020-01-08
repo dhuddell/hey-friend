@@ -39,8 +39,8 @@ const Registration = () => (
                       setSubmitting(false);
                       setErrors({ username, password, form: errors });
                     } else {
-                      console.log(e)
-                      throw Error("Error object did not have graphQLErros");
+                      console.log(e); // eslint-disable-line
+                      throw Error('Error object did not have graphQLErros');
                     }
                   }
                 }}

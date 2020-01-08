@@ -1,31 +1,43 @@
 import React from 'react';
-import { Query } from 'react-apollo';
-// import { Redirect } from 'react-router-dom';
-import { GetUserQuery } from '../../graphql/queries';
+import PropTypes from 'prop-types';
+import { useQuery } from '@apollo/react-hooks';
+import { Redirect } from 'react-router-dom';
+import { USER_QUERY } from '../../graphql/queries';
 import {
   AppLoading,
   AppError,
   FriendItems,
 } from '..';
 
-const username = 'james';
+// NEED TO DECIDE IF GRAPHQL MIDDLEWARE CAN HANDLE THIS COMPLETELY
+const checkToken = () => {
+  console.log('user token is:', window.localStorage.getItem('user_token')); // eslint-disable-line
+  // here we would check localStorage
+  // hit the db to verify it matches the encrypted token in the database
+  // then load that shit or reroute to login
+};
 
-const Home = () => (
-  <div>
-    <Query query={GetUserQuery} variables={{ username }}>
-      {
-        ({ loading, error, data }) => {
-          if (loading) return <AppLoading />;
-          if (error) {
-            // if (error.networkError.statusCode === '401') return <Redirect to="/registration" />;
-            return <AppError />;
-          }
+const Home = ({ username = 'james' }) => {
+  checkToken();
+  const { data, error, loading } = useQuery(USER_QUERY, {
+    variables: { username },
+  });
 
-          return <FriendItems friends={data.user.friends} username={username} />;
-        }
-      }
-    </Query>
-  </div>
-);
+  if (loading) return <AppLoading />;
+  if (error) {
+    if (error.graphQLErrors[0] && error.graphQLErrors[0].extensions) {
+      // This is ghetto and I need to figure out the error handler in the error link
+      const errorCode = error.graphQLErrors[0].extensions.code;
+      if (errorCode === 'UNAUTHENTICATED') return <Redirect to="/login" />;
+    }
+    return <AppError />;
+  }
+
+  return <FriendItems friends={data.user.friends} username={username} />;
+};
+
+Home.propTypes = {
+  username: PropTypes.string,
+};
 
 export default Home;

@@ -2,7 +2,7 @@ import React from 'react';
 import { shallow } from 'enzyme';
 import { Friend, AppLoading, AppError } from '..';
 import { Query } from 'react-apollo';
-import { GetFriendQuery } from '../../graphql/queries';
+import { FRIEND_QUERY } from '../../graphql/queries';
 
 describe('Friend component', () => {
   const match = { params: { friendId: '1', username: 'james' } };
@@ -17,7 +17,7 @@ describe('Friend component', () => {
 
   describe('Query', () => {
     it('should pass ClaimRepQuery', () => {
-      expect(query.props().query).toEqual(GetFriendQuery);
+      expect(query.props().query).toEqual(FRIEND_QUERY);
     });
 
     it('should pass claimNumber as a variables object', () => {

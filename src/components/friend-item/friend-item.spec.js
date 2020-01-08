@@ -6,7 +6,7 @@ describe('FriendGoal component', () => {
   const data = {
     name: 'TEMPIMONSTER',
     icon: 'fa-lalala',
-    friendId: '2',
+    id: '2',
     friendScore: 30,
   };
 

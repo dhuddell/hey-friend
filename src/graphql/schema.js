@@ -36,7 +36,7 @@ export default gql`
   }
 
   type Friend {
-    _id: String
+    id: String
     name: String
     icon: String
     nickname: String
@@ -68,11 +68,12 @@ export default gql`
 
   type LoginResponse {
     message: String!
+    username: String!
     token: String
   }
 
   type Query {
-    user(id: String!): User
+    user(username: String!): User
     users: [User]
     friend(id: String!): Friend
     friends: [Friend]
@@ -85,7 +86,7 @@ export default gql`
     removeFriend(friendId: String): String
     removeFriends(ignoreString: String): String
 
-    removeUser(userId: String): String
+    removeUser(username: String): String
     registerUser(userInput: UserInput!): User
     removeUsers(ignoreString: String): String
     loginUser(loginInput: LoginInput!): LoginResponse

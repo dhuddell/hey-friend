@@ -1,7 +1,7 @@
 import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { Query } from 'react-apollo';
-import { GetFriendQuery } from '../../graphql/queries';
+import { FRIEND_QUERY } from '../../graphql/queries';
 import {
   Modal,
   // FriendCreationComponent,
@@ -36,7 +36,7 @@ class Friend extends Component {
   render() {
     return (
       <div>
-        <Query query={GetFriendQuery} variables={this.queryVariables}>
+        <Query query={FRIEND_QUERY} variables={this.queryVariables}>
           {
             ({ loading, error, data }) => {
               if (loading) return <AppLoading />;
@@ -48,7 +48,7 @@ class Friend extends Component {
                     handleClose={this.hideModal}
                     show={this.state.show}
                     username={this.username}
-                    friendId={this.props.match.params.friendId}
+                    id={this.props.match.params.id}
                     goalSetCollection={data.friend.goalSetCollection}
                   />
 

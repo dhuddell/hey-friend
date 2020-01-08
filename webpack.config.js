@@ -13,8 +13,11 @@ module.exports = (env) => {
         '/graphql': process.env.SERVE_IMISSYOU,
       },
     },
-
-    entry: './src/app.jsx',
+    devtool: '#eval-source-map',
+    entry: [
+      'webpack-dev-server/client?http://localhost:3000/',
+      './src/app.jsx',
+    ],
     output: {
       publicPath: '/',
     },

@@ -4,6 +4,7 @@ import { makeExecutableSchema, addMockFunctionsToSchema } from 'graphql-tools';
 import typeDefs from './schema';
 import user from './mocks/mock-user-data';
 import loginResponse from './mocks/mock-user-login-data';
+import registrationResponse from './mocks/mock-user-registration-data';
 import friend from './mocks/mock-friend-data';
 import friends from './mocks/mock-friends-data';
 
@@ -26,6 +27,7 @@ if (typeof process !== 'undefined') {
 const mocks = {
   Mutation: () => ({
     loginUser: () => new Promise((resolve) => setTimeout(() => resolve(loginResponse), latency)),
+    registerUser: () => new Promise((resolve) => setTimeout(() => resolve(registrationResponse), latency)),
   }),
   Query: () => ({
     user: () => new Promise((resolve) => setTimeout(() => resolve(user), latency)),

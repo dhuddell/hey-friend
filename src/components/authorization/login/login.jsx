@@ -5,9 +5,7 @@ import { Formik, Form, Field } from 'formik';
 import { LOGIN_USER } from '../../../graphql/mutations';
 
 const Login = () => (
-  <Mutation
-    mutation={LOGIN_USER}
-  >
+  <Mutation mutation={LOGIN_USER}>
     {
       (loginUser, { data }) => (
         <div className="login authorization-form">
@@ -79,7 +77,6 @@ const Login = () => (
               </div> : null
           }
         </div>
-
       )
     }
   </Mutation>

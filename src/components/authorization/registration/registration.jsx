@@ -1,80 +1,89 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Mutation } from 'react-apollo';
-import { Formik } from 'formik';
-import * as Yup from 'yup';
-import { RegisterUser } from '../../../graphql/mutations';
-
-// LOOK AT FREAKING LOGIN IT"S DOPE AS FUCK
+import { Formik, Form, Field } from 'formik';
+import { REGISTER_USER } from '../../../graphql/mutations';
 
 const Registration = () => (
-  <Mutation mutation={RegisterUser}>
-    {(registerUser, { data }) => (
-      <div className="registration authorization-form">
-        <div className="form-box">
-          <div className="form-title">
-            <span className="form-title-text">
-              Registration
-            </span>
-          </div>
-          <Formik
-            intialValues={{ username: '', password: '' }}
-            onSubmit={(values, { setSubmitting }) => {
-              setTimeout(() => {
-                registerUser({
-                  variables: {
-                    username: this.props.username,
-                    password: this.props.friendId,
-                  },
-                });
-                console.log(values, 'user created.'); // eslint-disable-line
-                setSubmitting(false);
-              }, 500);
-            }}
-            validationSchema={Yup.object().shape({
-              username: Yup.string().required('Required'),
-              password: Yup.string().required('Required'),
-            })}
+  <Mutation mutation={REGISTER_USER}>
+    {
+      (registerUser, { data }) => (
+        <div className="registration authorization-form">
+          <div className="form-box">
+            <div className="form-title">
+              <span className="form-title-text">
+                Registration
+              </span>
+            </div>
+            { data ?
+              <div>
+                <p>{`Thanks for registering, ${data.registerUser.username}!`}</p>
+                <div className="home-link">
+                  <Link to="/">{'Go see your friends!'}!</Link>
+                </div>
+              </div> :
+              <Formik
+                intialValues={{ username: '', password: '' }}
+                onSubmit={async ({ username, password }, { props, setSubmitting, setErrors }) => {
+                  const registrationInput = {
+                    variables: { registrationInput: { username, password } },
+                  };
 
-            render={(formikProps) => {
-              const {
-                handleSubmit,
-                values,
-                isSubmitting,
-                handleBlur,
-              } = formikProps;
-              return (
-                <form onSubmit={handleSubmit}>
-                  <div className="form-cell">Username</div>
-                  <input
-                    id="username"
-                    className="authorization-field"
-                    placeholder="..clever247"
-                    value={values.username}
-                    onBlur={handleBlur}
-                  />
-                  <div className="form-cell">Password</div>
-                  <input
-                    className="authorization-field"
-                    type="password"
-                    placeholder="..h4rdtoh4ck"
-                  />
-                  <button
-                    type="submit"
-                    disabled={isSubmitting}
-                    className="btn modal-btn authorization-btn">
+                  try {
+                    const response = await registerUser(registrationInput);
+                    window.localStorage.setItem('token', response.data.registerUser.token);
+                  } catch (e) {
+                    if (e.graphQLErrors) {
+                      const errors = e.graphQLErrors.map((error) => error.message);
+                      console.log(errors); // eslint-disable-line
+                      setSubmitting(false);
+                      setErrors({ username, password, form: errors });
+                    } else {
+                      console.log(e); // eslint-disable-line
+                      throw Error('Error object did not have graphQLErros');
+                    }
+                  }
+                }}
+
+                render={({ errors, status, touched, isSubmitting }) => (
+                  <Form>
+                    <div className="form-cell">Username</div>
+                    <Field
+                      name="username"
+                      className="authorization-field"
+                      placeholder="..clever247"
+                    />
+                    { errors.username && touched.username && <div>{errors.username}</div> }
+                    <div className="form-cell">Password</div>
+                    <Field
+                      type="password"
+                      name="password"
+                      className="authorization-field"
+                      placeholder="..h4rdtoh4ck"
+                    />
+                    { errors.password && touched.password && <div>{errors.password}</div> }
+                    { status && status.msg && <div>{status.msg}</div> }
+                    <button
+                      type="submit"
+                      disabled={isSubmitting}
+                      className="btn modal-btn authorization-btn"
+                    >
                       Register
-                  </button>
-                </form>
-              );
-            }}
-          />
+                    </button>
+                  </Form>
+                )}
+              />
+            }
+          </div>
+          {
+            !data ?
+              <div className="login-link">
+                <Link to="/login">Registered? Click here to login!</Link>
+              </div> : null
+          }
         </div>
-        <div className="login-link">
-          <Link to="/login">Registered? Click here to login!</Link>
-        </div>
-      </div>
-    )}
+      )
+    }
   </Mutation>
 );
 

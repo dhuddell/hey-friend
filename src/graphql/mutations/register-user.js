@@ -1,10 +1,11 @@
 import gql from 'graphql-tag';
 
 export default gql`
-  mutation RegisterUser($userInput: UserInput!) {
-    registerUser (userInput:$userInput) {
+  mutation RegisterUser($registrationInput: RegistrationInput!) {
+    registerUser (registrationInput:$registrationInput) {
+      message
       username
-      password
+      token
     }
   }
 `;

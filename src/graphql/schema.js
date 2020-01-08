@@ -20,7 +20,6 @@ export default gql`
   }
 
   input GoalSetCollectionInput {
-    currentGoals: GoalSetInput
     targetGoals: GoalSetInput
     cadence: String
   }
@@ -36,16 +35,14 @@ export default gql`
   }
 
   type Friend {
-    id: String
+    friendId: String
     name: String
     icon: String
     description: String
     friendScore: Float
     goalSetCollection: GoalSetCollection
   }
-
-
-
+  
   input LoginInput {
     username: String!
     password: String!
@@ -73,12 +70,12 @@ export default gql`
   type Query {
     user(username: String!): User
     users: [User]
-    friend(username: String!, id: String!): Friend
+    friend(username: String!, friendId: String!): Friend
     friends: [Friend]
   }
 
   type Mutation {
-    updateTargetFriendGoals(id: String!, goalSetCollection: GoalSetCollectionInput): Friend
+    updateFriendTargetGoals(friendId: String!, goalSetCollection: GoalSetCollectionInput): Friend
 
     addFriendToUser(friendInput: FriendInput!): Friend
     removeFriend(friendId: String): String

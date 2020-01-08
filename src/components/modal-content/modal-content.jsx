@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Mutation } from 'react-apollo';
-import { UPDATE_FRIEND_GOALS } from '../../graphql/mutations';
+import { Formik, Form, Field } from 'formik';
+import { UPDATE_FRIEND_TARGET_GOALS } from '../../graphql/mutations';
 
 class ModalContent extends Component {
   constructor(props) {
@@ -23,7 +24,7 @@ class ModalContent extends Component {
 
   render() {
     return (
-      <Mutation mutation={UPDATE_FRIEND_GOALS} >
+      <Mutation mutation={UPDATE_FRIEND_TARGET_GOALS} >
         {(updateFriendGoals, { data }) => (
           <form className="modal-form"
             onSubmit={(e) => {

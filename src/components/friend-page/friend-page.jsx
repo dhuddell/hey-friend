@@ -48,7 +48,7 @@ class Friend extends Component {
                     handleClose={this.hideModal}
                     show={this.state.show}
                     username={this.username}
-                    id={this.props.match.params.id}
+                    friendId={this.props.match.params.friendId}
                     goalSetCollection={data.friend.goalSetCollection}
                   />
 

@@ -27,7 +27,7 @@ FriendItem.propTypes = {
     name: PropTypes.string.isRequired,
     icon: PropTypes.string.isRequired,
     friendScore: PropTypes.number.isRequired,
-    id: PropTypes.string.isRequired,
+    friendId: PropTypes.string.isRequired,
   }),
   username: PropTypes.string,
 };

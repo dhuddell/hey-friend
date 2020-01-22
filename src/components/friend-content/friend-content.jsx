@@ -1,9 +1,15 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import percentMapper from '../../helpers/percent-mapper';
-import { FriendGoal } from '..';
+import { ModalConsumer } from '../../modal-context';
+import { FriendGoal, Modal } from '..';
 
-const FriendContent = ({ friend, showModal }) => {
+const FriendContent = ({ 
+  friend,
+  username,
+  friendId,
+  goalSetCollection,
+}) => {
   const goalTargets = friend.goalSetCollection.targetGoals;
   const goalCurrents = friend.goalSetCollection.currentGoals;
 
@@ -44,10 +50,22 @@ const FriendContent = ({ friend, showModal }) => {
         <h1 className="goal-title">{'Monthly goals'}</h1>
       </div>
       <div className="edit-space">
-        <button className="btn btn-secondary" onClick={showModal}>
-          {'Edit'}
-          <i className={'fa fa-pencil btn-icon'} />
-        </button>
+        <ModalConsumer>
+          {({ showModal }) => (
+            <button 
+              className="btn btn-secondary" 
+              onClick={() => showModal(Modal, {
+                isOpen: true,
+                goalSetCollection,
+                username,
+                friendId,
+              })}
+            >
+              {'Edit'}
+              <i className={'fa fa-pencil btn-icon'} />
+            </button>
+          )}
+        </ModalConsumer>
       </div>
     </div>
   );
@@ -72,7 +90,6 @@ FriendContent.propTypes = {
       }),
     }),
   }),
-  showModal: PropTypes.func,
 };
 
 export default FriendContent;

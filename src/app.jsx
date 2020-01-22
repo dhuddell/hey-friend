@@ -15,24 +15,28 @@ import {
   NavMenu,
   Login,
 } from './components';
+import { ModalProvider, ModalRoot } from './modal-context';
 
 class App extends Component {
   render() {
     return (
       <ApolloProvider client={client}>
-        <Router history={history}>
-          <div className="app-container">
-            <Header />
-            <NavMenu />
-            <Switch>
-              <Route exact path="/" component={Home} />
-              <Route path="/settings" component={Settings} />
-              <Route path="/registration" component={Registration} />
-              <Route path="/login" component={Login} />
-              <Route path="/:username/friends/:friendId" component={Friend} />
-            </Switch>
-          </div>
-        </Router>
+        <ModalProvider>
+          <ModalRoot />
+          <Router history={history}>
+            <div className="app-container">
+              <Header />
+              <NavMenu />
+              <Switch>
+                <Route exact path="/" component={Home} />
+                <Route path="/settings" component={Settings} />
+                <Route path="/registration" component={Registration} />
+                <Route path="/login" component={Login} />
+                <Route path="/:username/friends/:friendId" component={Friend} />
+              </Switch>
+            </div>
+          </Router>
+        </ModalProvider>
       </ApolloProvider>
     );
   }

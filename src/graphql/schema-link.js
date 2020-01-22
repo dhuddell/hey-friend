@@ -28,6 +28,7 @@ const mocks = {
   Mutation: () => ({
     loginUser: () => new Promise((resolve) => setTimeout(() => resolve(loginResponse), latency)),
     registerUser: () => new Promise((resolve) => setTimeout(() => resolve(registrationResponse), latency)),
+    updateFriendTargetGoals:() => new Promise((resolve) => setTimeout(() => resolve('response'), latency)),
   }),
   Query: () => ({
     user: () => new Promise((resolve) => setTimeout(() => resolve(user), latency)),

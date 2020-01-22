@@ -1,139 +1,127 @@
-import React, { Component } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import { Mutation } from 'react-apollo';
 import { Formik, Form, Field } from 'formik';
 import { UPDATE_FRIEND_TARGET_GOALS } from '../../graphql/mutations';
 
-class ModalContent extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {};
-  }
+const tenArray = Array.from(Array(10).keys());
 
-  input = {
-    targetGoals: {
-      phone: '',
-      text: '',
-      beer: '',
-    },
-    cadence: '',
-  }
+const ModalContent = ({
+  onRequestClose,
+  username,
+  friendId,
+  targetGoals,
+  cadence,
+}) => (
+  <Mutation mutation={UPDATE_FRIEND_TARGET_GOALS} >
+    {(updateFriendTargetGoals, { data }) => (
+      <Formik
+        className="modal-form"
+        intialValues={{
+          phone: targetGoals ? targetGoals.phone : null,
+          text: targetGoals ? targetGoals.text : null,
+          beer: targetGoals ? targetGoals.beer : null,
+          cadence: cadence || '',
+        }}
 
-  targetGoals = this.props.goalSetCollection.targetGoals;
-  cadence = this.props.goalSetCollection.cadence;
+        onSubmit={async ({ phone, text, beer, cadence }, { props, setSubmitting, setErrors }) => {
+          const targetGoalsInput = {
+            variables:
+          {
+            targetGoalValues: {
+              phone,
+              text,
+              beer,
+              cadence,
+            },
+            username,
+            friendId,
+          },
+          };
 
-  render() {
-    return (
-      <Mutation mutation={UPDATE_FRIEND_TARGET_GOALS} >
-        {(updateFriendGoals, { data }) => (
-          <form className="modal-form"
-            onSubmit={(e) => {
-              e.preventDefault();
-              // this.setState({ show: false });
-              // console.log(this.input, this.props.username, this.props.friendId);
-              updateFriendGoals({
-                variables:
-                {
-                  goalSetCollection: this.input,
-                  username: this.props.username,
-                  friendId: this.props.friendId,
-                },
-              });
-              // }).then((val) => console.log('completed', val));
-            }}
-          >
+          try {
+            const response = await updateFriendTargetGoals(targetGoalsInput);
+            console.log('Woot! ', response) // eslint-disable-line
+            onRequestClose();
+          } catch (e) {
+            if (e.graphQLErrors) {
+              const errors = e.graphQLErrors.map((error) => error.message);
+              console.log(errors); // eslint-disable-line
+              setSubmitting(false);
+              setErrors({ username, friendId, form: errors });
+            } else {
+              console.log(e); // eslint-disable-line
+              throw Error('Error object did not have graphQLErros');
+            }
+          }
+        }}
+
+        render={({ errors, status, touched, isSubmitting }) => (
+          <Form>
             <div className="modal-form-selects">
               <div className="modal-form-row">
                 <div className="modal-form-cell">
                   <p className="modal-form-cell-label">How many calls?</p> {/* PHONEPHONEPHONEPHONEPHONE */}
-                  <select
-                    defaultValue={this.targetGoals ? this.targetGoals.phone : null}
-                    ref={(value) => {this.input.targetGoals.phone = value;}}
+                  <Field
+                    component="select"
+                    name="phone"
                     className="modal-select"
                   >
-                    <option disabled value="default" hidden>Choose!</option>
-                    <option value="0">0</option>
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                    <option value="4">4</option>
-                    <option value="5">5</option>
-                    <option value="6">6</option>
-                    <option value="7">7</option>
-                    <option value="8">8</option>
-                    <option value="9">9</option>
-                    <option value="10">10</option>
-                  </select>
+                    {
+                      tenArray.map((val) => <option value={val} key={val}>{val}</option> )
+                    }
+                  </Field>
                 </div>
                 <div className="modal-form-cell">
                   <p className="modal-form-cell-label">How many texts?</p> {/* TEXT TEXT TEXT TEXT TEXT */}
-                  <select
-                    defaultValue={this.targetGoals ? this.targetGoals.text : null}
-                    ref={(value) => {this.input.targetGoals.text = value;}}
+                  <Field
+                    component="select"
+                    name="text"
                     className="modal-select"
                   >
-                    <option disabled value="default" hidden>Choose!</option>
-                    <option value="0">0</option>
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                    <option value="4">4</option>
-                    <option value="5">5</option>
-                    <option value="6">6</option>
-                    <option value="7">7</option>
-                    <option value="8">8</option>
-                    <option value="9">9</option>
-                    <option value="10">10</option>
-                  </select>
+                    {
+                      tenArray.map((val) => <option value={val} key={val}>{val}</option>)
+                    }
+                  </Field>
                 </div>
               </div>
               <div className="modal-form-row">
                 <div className="modal-form-cell">
                   <p className="modal-form-cell-label">How many beers?</p> {/* BEEEEEEEEEEEER */}
-                  <select
-                    defaultValue={this.targetGoals ? this.targetGoals.beer : null}
-                    ref={(value) => {this.input.targetGoals.beer = value;}}
+                  <Field
+                    component="select"
+                    name="beer"
                     className="modal-select"
                   >
-                    <option disabled value="default" hidden>Choose!</option>
-                    <option value="0">0</option>
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                    <option value="4">4</option>
-                    <option value="5">5</option>
-                    <option value="6">6</option>
-                    <option value="7">7</option>
-                    <option value="8">8</option>
-                    <option value="9">9</option>
-                    <option value="10">10</option>
-                  </select>
+                    {
+                      tenArray.map((val) => <option value={val} key={val}>{val}</option>)
+                    }
+                  </Field>
                 </div>
                 <div className="modal-form-cell">
                   <p className="modal-form-cell-label">How often?</p> {/* CADENCE */}
-                  <select
-                    defaultValue={this.cadence ? this.cadence : null}
-                    ref={(value) => {this.input.cadence = value;}}
+                  <Field
+                    component="select"
+                    name="cadence"
                     className="modal-select"
                   >
-                    <option disabled value="default" hidden>Choose!</option>
                     <option value="daily">Daily</option>
                     <option value="weekly">Weekly</option>
                     <option value="monthly">Monthly</option>
                     <option value="yearly">Yearly</option>
-                  </select>
+                  </Field>
                 </div>
               </div>
             </div>
             <button type="submit" className="btn modal-btn">
-              Save your goals!
+              Save goals
             </button>
-          </form>
+          </Form>
         )}
-      </Mutation>
-    );
-  }
-}
+      />
+    )}
+  </Mutation>
+);
 
 ModalContent.propTypes = {
   goalSetCollection: PropTypes.shape({

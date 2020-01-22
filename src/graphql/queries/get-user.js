@@ -8,10 +8,9 @@ export default gql`
       name
       setting
       friends {
-        id
+        friendId
         name
         icon
-        nickname
         friendScore
         description
         goalSetCollection {

@@ -1,5 +1,6 @@
 .modal {
   background: $modal-overlay-grey;
+  display: block;
   height: 100%;
   left: 0;
   position: fixed;
@@ -75,12 +76,4 @@
 .modal-close-btn {
   background: $white-color;
   border: 0;
-}
-
-.display-block {
-  display: block;
-}
-
-.display-none {
-  display: none;
 }

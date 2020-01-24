@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import percentMapper from '../../helpers/percent-mapper';
 
@@ -20,16 +19,6 @@ const FriendItem = ({ data, username }) => {
       </div>
     </Link>
   );
-};
-
-FriendItem.propTypes = {
-  data: PropTypes.shape({
-    name: PropTypes.string.isRequired,
-    icon: PropTypes.string.isRequired,
-    friendScore: PropTypes.number.isRequired,
-    friendId: PropTypes.string.isRequired,
-  }),
-  username: PropTypes.string,
 };
 
 export default FriendItem;

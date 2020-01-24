@@ -1,10 +1,9 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import percentMapper from '../../helpers/percent-mapper';
 import { ModalConsumer } from '../../modal-context';
 import { FriendGoal, Modal } from '..';
 
-const FriendContent = ({ 
+const FriendContent = ({
   friend,
   username,
   friendId,
@@ -52,8 +51,8 @@ const FriendContent = ({
       <div className="edit-space">
         <ModalConsumer>
           {({ showModal }) => (
-            <button 
-              className="btn btn-secondary" 
+            <button
+              className="btn btn-secondary"
               onClick={() => showModal(Modal, {
                 isOpen: true,
                 goalSetCollection,
@@ -69,27 +68,6 @@ const FriendContent = ({
       </div>
     </div>
   );
-};
-
-FriendContent.propTypes = {
-  friend: PropTypes.shape({
-    name: PropTypes.string.isRequired,
-    description: PropTypes.string.isRequired,
-    icon: PropTypes.string.isRequired,
-    friendScore: PropTypes.number,
-    goalSetCollection: PropTypes.shape({
-      targetGoals: PropTypes.shape({
-        text: PropTypes.string,
-        beer: PropTypes.string,
-        phone: PropTypes.string,
-      }),
-      currentGoals: PropTypes.shape({
-        text: PropTypes.string,
-        beer: PropTypes.string,
-        phone: PropTypes.string,
-      }),
-    }),
-  }),
 };
 
 export default FriendContent;

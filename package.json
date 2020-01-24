@@ -53,7 +53,6 @@
     "jest-transform-graphql": "^2.1.0",
     "node-sass": "^4.13.0",
     "postcss-loader": "^2.0.9",
-    "prop-types": "^15.7.2",
     "react": "^16.11.0",
     "react-dom": "^16.11.0",
     "react-router-dom": "^5.1.2",
@@ -66,7 +65,6 @@
     "webpack-dev-server": "^2.11.5"
   },
   "peerDependencies": {
-    "prop-types": "^15.6.0",
     "react": "^16.2.0"
   },
   "dependencies": {

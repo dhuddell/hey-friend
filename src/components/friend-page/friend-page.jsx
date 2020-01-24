@@ -1,5 +1,4 @@
 import React, { Fragment } from 'react';
-import PropTypes from 'prop-types';
 import { Query } from 'react-apollo';
 import { FRIEND_QUERY } from '../../graphql/queries';
 import {
@@ -23,7 +22,7 @@ const Friend = (props) => {
             return (
               <Fragment>
                 {/* <FriendCreationComponent showModal={this.showModal} /> */}
-                <FriendContent 
+                <FriendContent
                   friend={data.friend}
                   username={username}
                   friendId={friendId}
@@ -36,11 +35,6 @@ const Friend = (props) => {
       </Query>
     </div>
   );
-};
-
-Friend.propTypes = {
-  friend: PropTypes.object,
-  match: PropTypes.object,
 };
 
 export default Friend;

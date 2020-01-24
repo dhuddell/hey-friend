@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { Mutation } from 'react-apollo';
 import { Formik, Form, Field } from 'formik';
 import { UPDATE_FRIEND_TARGET_GOALS } from '../../graphql/mutations';
@@ -68,7 +67,7 @@ const ModalContent = ({
                     className="modal-select"
                   >
                     {
-                      tenArray.map((val) => <option value={val} key={val}>{val}</option> )
+                      tenArray.map((val) => <option value={val} key={val}>{val}</option>)
                     }
                   </Field>
                 </div>
@@ -122,14 +121,5 @@ const ModalContent = ({
     )}
   </Mutation>
 );
-
-ModalContent.propTypes = {
-  goalSetCollection: PropTypes.shape({
-    targetGoals: PropTypes.object,
-    cadence: PropTypes.string,
-  }),
-  username: PropTypes.string,
-  friendId: PropTypes.string,
-};
 
 export default ModalContent;

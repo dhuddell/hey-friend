@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { useQuery } from '@apollo/react-hooks';
 import { Redirect } from 'react-router-dom';
 import { USER_QUERY } from '../../graphql/queries';
@@ -34,10 +33,6 @@ const Home = ({ username = 'james' }) => {
   }
 
   return <FriendItems friends={data.user.friends} username={username} />;
-};
-
-Home.propTypes = {
-  username: PropTypes.string,
 };
 
 export default Home;

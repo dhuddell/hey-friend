@@ -62,25 +62,4 @@ describe('Friend component', () => {
   //     expect(component.find(FriendContent)).toHaveLength(1);
   //   });
   // });
-
-  describe('Friend component methods', () => {
-    const instance = wrapper.instance();
-    instance.setState = jest.fn();
-
-    it('should call setSate with show: true on showModal', () => {
-      instance.showModal();
-      expect(instance.setState).toBeCalledWith({ show: true });
-    });
-
-    it('should call setSate with show: false on hideModal', () => {
-      instance.hideModal();
-      expect(instance.setState).toBeCalledWith({ show: false });
-    });
-
-    // it('should call setSate with show: false on handleSubmit', () => {
-    //   const e = { preventDefault: () => {} };
-    //   instance.handleSubmit(e);
-    //   expect(instance.setState).toBeCalledWith({ show: false });
-    // });
-  });
 });

@@ -56,60 +56,56 @@ const ModalContent = ({
         }}
 
         render={({ errors, status, touched, isSubmitting }) => (
-          <Form>
+          <Form className="modal-form">
             <div className="modal-form-selects">
               <div className="modal-form-row">
-                <div className="modal-form-cell">
-                  <p className="modal-form-cell-label">How many calls?</p> {/* PHONEPHONEPHONEPHONEPHONE */}
-                  <Field
-                    component="select"
-                    name="phone"
-                    className="modal-select"
-                  >
-                    {
-                      tenArray.map((val) => <option value={val} key={val}>{val}</option>)
-                    }
-                  </Field>
-                </div>
-                <div className="modal-form-cell">
-                  <p className="modal-form-cell-label">How many texts?</p> {/* TEXT TEXT TEXT TEXT TEXT */}
-                  <Field
-                    component="select"
-                    name="text"
-                    className="modal-select"
-                  >
-                    {
-                      tenArray.map((val) => <option value={val} key={val}>{val}</option>)
-                    }
-                  </Field>
-                </div>
+                <span className="modal-form-cell-label">How many calls?</span>
+                <Field
+                  component="select"
+                  name="phone"
+                  className="modal-select"
+                >
+                  {
+                    tenArray.map((val) => <option value={val} key={val}>{val}</option>)
+                  }
+                </Field>
               </div>
               <div className="modal-form-row">
-                <div className="modal-form-cell">
-                  <p className="modal-form-cell-label">How many beers?</p> {/* BEEEEEEEEEEEER */}
-                  <Field
-                    component="select"
-                    name="beer"
-                    className="modal-select"
-                  >
-                    {
-                      tenArray.map((val) => <option value={val} key={val}>{val}</option>)
-                    }
-                  </Field>
-                </div>
-                <div className="modal-form-cell">
-                  <p className="modal-form-cell-label">How often?</p> {/* CADENCE */}
-                  <Field
-                    component="select"
-                    name="cadence"
-                    className="modal-select"
-                  >
-                    <option value="daily">Daily</option>
-                    <option value="weekly">Weekly</option>
-                    <option value="monthly">Monthly</option>
-                    <option value="yearly">Yearly</option>
-                  </Field>
-                </div>
+                <span className="modal-form-cell-label">How many texts?</span>
+                <Field
+                  component="select"
+                  name="text"
+                  className="modal-select"
+                >
+                  {
+                    tenArray.map((val) => <option value={val} key={val}>{val}</option>)
+                  }
+                </Field>
+              </div>
+              <div className="modal-form-row">
+                <span className="modal-form-cell-label">How many beers?</span>
+                <Field
+                  component="select"
+                  name="beer"
+                  className="modal-select"
+                >
+                  {
+                    tenArray.map((val) => <option value={val} key={val}>{val}</option>)
+                  }
+                </Field>
+              </div>
+              <div className="modal-form-row">
+                <span className="modal-form-cell-label">How often?</span>
+                <Field
+                  component="select"
+                  name="cadence"
+                  className="modal-select"
+                >
+                  <option value="daily">Daily</option>
+                  <option value="weekly">Weekly</option>
+                  <option value="monthly">Monthly</option>
+                  <option value="yearly">Yearly</option>
+                </Field>
               </div>
             </div>
             <button type="submit" className="btn modal-btn">

@@ -15,7 +15,7 @@ const Login = () => (
                 Login
               </span>
             </div>
-            { data ?
+            { data && data.loginUser && data.loginUser.success ?
               <div>
                 <p>{`Welcome, ${data.loginUser.username}!`}</p>
                 <div className="home-link">
@@ -31,32 +31,42 @@ const Login = () => (
 
                   try {
                     const response = await loginUser(loginInput);
-                    window.localStorage.setItem('token', response.data.loginUser.token);
+                    const loginUserData = response.data.loginUser;
+                    if (loginUserData.success === false) {
+                      setErrors({ username, password, message: loginUserData.message });
+                      console.log('Login error: ', loginUserData.message); // eslint-disable-line
+                      setSubmitting(false);
+                    } else {
+                      window.localStorage.setItem('token', loginUserData.token);
+                    }
                   } catch (e) {
-                    const errors = e.graphQLErrors.map((error) => error.message);
-                    console.log(errors); // eslint-disable-line
-                    setSubmitting(false);
-                    setErrors({ username, password, form: errors });
+                    if (e.graphQLErrors) {
+                      const errors = e.graphQLErrors.map((error) => error.message);
+                      setSubmitting(false);
+                      throw Error('GraphQL errors: ', errors);
+                    } else {
+                      console.log(e); // eslint-disable-line
+                      throw Error('Unknown errors: ', e);
+                    }
                   }
                 }}
 
                 render={({ errors, status, touched, isSubmitting }) => (
                   <Form>
+                    { errors.username && <div className="error-label">{errors.message}</div> }
                     <div className="form-cell">Username</div>
                     <Field
                       name="username"
                       className="authorization-field"
-                      placeholder="..clever247"
+                      placeholder="George Michael"
                     />
-                    { errors.username && touched.username && <div>{errors.username}</div> }
                     <div className="form-cell">Password</div>
                     <Field
                       name="password"
                       type="password"
                       className="authorization-field"
-                      placeholder="..h4rdtoh4ck"
+                      placeholder="p@ssword"
                     />
-                    { errors.password && touched.password && <div>{errors.password}</div> }
                     { status && status.msg && <div>{status.msg}</div> }
                     <button
                       type="submit"
@@ -71,10 +81,11 @@ const Login = () => (
             }
           </div>
           {
-            !data ?
+            data && data.registerUser && data.registerUser.success ?
+              null :
               <div className="login-link">
                 <Link to="/registration">Not Registered? Click here to register!</Link>
-              </div> : null
+              </div>
           }
         </div>
       )

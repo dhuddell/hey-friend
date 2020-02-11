@@ -32,6 +32,7 @@ module.exports = (env) => {
           test: /\.(js|jsx)$/,
           use: {
             loader: 'babel-loader',
+            query: { compact: false },
           },
         },
         {

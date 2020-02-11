@@ -9,15 +9,15 @@ import {
 } from '..';
 
 // NEED TO DECIDE IF GRAPHQL MIDDLEWARE CAN HANDLE THIS COMPLETELY
-const checkToken = () => {
-  console.log('user token is:', window.localStorage.getItem('user_token')); // eslint-disable-line
-  // here we would check localStorage
-  // hit the db to verify it matches the encrypted token in the database
-  // then load that shit or reroute to login
-};
+// const checkToken = () => {
+// console.log('user token is:', window.localStorage.getItem('user_token')); // eslint-disable-line
+// here we would check localStorage
+// hit the db to verify it matches the encrypted token in the database
+// then load that shit or reroute to login
+// };
 
 const Home = ({ username = 'james' }) => {
-  checkToken();
+  // checkToken();
   const { data, error, loading } = useQuery(USER_QUERY, {
     variables: { username },
   });

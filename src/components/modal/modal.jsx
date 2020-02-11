@@ -9,6 +9,7 @@ const GoalModal = ({
   friendId,
 }) => (
   <Modal
+    className="modal"
     isOpen
     onRequestClose={onRequestClose}
     appElement={document.getElementById('app')}

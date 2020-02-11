@@ -7,6 +7,12 @@
   width: 100%;
 }
 
+.error-label {
+  color: $orange-color;
+  font-size: 1rem;
+  margin: 10px 40px -20px;
+}
+
 .form-box {
   border: 1px solid $teal-color;
   border-radius: 15px;

@@ -1,6 +1,12 @@
 import gql from 'graphql-tag';
 
 export default gql`
+  interface MutationResponse {
+    code: String!,
+    success: Boolean!,
+    message: String!
+  }
+
   type GoalSet {
     phone: String
     text: String
@@ -67,7 +73,9 @@ export default gql`
     setting: String
   }
 
-  type AuthResponse {
+  type AuthResponse implements MutationResponse {
+    code: String!,
+    success: Boolean!,
     message: String!
     username: String!
     token: String

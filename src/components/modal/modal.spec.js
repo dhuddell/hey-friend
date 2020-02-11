@@ -38,6 +38,6 @@ describe('Modal component', () => {
         goalSetCollection={goalSetCollection}
       />
     );
-    expect(wrapper.find('.display-block')).toHaveLength(1);
+    expect(wrapper.find('.modal-main')).toHaveLength(1);
   });
 });

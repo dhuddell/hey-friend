@@ -39,13 +39,13 @@
 
   .modal-form-row {
     display: flex;
-    text-align: left;
-    margin: 20px 0 0;
     justify-content: space-between;
+    margin: 20px 0 0;
+    text-align: left;
 
     .modal-form-cell-label {
-      font-size: 16pt;
       display: inline-block;
+      font-size: 16pt;
       font-weight: $font-weight-bold;
     }
   }
@@ -55,9 +55,9 @@
     color: $navy-color;
     font-size: 1rem;
     margin: 0;
+    max-width: 100px;
     min-height: 2rem;
     width: 60%;
-    max-width: 100px;
   }
 }
 

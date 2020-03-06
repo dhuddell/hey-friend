@@ -9,11 +9,15 @@ import {
 } from '..';
 
 const Friend = (props) => {
-  const { username, friendId } = props.match.params;
+  const { username, name } = props.match.params;
+
+  const userLoggedIn = localStorage.getItem('username') === username;
+  
+  if (!userLoggedIn) { alert('Need to auth!'); return <Redirect to="/login" /> }
 
   return (
     <div>
-      <Query query={FRIEND_QUERY} variables={{ username, friendId }}>
+      <Query query={FRIEND_QUERY} variables={{ username, name }}>
         {
           ({ loading, error, data }) => {
             if (loading) return <AppLoading />;
@@ -25,7 +29,7 @@ const Friend = (props) => {
                 <FriendContent
                   friend={data.friend}
                   username={username}
-                  friendId={friendId}
+                  name={name}
                   goalSetCollection={data.friend.goalSetCollection}
                 />
               </Fragment>

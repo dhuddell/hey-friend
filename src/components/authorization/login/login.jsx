@@ -15,7 +15,7 @@ const Login = () => (
                 Login
               </span>
             </div>
-            { data && data.loginUser && data.loginUser.success ?
+            { data && data.loginUser && data.loginUser.username ?
               <div>
                 <p>{`Welcome, ${data.loginUser.username}!`}</p>
                 <div className="home-link">
@@ -24,7 +24,7 @@ const Login = () => (
               </div> :
               <Formik
                 intialValues={{ username: '', password: '' }}
-                onSubmit={async ({ username, password }, { props, setSubmitting, setErrors }) => {
+                onSubmit={async ({ username, password }, { setSubmitting, setErrors }) => {
                   const loginInput = {
                     variables: { loginInput: { username, password } },
                   };
@@ -32,12 +32,13 @@ const Login = () => (
                   try {
                     const response = await loginUser(loginInput);
                     const loginUserData = response.data.loginUser;
-                    if (loginUserData.success === false) {
+                    if (!loginUserData.username) {
                       setErrors({ username, password, message: loginUserData.message });
                       console.log('Login error: ', loginUserData.message); // eslint-disable-line
                       setSubmitting(false);
                     } else {
                       window.localStorage.setItem('token', loginUserData.token);
+                      window.localStorage.setItem('username', loginUserData.username);
                     }
                   } catch (e) {
                     if (e.graphQLErrors) {
@@ -51,7 +52,7 @@ const Login = () => (
                   }
                 }}
 
-                render={({ errors, status, touched, isSubmitting }) => (
+                render={({ errors, status, isSubmitting }) => (
                   <Form>
                     { errors.username && <div className="error-label">{errors.message}</div> }
                     <div className="form-cell">Username</div>
@@ -81,7 +82,7 @@ const Login = () => (
             }
           </div>
           {
-            data && data.registerUser && data.registerUser.success ?
+            data && data.loginUser && data.loginUser.username ?
               null :
               <div className="login-link">
                 <Link to="/registration">Not Registered? Click here to register!</Link>

@@ -15,7 +15,7 @@ const Registration = () => (
                 Registration
               </span>
             </div>
-            { data && data.registerUser && data.registerUser.success ?
+            { data && data.registerUser && data.registerUser.username ?
               <div>
                 <p>{`Thanks for registering, ${data.registerUser.username}!`}</p>
                 <div className="home-link">
@@ -24,7 +24,7 @@ const Registration = () => (
               </div> :
               <Formik
                 intialValues={{ username: '', password: '' }}
-                onSubmit={async ({ username, password }, { props, setSubmitting, setErrors }) => {
+                onSubmit={async ({ username, password }, { setSubmitting, setErrors }) => {
                   const registrationInput = {
                     variables: { registrationInput: { username, password } },
                   };
@@ -33,12 +33,13 @@ const Registration = () => (
                     const response = await registerUser(registrationInput);
                     const registerUserData = response.data.registerUser;
 
-                    if (registerUserData.success === false) {
+                    if (!registerUserData.username) {
                       setErrors({ username, password, message: registerUserData.message });
                       console.log('Registration error: ', registerUserData.message); // eslint-disable-line
                       setSubmitting(false);
                     } else {
                       window.localStorage.setItem('token', registerUserData.token);
+                      window.localStorage.setItem('username', registerUserData.username);
                     }
                   } catch (e) {
                     if (e.graphQLErrors) {
@@ -53,7 +54,7 @@ const Registration = () => (
                   }
                 }}
 
-                render={({ errors, status, touched, isSubmitting }) => (
+                render={({ errors, status, isSubmitting }) => (
                   <Form>
                     { errors.username && <div className="error-label">{errors.message}</div> }
                     <div className="form-cell">Username</div>
@@ -83,7 +84,7 @@ const Registration = () => (
             }
           </div>
           {
-            data && data.registerUser && data.registerUser.success ?
+            data && data.registerUser && data.registerUser.username ?
               null :
               <div className="login-link">
                 <Link to="/login">Registered? Click here to login!</Link>

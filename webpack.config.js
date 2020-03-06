@@ -21,6 +21,9 @@ module.exports = (env) => {
     output: {
       publicPath: '/',
     },
+    node: {
+      fs: "empty"
+    },
     module: {
       rules: [
         {

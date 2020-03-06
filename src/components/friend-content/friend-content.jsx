@@ -6,7 +6,7 @@ import { FriendGoal, Modal } from '..';
 const FriendContent = ({
   friend,
   username,
-  friendId,
+  name,
   goalSetCollection,
 }) => {
   const goalTargets = friend.goalSetCollection.targetGoals;
@@ -57,7 +57,7 @@ const FriendContent = ({
                 isOpen: true,
                 goalSetCollection,
                 username,
-                friendId,
+                name,
               })}
             >
               {'Edit'}

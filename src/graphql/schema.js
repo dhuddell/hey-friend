@@ -1,12 +1,6 @@
 import gql from 'graphql-tag';
 
 export default gql`
-  interface MutationResponse {
-    code: String!,
-    success: Boolean!,
-    message: String!
-  }
-
   type GoalSet {
     phone: String
     text: String
@@ -40,18 +34,18 @@ export default gql`
   input FriendInput {
     name: String!
     icon: String
-    friendScore: Float
+    friendScore: Int
     description: String
     goalSetCollection: GoalSetCollectionInput
     username: String!
   }
 
   type Friend {
-    friendId: String
+    username: String
     name: String
     icon: String
     description: String
-    friendScore: Float
+    friendScore: Int
     goalSetCollection: GoalSetCollection
   }
 
@@ -67,32 +61,28 @@ export default gql`
 
   type User {
     username: String!
-    password: String!
     name: String
     friends: [Friend]
-    setting: String
   }
 
-  type AuthResponse implements MutationResponse {
-    code: String!,
-    success: Boolean!,
-    message: String!
-    username: String!
+  type AuthResponse {
+    message: String
+    username: String
     token: String
   }
 
   type Query {
     user(username: String!): User
     users: [User]
-    friend(username: String!, friendId: String!): Friend
+    friend(username: String!, name: String!): Friend
     friends: [Friend]
   }
 
   type Mutation {
-    updateFriendTargetGoals(friendId: String!, targetGoalValues: TargetGoalValues): String
+    updateFriendTargetGoals(name: String!, targetGoalValues: TargetGoalValues): String
 
     addFriendToUser(friendInput: FriendInput!): Friend
-    removeFriend(friendId: String): String
+    removeFriend(name: String): String
     removeFriends(ignoreString: String): String
 
     removeUser(username: String): String

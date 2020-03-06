@@ -8,7 +8,7 @@ const tenArray = Array.from(Array(10).keys());
 const ModalContent = ({
   onRequestClose,
   username,
-  friendId,
+  name,
   targetGoals,
   cadence,
 }) => (
@@ -34,7 +34,7 @@ const ModalContent = ({
               cadence,
             },
             username,
-            friendId,
+            name,
           },
           };
 
@@ -47,7 +47,7 @@ const ModalContent = ({
               const errors = e.graphQLErrors.map((error) => error.message);
               console.log(errors); // eslint-disable-line
               setSubmitting(false);
-              setErrors({ username, friendId, form: errors });
+              setErrors({ username, name, form: errors });
             } else {
               console.log(e); // eslint-disable-line
               throw Error('Error object did not have graphQLErros');

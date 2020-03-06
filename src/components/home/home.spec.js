@@ -18,12 +18,14 @@ const mocks = [
 ];
 
 describe('Home component', () => {
+  window.alert = jest.fn();
+
   describe('Loading state', () => {
-      const component = mount(
-        <MockedProvider mocks={mocks} addTypename={false}>
-          <Home username="James" />
-        </MockedProvider>
-      );
+    const component = mount(
+      <MockedProvider mocks={mocks} addTypename={false}>
+        <Home username="James" />
+      </MockedProvider>
+    );
 
     it('should show Loading while loading', () => {
       expect(component.find(AppLoading)).toBeTruthy();
@@ -50,23 +52,4 @@ describe('Home component', () => {
       expect(errorComponent.find(AppError)).toBeTruthy();
     });
   });
-
-  // no luck with loaded state DH @1/27/20
-  //describe.only('Loaded with no errors', () => {
-
-    //it('should show children', async () => {
-    //const successComponent = create(
-      //<MockedProvider mocks={mocks} addTypename={false}>
-        //<Home username="James" />
-      //</MockedProvider>,
-    //);
-      //await wait(0);
-      //// check for loading
-      ////console.log(successComponent.debug());
-      ////console.log(successComponent.find(FriendItems).parent().type());
-      ////expect(successComponent.find(FriendItems)).toBeTruthy();
-      //console.log(successComponent.toJSON().children[0].children)
-      //expect(successComponent.root.findByType(AppLoading)).toBeTruthy();
-    //});
-  //});
 });

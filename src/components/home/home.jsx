@@ -11,9 +11,12 @@ import {
 
 const Home = () => {
   const username = localStorage.getItem('username') || null;
-  
-  if (!username) { alert('Need to auth!'); return <Redirect to="/login" /> }
-  
+
+  if (!username) {
+    alert('Need to auth!'); // eslint-disable-line
+    return <Redirect to="/login" />;
+  }
+
   const { data, error, loading } = useQuery(USER_QUERY, {
     variables: { username },
   });

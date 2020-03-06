@@ -1,5 +1,4 @@
 export default {
-  name: 'Friend!',
   icon: 'fa-bolt',
   name: 'Brandon',
   description: 'who knows?',

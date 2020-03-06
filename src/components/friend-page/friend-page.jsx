@@ -1,4 +1,5 @@
 import React, { Fragment } from 'react';
+import { Redirect } from 'react-router-dom';
 import { Query } from 'react-apollo';
 import { FRIEND_QUERY } from '../../graphql/queries';
 import {
@@ -12,8 +13,11 @@ const Friend = (props) => {
   const { username, name } = props.match.params;
 
   const userLoggedIn = localStorage.getItem('username') === username;
-  
-  if (!userLoggedIn) { alert('Need to auth!'); return <Redirect to="/login" /> }
+
+  if (!userLoggedIn) {
+    alert('Need to auth!'); // eslint-disable-line
+    return <Redirect to="/login" />;
+  }
 
   return (
     <div>

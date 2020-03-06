@@ -22,7 +22,7 @@ module.exports = (env) => {
       publicPath: '/',
     },
     node: {
-      fs: "empty"
+      fs: 'empty',
     },
     module: {
       rules: [

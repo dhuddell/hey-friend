@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 
 const FriendGoal = ({ type, target = '0', current = '0' }) => (
   <div className={`${type}-goal friend-goal`}>
@@ -10,11 +9,4 @@ const FriendGoal = ({ type, target = '0', current = '0' }) => (
     {/* <i className={`fa fa-caret-down goal-arrow`} /> */}
   </div>
 );
-
-FriendGoal.propTypes = {
-  type: PropTypes.string.isRequired,
-  target: PropTypes.string,
-  current: PropTypes.string,
-};
-
 export default FriendGoal;

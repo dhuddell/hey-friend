@@ -5,7 +5,7 @@ import FriendContent from './friend-content';
 describe('FriendContent component', () => {
   const friend = {
     name: 'Yod Og',
-    friendId: '2',
+    name: '2',
     description: 'literally my dog tempi',
     icon: 'fa-lafel',
     friendScore: 25,

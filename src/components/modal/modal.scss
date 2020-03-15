@@ -37,29 +37,25 @@
   flex-direction: column;
   width: 100%;
 
-  .modal-form-selects {
-    padding-left: 2%;
-  }
-
   .modal-form-row {
     display: flex;
+    justify-content: space-between;
+    margin: 20px 0 0;
     text-align: left;
 
-    .modal-form-cell {
-      width: 100%;
-
-      .modal-form-cell-label {
-        font-size: 14pt;
-        font-weight: $font-weight-bold;
-      }
+    .modal-form-cell-label {
+      display: inline-block;
+      font-size: 16pt;
+      font-weight: $font-weight-bold;
     }
   }
 
   .modal-select {
-    border: $black-color 2px solid;
-    color: $black-color;
+    border: $navy-color 2px solid;
+    color: $navy-color;
     font-size: 1rem;
     margin: 0;
+    max-width: 100px;
     min-height: 2rem;
     width: 60%;
   }

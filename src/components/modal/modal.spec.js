@@ -16,36 +16,28 @@ describe('Modal component', () => {
     },
   };
 
+  const onRequestClose = jest.fn();
   let wrapper;
   const handleSubmit = jest.fn();
-  const handleClose = jest.fn();
 
   wrapper = shallow(
     <Modal
-      handleClose={handleClose}
-      friendId={'1'}
+      name={'Brandon'}
       username={'james'}
-      show={false}
-      handleSubmit={handleSubmit}
       goalSetCollection={goalSetCollection}
+      onRequestClose={onRequestClose}
     />
   );
-
-  it('should display no modal with hide class', () => {
-    expect(wrapper.find('.display-none')).toHaveLength(1);
-  });
 
   it('should display visible modal with show class', () => {
     wrapper = shallow(
       <Modal
-        handleClose={handleClose}
-        friendId={'1'}
+        name={'Brandon'}
         username={'james'}
-        show
         handleSubmit={handleSubmit}
         goalSetCollection={goalSetCollection}
       />
     );
-    expect(wrapper.find('.display-block')).toHaveLength(1);
+    expect(wrapper.find('.modal-main')).toHaveLength(1);
   });
 });

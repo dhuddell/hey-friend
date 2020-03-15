@@ -1,5 +1,4 @@
 import React, { Fragment } from 'react';
-import PropTypes from 'prop-types';
 import { Query } from 'react-apollo';
 import { FRIEND_QUERY } from '../../graphql/queries';
 import {
@@ -10,11 +9,15 @@ import {
 } from '..';
 
 const Friend = (props) => {
-  const { username, friendId } = props.match.params;
+  const { username, name } = props.match.params;
+
+  const userLoggedIn = localStorage.getItem('username') === username;
+  
+  if (!userLoggedIn) { alert('Need to auth!'); return <Redirect to="/login" /> }
 
   return (
     <div>
-      <Query query={FRIEND_QUERY} variables={{ username, friendId }}>
+      <Query query={FRIEND_QUERY} variables={{ username, name }}>
         {
           ({ loading, error, data }) => {
             if (loading) return <AppLoading />;
@@ -23,10 +26,10 @@ const Friend = (props) => {
             return (
               <Fragment>
                 {/* <FriendCreationComponent showModal={this.showModal} /> */}
-                <FriendContent 
+                <FriendContent
                   friend={data.friend}
                   username={username}
-                  friendId={friendId}
+                  name={name}
                   goalSetCollection={data.friend.goalSetCollection}
                 />
               </Fragment>
@@ -36,11 +39,6 @@ const Friend = (props) => {
       </Query>
     </div>
   );
-};
-
-Friend.propTypes = {
-  friend: PropTypes.object,
-  match: PropTypes.object,
 };
 
 export default Friend;

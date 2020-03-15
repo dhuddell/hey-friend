@@ -161,6 +161,12 @@ module.exports = {
       'error',
       'always',
     ],
+    "react/prop-types": [
+      0,
+      {
+        "ignore": ["css"]
+      }
+    ],
     'max-len': [
       'error',
       140,

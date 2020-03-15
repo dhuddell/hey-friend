@@ -5,7 +5,7 @@ import { Query } from 'react-apollo';
 import { FRIEND_QUERY } from '../../graphql/queries';
 
 describe('Friend component', () => {
-  const match = { params: { friendId: '1', username: 'james' } };
+  const match = { params: { name: 'Brandon', username: 'james' } };
   const wrapper = shallow(<Friend match={match} />);
   const query = wrapper.find(Query);
 
@@ -21,7 +21,7 @@ describe('Friend component', () => {
     });
 
     it('should pass claimNumber as a variables object', () => {
-      expect(query.props().variables).toEqual({ friendId: '1', username: 'james' });
+      expect(query.props().variables).toEqual({ name: 'Brandon', username: 'james' });
     });
   });
 
@@ -30,7 +30,7 @@ describe('Friend component', () => {
       name: 'Yo g',
       icon: 'boop',
       friendScore: 30,
-      friendId: '1',
+      name: '1',
       goals: {},
       description: 'boooop',
     },
@@ -62,25 +62,4 @@ describe('Friend component', () => {
   //     expect(component.find(FriendContent)).toHaveLength(1);
   //   });
   // });
-
-  describe('Friend component methods', () => {
-    const instance = wrapper.instance();
-    instance.setState = jest.fn();
-
-    it('should call setSate with show: true on showModal', () => {
-      instance.showModal();
-      expect(instance.setState).toBeCalledWith({ show: true });
-    });
-
-    it('should call setSate with show: false on hideModal', () => {
-      instance.hideModal();
-      expect(instance.setState).toBeCalledWith({ show: false });
-    });
-
-    // it('should call setSate with show: false on handleSubmit', () => {
-    //   const e = { preventDefault: () => {} };
-    //   instance.handleSubmit(e);
-    //   expect(instance.setState).toBeCalledWith({ show: false });
-    // });
-  });
 });

@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 
 const FriendCreationComponent = ({ showModal }) => (
   <div className="content-wrapper">
@@ -45,9 +44,5 @@ const FriendCreationComponent = ({ showModal }) => (
     </div>
   </div>
 );
-
-FriendCreationComponent.propTypes = {
-  showModal: PropTypes.func,
-};
 
 export default FriendCreationComponent;

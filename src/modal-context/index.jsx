@@ -4,28 +4,28 @@ const ModalContext = createContext({
   component: null,
   props: {},
   showModal: () => {},
-  hideModal: () => {}
+  hideModal: () => {},
 });
 
 export class ModalProvider extends Component {
   showModal = (component, props = {}) => {
     this.setState({
       component,
-      props
+      props,
     });
   };
 
   hideModal = () =>
     this.setState({
       component: null,
-      props: {}
+      props: {},
     });
 
   state = {
     component: null,
     props: {},
     showModal: this.showModal,
-    hideModal: this.hideModal
+    hideModal: this.hideModal,
   };
 
   render() {

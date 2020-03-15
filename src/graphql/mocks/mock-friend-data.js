@@ -1,9 +1,9 @@
 export default {
   name: 'Friend!',
   icon: 'fa-bolt',
-  friendId: '3',
+  name: 'Brandon',
   description: 'who knows?',
-  friendScore: 25,
+  friendScore: 75,
   goalSetCollection: {
     targetGoals: {
       phone: '1',

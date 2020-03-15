@@ -21,7 +21,7 @@ describe('Modal content component', () => {
   const wrapper = shallow(
     <ModalContent
       username={'joe'}
-      friendId={'2'}
+      name={'Brandon'}
       goalSetCollection={goalSetCollection}
     />
   );

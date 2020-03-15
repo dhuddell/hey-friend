@@ -1,4 +1,5 @@
 import React from 'react';
+import { MemoryRouter } from 'react-router-dom';
 import wait from 'waait';
 import { MockedProvider } from '@apollo/react-testing';
 import { mount } from 'enzyme';
@@ -22,9 +23,11 @@ describe('Home component', () => {
 
   describe('Loading state', () => {
     const component = mount(
-      <MockedProvider mocks={mocks} addTypename={false}>
-        <Home username="James" />
-      </MockedProvider>
+      <MemoryRouter>
+        <MockedProvider mocks={mocks} addTypename={false}>
+          <Home username="James" />
+        </MockedProvider>
+      </MemoryRouter>
     );
 
     it('should show Loading while loading', () => {
@@ -43,9 +46,11 @@ describe('Home component', () => {
 
     it('should show error state', async () => {
       const errorComponent = mount(
-        <MockedProvider mocks={errorMocks} addTypename={false}>
-          <Home username="James" />
-        </MockedProvider>,
+        <MemoryRouter>
+          <MockedProvider mocks={errorMocks} addTypename={false}>
+            <Home username="James" />
+          </MockedProvider>
+        </MemoryRouter>
       );
 
       await wait(0);

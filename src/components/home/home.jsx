@@ -1,7 +1,7 @@
 import React from 'react';
 import { useQuery } from '@apollo/react-hooks';
 import { Redirect } from 'react-router-dom';
-import { USER_QUERY } from '../../graphql/queries';
+import { FRIENDS_QUERY } from '../../graphql/queries';
 import {
   AppLoading,
   AppError,
@@ -17,7 +17,7 @@ const Home = () => {
     return <Redirect to="/login" />;
   }
 
-  const { data, error, loading } = useQuery(USER_QUERY, {
+  const { data, error, loading } = useQuery(FRIENDS_QUERY, {
     variables: { username },
   });
 
@@ -27,8 +27,7 @@ const Home = () => {
     return <AppError />;
   }
 
-  return <div>wooooo</div>;
-  return <FriendItems friends={data.user.friends} username={username} />;
+  return <FriendItems friends={data.friends} username={username} />;
 };
 
 export default Home;

@@ -13,7 +13,6 @@ describe.skip('Friend component', () => {
   const match = { params: { name: 'Brandon', username: 'james' } };
   const wrapper = shallow(<Friend match={match} />);
   const query = wrapper.find(Query);
-  console.log(query)
 
   afterAll(jest.resetAllMocks);
 

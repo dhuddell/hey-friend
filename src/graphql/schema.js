@@ -42,6 +42,7 @@ export default gql`
 
   type Friend {
     username: String
+    id: String
     name: String
     icon: String
     description: String
@@ -74,7 +75,7 @@ export default gql`
   type Query {
     user(username: String!): User
     users: [User]
-    friend(username: String!, name: String!): Friend
+    friend(username: String!, id: String!): Friend
     friends: [Friend]
   }
 

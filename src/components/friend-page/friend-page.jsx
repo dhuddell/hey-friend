@@ -1,6 +1,6 @@
 import React, { Fragment } from 'react';
 import { Redirect } from 'react-router-dom';
-import { Query } from 'react-apollo';
+import { useQuery } from '@apollo/react-hooks';
 import { FRIEND_QUERY } from '../../graphql/queries';
 import {
   // FriendCreationComponent,
@@ -10,7 +10,7 @@ import {
 } from '..';
 
 const Friend = (props) => {
-  const { username, name } = props.match.params;
+  const { username, id } = props.match.params;
 
   const userLoggedIn = localStorage.getItem('username') === username;
 
@@ -19,29 +19,26 @@ const Friend = (props) => {
     return <Redirect to="/login" />;
   }
 
-  return (
-    <div>
-      <Query query={FRIEND_QUERY} variables={{ username, name }}>
-        {
-          ({ loading, error, data }) => {
-            if (loading) return <AppLoading />;
-            if (error) return <AppError />;
+  const { data, error, loading } = useQuery(FRIEND_QUERY, {
+    variables: { username, id },
+  });
 
-            return (
-              <Fragment>
-                {/* <FriendCreationComponent showModal={this.showModal} /> */}
-                <FriendContent
-                  friend={data.friend}
-                  username={username}
-                  name={name}
-                  goalSetCollection={data.friend.goalSetCollection}
-                />
-              </Fragment>
-            );
-          }
-        }
-      </Query>
-    </div>
+  if (loading) return <AppLoading />;
+  if (error) {
+    console.log('Error on load: ', JSON.stringify(error)) // eslint-disable-line
+    return <AppError />;
+  }
+
+  return (
+    <Fragment>
+      {/* <FriendCreationComponent showModal={this.showModal} /> */}
+      <FriendContent
+        friend={data.friend}
+        username={username}
+        name={name}
+        goalSetCollection={data.friend.goalSetCollection}
+      />
+    </Fragment>
   );
 };
 

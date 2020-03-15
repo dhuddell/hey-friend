@@ -1,9 +1,14 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import percentMapper from '../../helpers/percent-mapper';
 
 const FriendItem = ({ data, username }) => {
   const { name, icon, id, friendScore } = data;
+
+  const friendScoreStyle = {
+    height: `${friendScore}%`,
+    width: `${friendScore}%`,
+    fontSize: `${(friendScore / 100 * 3)}em`,
+  };
 
   return (
     <Link to={`/${username}/friends/${id}`} className="friend-wrapper">
@@ -11,7 +16,10 @@ const FriendItem = ({ data, username }) => {
         <p className="friend-name">{name}</p>
         <div className="icon-container">
           <div className="icon-outer-circle">
-            <div className={`inner-icon-container ${percentMapper(friendScore)}`}>
+            <div
+              className={'inner-icon-container'}
+              style={friendScoreStyle}
+            >
               <i className={`fa ${icon} friend-icon inner-friend-icon`} />
             </div>
           </div>

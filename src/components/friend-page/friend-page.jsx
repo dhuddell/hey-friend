@@ -35,7 +35,8 @@ const Friend = (props) => {
       <FriendContent
         friend={data.friend}
         username={username}
-        name={name}
+        name={data.friend.name}
+        id={id}
         goalSetCollection={data.friend.goalSetCollection}
       />
     </Fragment>

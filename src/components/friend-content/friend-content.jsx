@@ -7,6 +7,7 @@ const FriendContent = ({
   username,
   name,
   goalSetCollection,
+  id
 }) => {
   const goalTargets = friend.goalSetCollection.targetGoals;
   const goalCurrents = friend.goalSetCollection.currentGoals;
@@ -63,6 +64,7 @@ const FriendContent = ({
                 goalSetCollection,
                 username,
                 name,
+                id
               })}
             >
               {'Edit'}

@@ -35,7 +35,6 @@ export default gql`
     username: String!
     name: String!
     icon: String
-    friendScore: Int
     description: String
     goalSetCollection: GoalSetCollectionInput
   }
@@ -46,7 +45,6 @@ export default gql`
     name: String
     icon: String
     description: String
-    friendScore: Int
     goalSetCollection: GoalSetCollectionInput
   }
 
@@ -55,7 +53,7 @@ export default gql`
     id: String
     name: String
     icon: String
-    description: String
+    description: String 
     friendScore: Int
     goalSetCollection: GoalSetCollection
   }

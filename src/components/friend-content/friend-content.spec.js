@@ -10,14 +10,14 @@ describe('FriendContent component', () => {
     friendScore: 25,
     goalSetCollection: {
       targetGoals: {
-        phone: '1',
-        text: '5',
-        beer: '2',
+        phone: 1,
+        text: 5,
+        beer: 2,
       },
       currentGoals: {
-        phone: '0',
-        text: '2',
-        beer: '0',
+        phone: 0,
+        text: 2,
+        beer: 0,
       },
     },
   };

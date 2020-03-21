@@ -2,21 +2,21 @@ import gql from 'graphql-tag';
 
 export default gql`
   type GoalSet {
-    phone: String
-    text: String
-    beer: String
+    phone: Int
+    text: Int
+    beer: Int
   }
 
   input GoalSetInput {
-    phone: String
-    text: String
-    beer: String
+    phone: Int
+    text: Int
+    beer: Int
   }
   
   type TargetGoalValues {
-    phone: String
-    text: String
-    beer: String
+    phone: Int
+    text: Int
+    beer: Int
     cadence: String
   }
 
@@ -53,7 +53,7 @@ export default gql`
     id: String
     name: String
     icon: String
-    description: String 
+    description: String
     friendScore: Int
     goalSetCollection: GoalSetCollection
   }
@@ -85,9 +85,9 @@ export default gql`
   }
 
   input UpdateFriendTargetGoalsInput {
-    phone: String
-    text: String
-    beer: String
+    phone: Int
+    text: Int
+    beer: Int
     cadence: String
     username: String!
     id: String!

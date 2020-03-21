@@ -7,7 +7,7 @@ const GoalModal = ({
   goalSetCollection,
   username,
   name,
-  id
+  id,
 }) => (
   <Modal
     className="modal"

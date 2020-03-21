@@ -28,13 +28,12 @@ const ModalContent = ({
             variables: {
               updateFriendTargetGoalsInput: {
                 username,
+                id,
                 phone,
                 text,
                 beer,
                 cadence,
-                username,
-                id, 
-              }
+              },
             },
           };
 

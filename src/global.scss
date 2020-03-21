@@ -87,37 +87,13 @@ body {
   width: 180px;
 }
 
-.zero {
-  height: 2%;
-  width: 2%;
 
-  .inner-friend-icon {
-    display: none;
+.login-link {
+  margin-top: 1rem;
+
+  a {
+    color: $teal-color;
   }
-}
-
-.twenty-five {
-  font-size: 1em;
-  height: 25%;
-  width: 25%;
-}
-
-.fifty {
-  font-size: 2em;
-  height: 50%;
-  width: 50%;
-}
-
-.seventy-five {
-  font-size: 2.5em;
-  height: 75%;
-  width: 75%;
-}
-
-.one-hundred {
-  font-size: 3em;
-  height: 100%;
-  width: 100%;
 }
 
 // @media only screen and (min-width : 500px) {

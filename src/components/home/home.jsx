@@ -23,8 +23,10 @@ const Home = () => {
 
   if (loading) return <AppLoading />;
   if (error) {
-    console.log('Error on load: ', error) // eslint-disable-line
-    return <AppError />;
+    // assuming they are GQL errors
+    const e = error.graphQLErrors[0];
+    console.log('GQL Error on load: ', e.message); // eslint-disable-line
+    return <AppError errors={e.message} />;
   }
 
   return <FriendItems friends={data.friends} username={username} />;

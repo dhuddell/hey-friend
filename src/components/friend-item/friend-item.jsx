@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 const FriendItem = ({ data, username }) => {
-  const { name, icon, id, friendScore } = data;
+  const { name, icon, friendId, friendScore } = data;
 
   const friendScoreStyle = {
     height: `${friendScore}%`,
@@ -11,7 +11,7 @@ const FriendItem = ({ data, username }) => {
   };
 
   return (
-    <Link to={`/${username}/friends/${id}`} className="friend-wrapper">
+    <Link to={`/${username}/friends/${friendId}`} className="friend-wrapper">
       <div className="friend-item">
         <p className="friend-name">{name}</p>
         <div className="icon-container">

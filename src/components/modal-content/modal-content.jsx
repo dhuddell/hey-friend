@@ -8,7 +8,7 @@ const tenArray = Array.from(Array(10).keys());
 const ModalContent = ({
   onRequestClose,
   username,
-  id,
+  friendId,
   targetGoals,
   cadence,
 }) => (
@@ -28,7 +28,7 @@ const ModalContent = ({
             variables: {
               updateFriendTargetGoalsInput: {
                 username,
-                id,
+                friendId,
                 phone,
                 text,
                 beer,

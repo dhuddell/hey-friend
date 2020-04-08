@@ -10,7 +10,7 @@ import {
 } from '..';
 
 const Friend = (props) => {
-  const { username, id } = props.match.params;
+  const { username, friendId } = props.match.params;
 
   const userLoggedIn = localStorage.getItem('username') === username;
 
@@ -20,7 +20,7 @@ const Friend = (props) => {
   }
 
   const { data, error, loading } = useQuery(FRIEND_QUERY, {
-    variables: { username, id },
+    variables: { username, friendId },
   });
 
   if (loading) return <AppLoading />;
@@ -38,7 +38,7 @@ const Friend = (props) => {
         friend={data.friend}
         username={username}
         name={data.friend.name}
-        id={id}
+        friendId={friendId}
         goalSetCollection={data.friend.goalSetCollection}
       />
     </Fragment>

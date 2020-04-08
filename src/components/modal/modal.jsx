@@ -7,7 +7,7 @@ const GoalModal = ({
   goalSetCollection,
   username,
   name,
-  id,
+  friendId,
 }) => (
   <Modal
     className="modal"
@@ -26,7 +26,7 @@ const GoalModal = ({
           goalSetCollection={goalSetCollection}
           username={username}
           name={name}
-          id={id}
+          friendId={friendId}
         />
       </div>
     </section>

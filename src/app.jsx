@@ -31,7 +31,7 @@ class App extends Component {
                 <Route path="/settings" component={Settings} />
                 <Route path="/registration" component={Registration} />
                 <Route path="/login" component={Login} />
-                <Route path="/:username/friends/:name" component={Friend} />
+                <Route path="/:username/friends/:friendId" component={Friend} />
               </Switch>
             </div>
           </Router>

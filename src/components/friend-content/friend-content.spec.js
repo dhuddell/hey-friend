@@ -5,20 +5,19 @@ import FriendContent from './friend-content';
 describe('FriendContent component', () => {
   const friend = {
     name: 'Yod Og',
-    name: '2',
     description: 'literally my dog tempi',
     icon: 'fa-lafel',
     friendScore: 25,
     goalSetCollection: {
       targetGoals: {
-        phone: '1',
-        text: '5',
-        beer: '2',
+        phone: 1,
+        text: 5,
+        beer: 2,
       },
       currentGoals: {
-        phone: '0',
-        text: '2',
-        beer: '0',
+        phone: 0,
+        text: 2,
+        beer: 0,
       },
     },
   };

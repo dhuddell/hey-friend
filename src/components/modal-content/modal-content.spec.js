@@ -6,14 +6,14 @@ import ModalContent from './modal-content';
 describe('Modal content component', () => {
   const goalSetCollection = {
     targetGoals: {
-      phone: '1',
-      text: '3',
-      beer: '5',
+      phone: 1,
+      text: 3,
+      beer: 5,
     },
     currentGoals: {
-      phone: '1',
-      text: '3',
-      beer: '5',
+      phone: 1,
+      text: 3,
+      beer: 5,
     },
     cadence: 'monthly',
   };

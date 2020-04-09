@@ -8,11 +8,11 @@ const tenArray = Array.from(Array(10).keys());
 const ModalContent = ({
   onRequestClose,
   username,
-  name,
+  friendId,
   targetGoals,
   cadence,
 }) => (
-  <Mutation mutation={UPDATE_FRIEND_TARGET_GOALS} >
+  <Mutation mutation={UPDATE_FRIEND_TARGET_GOALS}>
     {(updateFriendTargetGoals, { data }) => (
       <Formik
         className="modal-form"
@@ -25,22 +25,23 @@ const ModalContent = ({
 
         onSubmit={async ({ phone, text, beer, cadence }, { props, setSubmitting, setErrors }) => {
           const targetGoalsInput = {
-            variables:
-          {
-            targetGoalValues: {
-              phone,
-              text,
-              beer,
-              cadence,
+            variables: {
+              updateFriendTargetGoalsInput: {
+                username,
+                friendId,
+                phone,
+                text,
+                beer,
+                cadence,
+              },
             },
-            username,
-            name,
-          },
           };
 
           try {
             const response = await updateFriendTargetGoals(targetGoalsInput);
-            console.log('Woot! ', response) // eslint-disable-line
+            const updateGoalsData = response.data.updateFriendTargetGoals;
+            // TODO 3/16/2020 Use this data to update the UI
+            console.log('Boom', updateGoalsData) // eslint-disable-line
             onRequestClose();
           } catch (e) {
             if (e.graphQLErrors) {

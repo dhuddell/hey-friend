@@ -1,7 +1,7 @@
 import React from 'react';
 import { useQuery } from '@apollo/react-hooks';
 import { Redirect } from 'react-router-dom';
-import { USER_QUERY } from '../../graphql/queries';
+import { FRIENDS_QUERY } from '../../graphql/queries';
 import {
   AppLoading,
   AppError,
@@ -11,21 +11,25 @@ import {
 
 const Home = () => {
   const username = localStorage.getItem('username') || null;
-  
-  if (!username) { alert('Need to auth!'); return <Redirect to="/login" /> }
-  
-  const { data, error, loading } = useQuery(USER_QUERY, {
+
+  if (!username) {
+    alert('Need to auth!'); // eslint-disable-line
+    return <Redirect to="/login" />;
+  }
+
+  const { data, error, loading } = useQuery(FRIENDS_QUERY, {
     variables: { username },
   });
 
   if (loading) return <AppLoading />;
   if (error) {
-    console.log('Error on load: ', error) // eslint-disable-line
-    return <AppError />;
+    // assuming they are GQL errors
+    const e = error.graphQLErrors[0];
+    console.log('GQL Error on load: ', e.message); // eslint-disable-line
+    return <AppError errors={e.message} />;
   }
 
-  return <div>wooooo</div>;
-  return <FriendItems friends={data.user.friends} username={username} />;
+  return <FriendItems friends={data.friends} username={username} />;
 };
 
 export default Home;

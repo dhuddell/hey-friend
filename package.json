@@ -8,11 +8,9 @@
     "lint": "eslint --ext js --ext jsx .",
     "lint:fix": "eslint --ext js --ext jsx --fix .",
     "lint:sass": "sass-lint -c '.sass-lint.yml' -v 'lib/**/*.scss, src/**/*.scss'",
-    "precommit": "npm run lint && npm run lint:sass",
-    "prepush": "npm test",
     "start": "webpack-dev-server --open --env.GRAPHQL_MOCK",
     "start:prod": "webpack-dev-server --open",
-    "test": "jest --config jest.json",
+    "test": "jest --config jest.json --no-coverage",
     "test:watch": "jest --config jest.json --no-coverage --watch"
   },
   "repository": {

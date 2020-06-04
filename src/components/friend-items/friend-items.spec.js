@@ -8,19 +8,16 @@ describe('FriendItems component', () => {
     {
       name: 'Yo g',
       icon: 'boop',
-      friendId: '2',
       friendScore: 30,
     },
     {
       name: 'Yod Og',
       icon: 'bp',
-      friendId: '3',
       friendScore: 30,
     },
     {
       name: 'Yod ',
       icon: 'boo',
-      friendId: '1',
       friendScore: 30,
     },
   ];

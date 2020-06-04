@@ -21,6 +21,9 @@ module.exports = (env) => {
     output: {
       publicPath: '/',
     },
+    node: {
+      fs: 'empty',
+    },
     module: {
       rules: [
         {
@@ -32,6 +35,7 @@ module.exports = (env) => {
           test: /\.(js|jsx)$/,
           use: {
             loader: 'babel-loader',
+            query: { compact: false },
           },
         },
         {

@@ -1,16 +1,22 @@
 import React from 'react';
-import percentMapper from '../../helpers/percent-mapper';
 import { ModalConsumer } from '../../modal-context';
 import { FriendGoal, Modal } from '..';
 
 const FriendContent = ({
   friend,
   username,
-  friendId,
+  name,
   goalSetCollection,
+  friendId,
 }) => {
   const goalTargets = friend.goalSetCollection.targetGoals;
   const goalCurrents = friend.goalSetCollection.currentGoals;
+
+  const friendScoreStyle = {
+    height: `${friend.friendScore}%`,
+    width: `${friend.friendScore}%`,
+    fontSize: `${(friend.friendScore / 100 * 3)}em`,
+  };
 
   return (
     <div className="content-wrapper">
@@ -21,7 +27,7 @@ const FriendContent = ({
         </div>
         <div className="icon-container">
           <div className="icon-outer-circle">
-            <div className={`inner-icon-container ${percentMapper(friend.friendScore)}`}>
+            <div className={'inner-icon-container'} style={friendScoreStyle}>
               <i className={`fa ${friend.icon} friend-icon inner-friend-icon`} />
             </div>
           </div>
@@ -57,6 +63,7 @@ const FriendContent = ({
                 isOpen: true,
                 goalSetCollection,
                 username,
+                name,
                 friendId,
               })}
             >

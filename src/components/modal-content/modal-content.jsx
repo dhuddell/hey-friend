@@ -12,7 +12,7 @@ const ModalContent = ({
   targetGoals,
   cadence,
 }) => (
-  <Mutation mutation={UPDATE_FRIEND_TARGET_GOALS} >
+  <Mutation mutation={UPDATE_FRIEND_TARGET_GOALS}>
     {(updateFriendTargetGoals, { data }) => (
       <Formik
         className="modal-form"
@@ -25,29 +25,30 @@ const ModalContent = ({
 
         onSubmit={async ({ phone, text, beer, cadence }, { props, setSubmitting, setErrors }) => {
           const targetGoalsInput = {
-            variables:
-          {
-            targetGoalValues: {
-              phone,
-              text,
-              beer,
-              cadence,
+            variables: {
+              updateFriendTargetGoalsInput: {
+                username,
+                friendId,
+                phone,
+                text,
+                beer,
+                cadence,
+              },
             },
-            username,
-            friendId,
-          },
           };
 
           try {
             const response = await updateFriendTargetGoals(targetGoalsInput);
-            console.log('Woot! ', response) // eslint-disable-line
+            const updateGoalsData = response.data.updateFriendTargetGoals;
+            // TODO 3/16/2020 Use this data to update the UI
+            console.log('Boom', updateGoalsData) // eslint-disable-line
             onRequestClose();
           } catch (e) {
             if (e.graphQLErrors) {
               const errors = e.graphQLErrors.map((error) => error.message);
               console.log(errors); // eslint-disable-line
               setSubmitting(false);
-              setErrors({ username, friendId, form: errors });
+              setErrors({ username, name, form: errors });
             } else {
               console.log(e); // eslint-disable-line
               throw Error('Error object did not have graphQLErros');
@@ -56,60 +57,56 @@ const ModalContent = ({
         }}
 
         render={({ errors, status, touched, isSubmitting }) => (
-          <Form>
+          <Form className="modal-form">
             <div className="modal-form-selects">
               <div className="modal-form-row">
-                <div className="modal-form-cell">
-                  <p className="modal-form-cell-label">How many calls?</p> {/* PHONEPHONEPHONEPHONEPHONE */}
-                  <Field
-                    component="select"
-                    name="phone"
-                    className="modal-select"
-                  >
-                    {
-                      tenArray.map((val) => <option value={val} key={val}>{val}</option>)
-                    }
-                  </Field>
-                </div>
-                <div className="modal-form-cell">
-                  <p className="modal-form-cell-label">How many texts?</p> {/* TEXT TEXT TEXT TEXT TEXT */}
-                  <Field
-                    component="select"
-                    name="text"
-                    className="modal-select"
-                  >
-                    {
-                      tenArray.map((val) => <option value={val} key={val}>{val}</option>)
-                    }
-                  </Field>
-                </div>
+                <span className="modal-form-cell-label">How many calls?</span>
+                <Field
+                  component="select"
+                  name="phone"
+                  className="modal-select"
+                >
+                  {
+                    tenArray.map((val) => <option value={val} key={val}>{val}</option>)
+                  }
+                </Field>
               </div>
               <div className="modal-form-row">
-                <div className="modal-form-cell">
-                  <p className="modal-form-cell-label">How many beers?</p> {/* BEEEEEEEEEEEER */}
-                  <Field
-                    component="select"
-                    name="beer"
-                    className="modal-select"
-                  >
-                    {
-                      tenArray.map((val) => <option value={val} key={val}>{val}</option>)
-                    }
-                  </Field>
-                </div>
-                <div className="modal-form-cell">
-                  <p className="modal-form-cell-label">How often?</p> {/* CADENCE */}
-                  <Field
-                    component="select"
-                    name="cadence"
-                    className="modal-select"
-                  >
-                    <option value="daily">Daily</option>
-                    <option value="weekly">Weekly</option>
-                    <option value="monthly">Monthly</option>
-                    <option value="yearly">Yearly</option>
-                  </Field>
-                </div>
+                <span className="modal-form-cell-label">How many texts?</span>
+                <Field
+                  component="select"
+                  name="text"
+                  className="modal-select"
+                >
+                  {
+                    tenArray.map((val) => <option value={val} key={val}>{val}</option>)
+                  }
+                </Field>
+              </div>
+              <div className="modal-form-row">
+                <span className="modal-form-cell-label">How many beers?</span>
+                <Field
+                  component="select"
+                  name="beer"
+                  className="modal-select"
+                >
+                  {
+                    tenArray.map((val) => <option value={val} key={val}>{val}</option>)
+                  }
+                </Field>
+              </div>
+              <div className="modal-form-row">
+                <span className="modal-form-cell-label">How often?</span>
+                <Field
+                  component="select"
+                  name="cadence"
+                  className="modal-select"
+                >
+                  <option value="daily">Daily</option>
+                  <option value="weekly">Weekly</option>
+                  <option value="monthly">Monthly</option>
+                  <option value="yearly">Yearly</option>
+                </Field>
               </div>
             </div>
             <button type="submit" className="btn modal-btn">

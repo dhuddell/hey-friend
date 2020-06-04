@@ -15,7 +15,7 @@ const Registration = () => (
                 Registration
               </span>
             </div>
-            { data ?
+            { data && data.registerUser && data.registerUser.username ?
               <div>
                 <p>{`Thanks for registering, ${data.registerUser.username}!`}</p>
                 <div className="home-link">
@@ -24,20 +24,29 @@ const Registration = () => (
               </div> :
               <Formik
                 intialValues={{ username: '', password: '' }}
-                onSubmit={async ({ username, password }, { props, setSubmitting, setErrors }) => {
+                onSubmit={async ({ username, password }, { setSubmitting, setErrors }) => {
                   const registrationInput = {
                     variables: { registrationInput: { username, password } },
                   };
 
                   try {
                     const response = await registerUser(registrationInput);
-                    window.localStorage.setItem('token', response.data.registerUser.token);
+                    const registerUserData = response.data.registerUser;
+
+                    if (!registerUserData.username) {
+                      setErrors({ username, password, message: registerUserData.message });
+                      console.log('Registration error: ', registerUserData.message); // eslint-disable-line
+                      setSubmitting(false);
+                    } else {
+                      window.localStorage.setItem('token', registerUserData.token);
+                      window.localStorage.setItem('username', registerUserData.username);
+                    }
                   } catch (e) {
                     if (e.graphQLErrors) {
                       const errors = e.graphQLErrors.map((error) => error.message);
                       console.log(errors); // eslint-disable-line
                       setSubmitting(false);
-                      setErrors({ username, password, form: errors });
+                      setErrors({ username, password, errors });
                     } else {
                       console.log(e); // eslint-disable-line
                       throw Error('Error object did not have graphQLErros');
@@ -45,23 +54,22 @@ const Registration = () => (
                   }
                 }}
 
-                render={({ errors, status, touched, isSubmitting }) => (
+                render={({ errors, status, isSubmitting }) => (
                   <Form>
+                    { errors.username && <div className="error-label">{errors.message}</div> }
                     <div className="form-cell">Username</div>
                     <Field
                       name="username"
                       className="authorization-field"
-                      placeholder="..clever247"
+                      placeholder="George Michael"
                     />
-                    { errors.username && touched.username && <div>{errors.username}</div> }
                     <div className="form-cell">Password</div>
                     <Field
                       type="password"
                       name="password"
                       className="authorization-field"
-                      placeholder="..h4rdtoh4ck"
+                      placeholder="p@ssword"
                     />
-                    { errors.password && touched.password && <div>{errors.password}</div> }
                     { status && status.msg && <div>{status.msg}</div> }
                     <button
                       type="submit"
@@ -76,10 +84,11 @@ const Registration = () => (
             }
           </div>
           {
-            !data ?
+            data && data.registerUser && data.registerUser.username ?
+              null :
               <div className="login-link">
                 <Link to="/login">Registered? Click here to login!</Link>
-              </div> : null
+              </div>
           }
         </div>
       )

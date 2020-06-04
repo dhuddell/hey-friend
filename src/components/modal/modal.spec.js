@@ -22,6 +22,7 @@ describe('Modal component', () => {
 
   wrapper = shallow(
     <Modal
+      friendId={'1'}
       name={'Brandon'}
       username={'james'}
       goalSetCollection={goalSetCollection}
@@ -32,6 +33,7 @@ describe('Modal component', () => {
   it('should display visible modal with show class', () => {
     wrapper = shallow(
       <Modal
+        friendId={'1'}
         name={'Brandon'}
         username={'james'}
         handleSubmit={handleSubmit}

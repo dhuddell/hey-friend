@@ -1,8 +1,12 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
-const AppError = () => (
+const AppError = (error) => (
   <div>
-    <p>Error!</p>
+    <p>{`Error: ${error.errors} `}</p>
+    <div className="login-link">
+      <Link to="/login">Are you logged in?</Link>
+    </div>
   </div>
 );
 

@@ -6,9 +6,11 @@ const GoalModal = ({
   onRequestClose,
   goalSetCollection,
   username,
+  name,
   friendId,
 }) => (
   <Modal
+    className="modal"
     isOpen
     onRequestClose={onRequestClose}
     appElement={document.getElementById('app')}
@@ -23,6 +25,7 @@ const GoalModal = ({
           onRequestClose={onRequestClose}
           goalSetCollection={goalSetCollection}
           username={username}
+          name={name}
           friendId={friendId}
         />
       </div>

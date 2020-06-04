@@ -5,6 +5,6 @@ import AppError from './app-error';
 describe('AppError component', () => {
   it('should render', () => {
     const wrapper = shallow(<AppError />);
-    expect(wrapper.find('div')).toHaveLength(1);
+    expect(wrapper.find('div')).toHaveLength(2);
   });
 });

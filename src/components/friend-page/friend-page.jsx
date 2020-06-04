@@ -1,5 +1,6 @@
 import React, { Fragment } from 'react';
-import { Query } from 'react-apollo';
+import { Redirect } from 'react-router-dom';
+import { useQuery } from '@apollo/react-hooks';
 import { FRIEND_QUERY } from '../../graphql/queries';
 import {
   // FriendCreationComponent,
@@ -11,29 +12,36 @@ import {
 const Friend = (props) => {
   const { username, friendId } = props.match.params;
 
-  return (
-    <div>
-      <Query query={FRIEND_QUERY} variables={{ username, friendId }}>
-        {
-          ({ loading, error, data }) => {
-            if (loading) return <AppLoading />;
-            if (error) return <AppError />;
+  const userLoggedIn = localStorage.getItem('username') === username;
 
-            return (
-              <Fragment>
-                {/* <FriendCreationComponent showModal={this.showModal} /> */}
-                <FriendContent
-                  friend={data.friend}
-                  username={username}
-                  friendId={friendId}
-                  goalSetCollection={data.friend.goalSetCollection}
-                />
-              </Fragment>
-            );
-          }
-        }
-      </Query>
-    </div>
+  if (!userLoggedIn) {
+    alert('Need to auth!'); // eslint-disable-line
+    return <Redirect to="/login" />;
+  }
+
+  const { data, error, loading } = useQuery(FRIEND_QUERY, {
+    variables: { username, friendId },
+  });
+
+  if (loading) return <AppLoading />;
+  if (error) {
+    // assuming they are GQL errors
+    const e = error.graphQLErrors[0];
+    console.log('GQL Error on load: ', e.message); // eslint-disable-line
+    return <AppError errors={e.message} />;
+  }
+
+  return (
+    <Fragment>
+      {/* <FriendCreationComponent showModal={this.showModal} /> */}
+      <FriendContent
+        friend={data.friend}
+        username={username}
+        name={data.friend.name}
+        friendId={friendId}
+        goalSetCollection={data.friend.goalSetCollection}
+      />
+    </Fragment>
   );
 };
 

@@ -3,7 +3,6 @@ import { render } from 'react-dom';
 import { Router, Route, Switch } from 'react-router-dom';
 import { ApolloProvider } from '@apollo/react-hooks';
 import client from './graphql/apollo-client';
-
 import history from './history';
 import './main.scss';
 import {

@@ -1,4 +1,5 @@
-import createHistory from 'history/createBrowserHistory';
-// Warning telling me to use this instead
-// require("history").createBrowserHistory
-export default (typeof global.window !== 'undefined') ? createHistory({ basename: '/' }) : null;
+import { createBrowserHistory } from 'history';
+
+export default (typeof global.window !== 'undefined')
+  ? createBrowserHistory({ basename: '/' })
+  : null;

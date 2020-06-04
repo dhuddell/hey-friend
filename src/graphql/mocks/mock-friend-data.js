@@ -1,19 +1,17 @@
 export default {
-  icon: 'fa-bolt',
+  username: 'dan',
+  friendId: 'dummy-id',
   name: 'Brandon',
+  icon: 'fa-bolt',
   description: 'who knows?',
   friendScore: 75,
-  goalSetCollection: {
-    targetGoals: {
-      phone: 1,
-      text: 5,
-      beer: 2,
-    },
-    currentGoals: {
-      phone: 0,
-      text: 2,
-      beer: 0,
-    },
+  goals: {
+    targetPhone: 1,
+    targetText: 5,
+    targetBeer: 2,
+    currentPhone: 0,
+    currentText: 2,
+    currentBeer: 0,
     cadence: 'monthly',
   },
 };

@@ -22,13 +22,13 @@ const Friend = (props) => {
   const { data, error, loading } = useQuery(FRIEND_QUERY, {
     variables: { username, friendId },
   });
-
   if (loading) return <AppLoading />;
   if (error) {
+    // console.log(error)
     // assuming they are GQL errors
     const e = error.graphQLErrors[0];
     console.log('GQL Error on load: ', e.message); // eslint-disable-line
-    return <AppError errors={e.message} />;
+    return <AppError errors={error} />;
   }
 
   return (
@@ -39,7 +39,7 @@ const Friend = (props) => {
         username={username}
         name={data.friend.name}
         friendId={friendId}
-        goalSetCollection={data.friend.goalSetCollection}
+        goals={data.friend.goals}
       />
     </Fragment>
   );

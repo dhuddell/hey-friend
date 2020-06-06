@@ -8,17 +8,13 @@ export default gql`
       icon
       description
       friendScore
-      goalSetCollection {
-        currentGoals {
-          phone
-          text
-          beer
-        }
-        targetGoals {
-          phone
-          text
-          beer
-        }
+      goals {
+        currentPhone
+        currentText
+        currentBeer
+        targetPhone
+        targetText
+        targetBeer
         cadence
       }
     }

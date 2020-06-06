@@ -6,12 +6,9 @@ const FriendContent = ({
   friend,
   username,
   name,
-  goalSetCollection,
+  goals,
   friendId,
 }) => {
-  const goalTargets = friend.goalSetCollection.targetGoals;
-  const goalCurrents = friend.goalSetCollection.currentGoals;
-
   const friendScoreStyle = {
     height: `${friend.friendScore}%`,
     width: `${friend.friendScore}%`,
@@ -22,8 +19,8 @@ const FriendContent = ({
     <div className="content-wrapper">
       <div className="bio-space">
         <div className="friend-info">
-          <h1 className="friend-title">{friend.name}</h1>
-          <h5 className="friend-text">{friend.description}</h5>
+          <p className="friend-name">{friend.name}</p>
+          <p className="friend-description">{friend.description}</p>
         </div>
         <div className="icon-container">
           <div className="icon-outer-circle">
@@ -33,42 +30,47 @@ const FriendContent = ({
           </div>
         </div>
       </div>
+
       <div className="goal-space">
-        <h1 className="goal-title">{'Current amounts'}</h1>
+        <div className="goal-header">
+          <h3 className="goal-title">{'Goal Value'}</h3>
+          <h3 className="goal-title">{'Action'}</h3>
+          <h3 className="goal-title">{'Current Value'}</h3>
+        </div>
         <div className="friend-goals">
           <FriendGoal
             type="phone"
-            target={goalTargets.phone}
-            current={goalCurrents.phone}
+            target={goals.targetPhone}
+            current={goals.currentPhone}
           />
           <FriendGoal
             type="comment"
-            target={goalTargets.text}
-            current={goalCurrents.text}
+            target={goals.targetText}
+            current={goals.currentText}
           />
           <FriendGoal
+            className="last-goal-element"
             type="beer"
-            target={goalTargets.beer}
-            current={goalCurrents.beer}
+            target={goals.targetBeer}
+            current={goals.currentBrgeer}
           />
         </div>
-        <h1 className="goal-title">{'Monthly goals'}</h1>
+        <h1 className="goal-footer">{'Monthly goals'}</h1>
       </div>
       <div className="edit-space">
         <ModalConsumer>
           {({ showModal }) => (
             <button
-              className="btn btn-secondary"
+              className="btn btn-primary"
               onClick={() => showModal(Modal, {
                 isOpen: true,
-                goalSetCollection,
+                goals,
                 username,
                 name,
                 friendId,
               })}
             >
-              {'Edit'}
-              <i className={'fa fa-pencil btn-icon'} />
+              {'Edit goals'}
             </button>
           )}
         </ModalConsumer>

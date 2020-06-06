@@ -1,18 +1,69 @@
 .friend-goal {
-  // border: 2px solid $teal-color;
-  // border-radius: 50px;
-  width: 30%;
+  display: flex;
+  justify-content: space-between;
+  padding: 15px 4% 15px 3.5%;
+  align-items: center;
+  border-top: 4px solid $teal-color;
 
-  .goal-icon {
-    font-size: 6em;
+  .target-goal-text-container {
+    min-width: 120px;
+    margin: 0;
   }
 
+  .goal-icon {
+    font-size: 4.5em;
+  }
+
+  .current-goal-container {
+    display: flex;
+    border-color: $teal-color;
+    align-items: center;
+    justify-content: center;
+    border-radius: 15px;
+    margin-left: 2%;
+    border: 2px $teal-color solid;
+    width: 120px;
+    height: 100px;
+    overflow: hidden;
+    background: $teal-color;
+
+    .current-goal-value {
+      height: 100%;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: $navy-color;
+      border-right: 2px $teal-color solid;
+    }
+
+    .current-goal-stepper {
+      display: flex;
+      width: 60%;
+      flex-direction: column;
+
+      :last-child {
+        border-bottom: 0;
+      }
+    }
+
+  }
+  
   .goal-text {
-    font-size: 5em;
+    font-size: 4em;
     margin: 0;
   }
 
   .goal-arrow {
-    font-size: 4em;
+    color: $navy-color;
+    font-size: 3em;
+    line-height: 100%;
+    width: 100%;
+    border-bottom: 2px $teal-color solid;
   }
+}
+
+.last-goal-element {
+  border-bottom: 4px solid $teal-color;
+  margin-bottom: 10px;
 }

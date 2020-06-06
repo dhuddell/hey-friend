@@ -23,6 +23,7 @@ const Home = () => {
 
   if (loading) return <AppLoading />;
   if (error) {
+    // LOCAL schemalink not working, but when hitting API it's fine??
     // assuming they are GQL errors
     const e = error.graphQLErrors[0];
     console.log('GQL Error on load: ', e.message); // eslint-disable-line

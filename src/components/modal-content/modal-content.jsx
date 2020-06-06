@@ -60,7 +60,7 @@ const ModalContent = ({
           <Form className="modal-form">
             <div className="modal-form-selects">
               <div className="modal-form-row">
-                <span className="modal-form-cell-label">How many calls?</span>
+                <span className="modal-form-cell-label">Phone call goal: </span>
                 <Field
                   component="select"
                   name="phone"
@@ -72,7 +72,7 @@ const ModalContent = ({
                 </Field>
               </div>
               <div className="modal-form-row">
-                <span className="modal-form-cell-label">How many texts?</span>
+                <span className="modal-form-cell-label">Text message goal: </span>
                 <Field
                   component="select"
                   name="text"
@@ -84,7 +84,7 @@ const ModalContent = ({
                 </Field>
               </div>
               <div className="modal-form-row">
-                <span className="modal-form-cell-label">How many beers?</span>
+                <span className="modal-form-cell-label">Get a beer goal: </span>
                 <Field
                   component="select"
                   name="beer"
@@ -96,7 +96,7 @@ const ModalContent = ({
                 </Field>
               </div>
               <div className="modal-form-row">
-                <span className="modal-form-cell-label">How often?</span>
+                <span className="modal-form-cell-label">Length of time: </span>
                 <Field
                   component="select"
                   name="cadence"
@@ -109,7 +109,7 @@ const ModalContent = ({
                 </Field>
               </div>
             </div>
-            <button type="submit" className="btn modal-btn">
+            <button type="submit" className="btn btn-primary modal-btn">
               Save goals
             </button>
           </Form>

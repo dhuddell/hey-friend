@@ -26,7 +26,7 @@ export default gql`
   # type GoalSetResponse { phone text beer cadence }
   # type GoalSetCollection { currentGoals:GoalSet targetGoals:GoalSet cadence }
   # input GoalSetCollectionInput { targetGoals:GoalSetInput currentGoals:GoalSetInput cadence }
-  # input FriendInput { username name icon description goalSetCollection:GoalSetCollectionInput }
+  # input FriendInput { username name icon description goals:GoalSetCollectionInput }
 
   input AddFriendInput {
     username: String!
@@ -36,7 +36,7 @@ export default gql`
     goals: GoalsInput
   }
 
-  # input FriendUpdateInput { username friendId name icon description goalSetCollection:GoalSetCollectionInput }
+  # input FriendUpdateInput { username friendId name icon description goals:GoalSetCollectionInput }
   input UpdateFriendInput {
     username: String!
     friendId: String!
@@ -47,7 +47,7 @@ export default gql`
   }
 
   # input UpdateFriendTargetGoalsInput { phone, text, beer, cadence, username, friendId }
-  # type Friend { ...  goalSetCollection: GoalSetCollection }
+  # type Friend { ...  goals: GoalSetCollection }
   type Friend {
     username: String
     friendId: String
@@ -98,7 +98,8 @@ export default gql`
   }
 
   # input UpdateCurrentGoalInput { goalKey goalValue username friendId }
-  input IncrementCurrentGoalInput {
+  input UpdateCurrentGoalInput {
+    goalValue: Int!
     goalKey: String!
     username: String!
     friendId: String!
@@ -120,7 +121,7 @@ export default gql`
     
     updateUser(updateUserInput: UpdateUserInput!): User
     updateFriend(updateFriendInput: UpdateFriendInput!): Friend # is this what I want to return?
-    incrementCurrentGoal(incrementCurrentGoalInput: IncrementCurrentGoalInput!): Goals
+    updateCurrentGoal(updateCurrentGoalInput: UpdateCurrentGoalInput!): Goals
 
     removeUser(username: String): ConfirmationResponse
     removeUsers(ignoreString: String): ConfirmationResponse

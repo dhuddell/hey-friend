@@ -1,57 +1,68 @@
 import React from 'react';
 import { Mutation } from 'react-apollo';
 import { Formik, Form, Field } from 'formik';
-import { UPDATE_FRIEND_TARGET_GOALS } from '../../graphql/mutations';
+import { UPDATE_FRIEND_GOALS } from '../../graphql/mutations';
 
-const tenArray = Array.from(Array(10).keys());
+const twentyArray = Array.from(Array(21).keys());
 
 const ModalContent = ({
   onRequestClose,
   username,
   friendId,
-  targetGoals,
-  cadence,
+  setGoalState,
+  goalState,
 }) => (
-  <Mutation mutation={UPDATE_FRIEND_TARGET_GOALS}>
-    {(updateFriendTargetGoals, { data }) => (
+  <Mutation mutation={UPDATE_FRIEND_GOALS}>
+    {(updateFriend, { data }) => (
       <Formik
         className="modal-form"
-        intialValues={{
-          phone: targetGoals ? targetGoals.phone : null,
-          text: targetGoals ? targetGoals.text : null,
-          beer: targetGoals ? targetGoals.beer : null,
-          cadence: cadence || '',
-        }}
+        // this initialization isn't working
+        // intialValues={{
+        //   targetPhone: goalState.targetPhone.toString(),
+        //   targetText: goalState.targetText.toString(),
+        //   targetBeer: goalState.targetBeer.toString(),
+        //   cadence: goalState.cadence,
+        // }}
 
-        onSubmit={async ({ phone, text, beer, cadence }, { props, setSubmitting, setErrors }) => {
-          const targetGoalsInput = {
+        onSubmit={async ({
+          targetPhone = goalState.targetPhone.toString(),
+          targetText = goalState.targetText.toString(),
+          targetBeer = goalState.targetBeer.toString(),
+          cadence = goalState.cadence,
+        }, { setSubmitting }) => {
+          const updateFriendInput = {
             variables: {
-              updateFriendTargetGoalsInput: {
+              updateFriendInput: {
                 username,
                 friendId,
-                phone,
-                text,
-                beer,
-                cadence,
+                goals: {
+                  targetPhone: parseInt(targetPhone, 10),
+                  targetText: parseInt(targetText, 10),
+                  targetBeer: parseInt(targetBeer, 10),
+                  cadence,
+                },
               },
             },
           };
 
           try {
-            const response = await updateFriendTargetGoals(targetGoalsInput);
-            const updateGoalsData = response.data.updateFriendTargetGoals;
-            // TODO 3/16/2020 Use this data to update the UI
-            console.log('Boom', updateGoalsData) // eslint-disable-line
+            const response = await updateFriend(updateFriendInput);
+            const { goals } = response.data.updateFriend;
+            setGoalState(goals);
+            setSubmitting(false);
             onRequestClose();
           } catch (e) {
-            if (e.graphQLErrors) {
+            if (e.graphQLErrors.length) {
               const errors = e.graphQLErrors.map((error) => error.message);
-              console.log(errors); // eslint-disable-line
-              setSubmitting(false);
-              setErrors({ username, name, form: errors });
+              console.log('GraphQL errors: ', errors);
+              // need to handle error state
+              // setErrors({ username, name, form: errors });
+              throw Error('Error object did not have graphQLErrors');
             } else {
-              console.log(e); // eslint-disable-line
-              throw Error('Error object did not have graphQLErros');
+              console.log('Network error: ', e.networkError);
+              // need to handle error state
+              // setErrors({ username, name, form: errors });
+              throw Error('Error object did not have graphQLErrors');
             }
           }
         }}
@@ -62,50 +73,54 @@ const ModalContent = ({
               <div className="modal-form-row">
                 <span className="modal-form-cell-label">Phone call goal: </span>
                 <Field
+                  defaultValue={goalState.targetPhone.toString()}
                   component="select"
-                  name="phone"
+                  name="targetPhone"
                   className="modal-select"
                 >
                   {
-                    tenArray.map((val) => <option value={val} key={val}>{val}</option>)
+                    twentyArray.map((val) => <option value={val} key={val}>{val}</option>)
                   }
                 </Field>
               </div>
               <div className="modal-form-row">
                 <span className="modal-form-cell-label">Text message goal: </span>
                 <Field
+                  defaultValue={goalState.targetText.toString()}
                   component="select"
-                  name="text"
+                  name="targetText"
                   className="modal-select"
                 >
                   {
-                    tenArray.map((val) => <option value={val} key={val}>{val}</option>)
+                    twentyArray.map((val) => <option value={val} key={val}>{val}</option>)
                   }
                 </Field>
               </div>
               <div className="modal-form-row">
                 <span className="modal-form-cell-label">Get a beer goal: </span>
                 <Field
+                  defaultValue={goalState.targetBeer.toString()}
                   component="select"
-                  name="beer"
+                  name="targetBeer"
                   className="modal-select"
                 >
                   {
-                    tenArray.map((val) => <option value={val} key={val}>{val}</option>)
+                    twentyArray.map((val) => <option value={val} key={val}>{val}</option>)
                   }
                 </Field>
               </div>
               <div className="modal-form-row">
                 <span className="modal-form-cell-label">Length of time: </span>
                 <Field
+                  defaultValue={goalState.cadence}
                   component="select"
                   name="cadence"
                   className="modal-select"
                 >
-                  <option value="daily">Daily</option>
-                  <option value="weekly">Weekly</option>
-                  <option value="monthly">Monthly</option>
-                  <option value="yearly">Yearly</option>
+                  <option value="Daily">Daily</option>
+                  <option value="Weekly">Weekly</option>
+                  <option value="Monthly">Monthly</option>
+                  <option value="Yearly">Yearly</option>
                 </Field>
               </div>
             </div>

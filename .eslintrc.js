@@ -42,9 +42,10 @@ module.exports = {
       'warn',
       'unix',
     ],
-    'no-console': [
-      'warn',
-    ],
+    // quality of life for now
+    // 'no-console': [
+    //   'warn',
+    // ],
     'no-var': [
       'error',
     ],

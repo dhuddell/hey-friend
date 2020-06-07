@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { ModalConsumer } from '../../modal-context';
 import { FriendGoal, Modal } from '..';
 
@@ -14,6 +14,9 @@ const FriendContent = ({
     width: `${friend.friendScore}%`,
     fontSize: `${(friend.friendScore / 100 * 3)}em`,
   };
+
+  const [goalState, setGoalState] = useState({ ...goals });
+  // MAKE SURE WE HANDLE DISABLING THE DOWN ARROW WHEN VALUE IS 0
 
   return (
     <div className="content-wrapper">
@@ -40,22 +43,22 @@ const FriendContent = ({
         <div className="friend-goals">
           <FriendGoal
             type="phone"
-            target={goals.targetPhone}
-            current={goals.currentPhone}
+            target={goalState.targetPhone}
+            current={goalState.currentPhone}
           />
           <FriendGoal
             type="comment"
-            target={goals.targetText}
-            current={goals.currentText}
+            target={goalState.targetText}
+            current={goalState.currentText}
           />
           <FriendGoal
             className="last-goal-element"
             type="beer"
-            target={goals.targetBeer}
-            current={goals.currentBrgeer}
+            target={goalState.targetBeer}
+            current={goalState.currentBeer}
           />
         </div>
-        <h1 className="goal-footer">{'Monthly goals'}</h1>
+        <h1 className="goal-footer">{`${goalState.cadence} goals`}</h1>
       </div>
       <div className="edit-space">
         <ModalConsumer>
@@ -64,8 +67,9 @@ const FriendContent = ({
               className="btn btn-primary"
               onClick={() => showModal(Modal, {
                 isOpen: true,
-                goals,
+                goalState,
                 username,
+                setGoalState,
                 name,
                 friendId,
               })}

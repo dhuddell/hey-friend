@@ -4,7 +4,8 @@ import { ModalContent } from '..';
 
 const GoalModal = ({
   onRequestClose,
-  goalSetCollection,
+  goalState,
+  setGoalState,
   username,
   name,
   friendId,
@@ -23,7 +24,8 @@ const GoalModal = ({
       <div className="modal-content">
         <ModalContent
           onRequestClose={onRequestClose}
-          goalSetCollection={goalSetCollection}
+          goalState={goalState}
+          setGoalState={setGoalState}
           username={username}
           name={name}
           friendId={friendId}

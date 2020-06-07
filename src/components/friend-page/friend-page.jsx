@@ -13,9 +13,8 @@ const Friend = (props) => {
   const { username, friendId } = props.match.params;
 
   const userLoggedIn = localStorage.getItem('username') === username;
-
   if (!userLoggedIn) {
-    alert('Need to auth!'); // eslint-disable-line
+    alert('Please log in'); // eslint-disable-line
     return <Redirect to="/login" />;
   }
 
@@ -24,10 +23,9 @@ const Friend = (props) => {
   });
   if (loading) return <AppLoading />;
   if (error) {
-    // console.log(error)
-    // assuming they are GQL errors
     const e = error.graphQLErrors[0];
-    console.log('GQL Error on load: ', e.message); // eslint-disable-line
+    if (e) console.log('GQL Error on load: ', e.message);
+    else console.log('Network Error on load: ', error.networkError.message);
     return <AppError errors={error} />;
   }
 

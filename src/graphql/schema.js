@@ -1,7 +1,6 @@
 import gql from 'graphql-tag';
 
 export default gql`  
-  # type GoalSet { phone text beer: }
   type Goals {
     currentText: Int
     currentPhone: Int
@@ -12,7 +11,6 @@ export default gql`
     cadence: String
   }
 
-  # input GoalSetInput { phone text beer }
   input GoalsInput {
     currentText: Int
     currentPhone: Int
@@ -23,10 +21,10 @@ export default gql`
     cadence: String
   }
 
-  # type GoalSetResponse { phone text beer cadence }
-  # type GoalSetCollection { currentGoals:GoalSet targetGoals:GoalSet cadence }
-  # input GoalSetCollectionInput { targetGoals:GoalSetInput currentGoals:GoalSetInput cadence }
-  # input FriendInput { username name icon description goals:GoalSetCollectionInput }
+  type UpdateGoalResponse {
+    friendScore: Int
+    goals: Goals
+  }
 
   input AddFriendInput {
     username: String!
@@ -36,7 +34,6 @@ export default gql`
     goals: GoalsInput
   }
 
-  # input FriendUpdateInput { username friendId name icon description goals:GoalSetCollectionInput }
   input UpdateFriendInput {
     username: String!
     friendId: String!
@@ -46,8 +43,6 @@ export default gql`
     goals: GoalsInput
   }
 
-  # input UpdateFriendTargetGoalsInput { phone, text, beer, cadence, username, friendId }
-  # type Friend { ...  goals: GoalSetCollection }
   type Friend {
     username: String
     friendId: String
@@ -63,7 +58,6 @@ export default gql`
     password: String!
   }
 
-  # input RegistrationInput { username password }
   input RegistrationInput {
     username: String!
     password: String!
@@ -78,7 +72,6 @@ export default gql`
     name: String
   }
 
-  # type User { username name friends:[Friend] }
   type User {
     username: String
     password: String
@@ -97,7 +90,6 @@ export default gql`
     message: String
   }
 
-  # input UpdateCurrentGoalInput { goalKey goalValue username friendId }
   input UpdateCurrentGoalInput {
     goalValue: Int!
     goalKey: String!
@@ -120,8 +112,8 @@ export default gql`
     addFriendToUser(addFriendInput: AddFriendInput!): Friend
     
     updateUser(updateUserInput: UpdateUserInput!): User
-    updateFriend(updateFriendInput: UpdateFriendInput!): Friend # is this what I want to return?
-    updateCurrentGoal(updateCurrentGoalInput: UpdateCurrentGoalInput!): Goals
+    updateFriend(updateFriendInput: UpdateFriendInput!): Friend
+    updateCurrentGoal(updateCurrentGoalInput: UpdateCurrentGoalInput!): UpdateGoalResponse
 
     removeUser(username: String): ConfirmationResponse
     removeUsers(ignoreString: String): ConfirmationResponse

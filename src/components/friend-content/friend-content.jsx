@@ -2,33 +2,35 @@ import React, { useState } from 'react';
 import { ModalConsumer } from '../../modal-context';
 import { FriendGoal, Modal } from '..';
 
+// CONSTANTIZE A BUNCH OF STUFF
+// CONSTANTIZE A BUNCH OF STUFF
+// CONSTANTIZE A BUNCH OF STUFF
+// Currently does not rerender the style of the icon
 const FriendContent = ({
   friend,
   username,
-  name,
-  goals,
   friendId,
 }) => {
-  const friendScoreStyle = {
-    height: `${friend.friendScore}%`,
-    width: `${friend.friendScore}%`,
-    fontSize: `${(friend.friendScore / 100 * 3)}em`,
-  };
+  const { name, icon, description, goals, friendScore } = friend;
+  const [goalState, setGoalState] = useState({ goals, friendScore });
 
-  const [goalState, setGoalState] = useState({ ...goals });
-  // MAKE SURE WE HANDLE DISABLING THE DOWN ARROW WHEN VALUE IS 0
+  const friendScoreStyle = {
+    height: `${goalState.friendScore}%`,
+    width: `${goalState.friendScore}%`,
+    fontSize: `${(goalState.friendScore / 100 * 3)}em`,
+  };
 
   return (
     <div className="content-wrapper">
       <div className="bio-space">
         <div className="friend-info">
-          <p className="friend-name">{friend.name}</p>
-          <p className="friend-description">{friend.description}</p>
+          <p className="friend-name">{name}</p>
+          <p className="friend-description">{description}</p>
         </div>
         <div className="icon-container">
           <div className="icon-outer-circle">
             <div className={'inner-icon-container'} style={friendScoreStyle}>
-              <i className={`fa ${friend.icon} friend-icon inner-friend-icon`} />
+              <i className={`fa ${icon} friend-icon inner-friend-icon`} />
             </div>
           </div>
         </div>
@@ -42,23 +44,32 @@ const FriendContent = ({
         </div>
         <div className="friend-goals">
           <FriendGoal
-            type="phone"
-            target={goalState.targetPhone}
-            current={goalState.currentPhone}
+            type="Phone"
+            icon="phone"
+            username={username}
+            friendId={friendId}
+            goalState={goalState}
+            setGoalState={setGoalState}
           />
           <FriendGoal
-            type="comment"
-            target={goalState.targetText}
-            current={goalState.currentText}
+            type="Text"
+            icon="comment"
+            username={username}
+            friendId={friendId}
+            goalState={goalState}
+            setGoalState={setGoalState}
           />
           <FriendGoal
             className="last-goal-element"
-            type="beer"
-            target={goalState.targetBeer}
-            current={goalState.currentBeer}
+            type="Beer"
+            icon="beer"
+            username={username}
+            friendId={friendId}
+            goalState={goalState}
+            setGoalState={setGoalState}
           />
         </div>
-        <h1 className="goal-footer">{`${goalState.cadence} goals`}</h1>
+        <h1 className="goal-footer">{`${goalState.goals.cadence} goals`}</h1>
       </div>
       <div className="edit-space">
         <ModalConsumer>
@@ -67,10 +78,9 @@ const FriendContent = ({
               className="btn btn-primary"
               onClick={() => showModal(Modal, {
                 isOpen: true,
-                goalState,
                 username,
+                goalState,
                 setGoalState,
-                name,
                 friendId,
               })}
             >

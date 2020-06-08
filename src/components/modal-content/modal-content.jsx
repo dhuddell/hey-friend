@@ -13,10 +13,10 @@ const ModalContent = ({
   goalState,
 }) => (
   <Mutation mutation={UPDATE_FRIEND_GOALS}>
-    {(updateFriend, { data }) => (
+    {(updateFriend) => (
       <Formik
         className="modal-form"
-        // this initialization isn't working
+        // this initialization isn't working so I hacked it.
         // intialValues={{
         //   targetPhone: goalState.targetPhone.toString(),
         //   targetText: goalState.targetText.toString(),
@@ -24,11 +24,12 @@ const ModalContent = ({
         //   cadence: goalState.cadence,
         // }}
 
+        // I'm diving more than I want to.
         onSubmit={async ({
-          targetPhone = goalState.targetPhone.toString(),
-          targetText = goalState.targetText.toString(),
-          targetBeer = goalState.targetBeer.toString(),
-          cadence = goalState.cadence,
+          targetPhone = goalState.goals.targetPhone.toString(),
+          targetText = goalState.goals.targetText.toString(),
+          targetBeer = goalState.goals.targetBeer.toString(),
+          cadence = goalState.goals.cadence,
         }, { setSubmitting }) => {
           const updateFriendInput = {
             variables: {
@@ -47,8 +48,8 @@ const ModalContent = ({
 
           try {
             const response = await updateFriend(updateFriendInput);
-            const { goals } = response.data.updateFriend;
-            setGoalState(goals);
+            const { goals, friendScore } = response.data.updateFriend;
+            setGoalState({ goals, friendScore });
             setSubmitting(false);
             onRequestClose();
           } catch (e) {
@@ -67,13 +68,13 @@ const ModalContent = ({
           }
         }}
 
-        render={({ errors, status, touched, isSubmitting }) => (
+        render={() => (
           <Form className="modal-form">
             <div className="modal-form-selects">
               <div className="modal-form-row">
                 <span className="modal-form-cell-label">Phone call goal: </span>
                 <Field
-                  defaultValue={goalState.targetPhone.toString()}
+                  defaultValue={goalState.goals.targetPhone.toString()}
                   component="select"
                   name="targetPhone"
                   className="modal-select"
@@ -86,7 +87,7 @@ const ModalContent = ({
               <div className="modal-form-row">
                 <span className="modal-form-cell-label">Text message goal: </span>
                 <Field
-                  defaultValue={goalState.targetText.toString()}
+                  defaultValue={goalState.goals.targetText.toString()}
                   component="select"
                   name="targetText"
                   className="modal-select"
@@ -99,7 +100,7 @@ const ModalContent = ({
               <div className="modal-form-row">
                 <span className="modal-form-cell-label">Get a beer goal: </span>
                 <Field
-                  defaultValue={goalState.targetBeer.toString()}
+                  defaultValue={goalState.goals.targetBeer.toString()}
                   component="select"
                   name="targetBeer"
                   className="modal-select"
@@ -112,7 +113,7 @@ const ModalContent = ({
               <div className="modal-form-row">
                 <span className="modal-form-cell-label">Length of time: </span>
                 <Field
-                  defaultValue={goalState.cadence}
+                  defaultValue={goalState.goals.cadence}
                   component="select"
                   name="cadence"
                   className="modal-select"

@@ -46,7 +46,6 @@
         border-bottom: 0;
       }
     }
-
   }
   
   .goal-text {
@@ -56,10 +55,16 @@
 
   .goal-arrow {
     color: $navy-color;
+    cursor: pointer;
     font-size: 3em;
     line-height: 100%;
     width: 100%;
     border-bottom: 2px $teal-color solid;
+  }
+
+  .down-arrow-inactive {
+    cursor: default;
+    background-color: #06908F;
   }
 }
 

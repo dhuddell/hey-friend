@@ -7,7 +7,6 @@ const GoalModal = ({
   goalState,
   setGoalState,
   username,
-  name,
   friendId,
 }) => (
   <Modal
@@ -27,7 +26,6 @@ const GoalModal = ({
           goalState={goalState}
           setGoalState={setGoalState}
           username={username}
-          name={name}
           friendId={friendId}
         />
       </div>

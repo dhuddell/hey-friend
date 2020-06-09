@@ -15,7 +15,7 @@ describe('Modal content component', () => {
       text: 3,
       beer: 5,
     },
-    cadence: 'monthly',
+    cadence: 'Monthly',
   };
 
   const wrapper = shallow(

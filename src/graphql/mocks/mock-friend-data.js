@@ -12,6 +12,6 @@ export default {
     currentPhone: 0,
     currentText: 2,
     currentBeer: 0,
-    cadence: 'monthly',
+    cadence: 'Monthly',
   },
 };

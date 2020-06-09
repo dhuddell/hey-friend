@@ -41,7 +41,6 @@
     "eslint-plugin-jest": "^21.27.2",
     "eslint-plugin-react": "^7.16.0",
     "file-loader": "^1.1.6",
-    "font-awesome": "^4.7.0",
     "graphql-cli": "^2.17.0",
     "graphql-tag": "^2.10.1",
     "graphql-tools": "^4.0.6",

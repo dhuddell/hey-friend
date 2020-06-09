@@ -1,3 +1,4 @@
+
 export default {
   friends:
   [
@@ -14,7 +15,7 @@ export default {
         currentPhone: 0,
         currentText: 2,
         currentBeer: 0,
-        cadence: 'monthly',
+        cadence: 'Monthly',
       },
     },
     {
@@ -29,13 +30,13 @@ export default {
         currentPhone: 0,
         currentText: 2,
         currentBeer: 0,
-        cadence: 'monthly',
+        cadence: 'Monthly',
       },
     },
     {
       name: 'Joe',
       friendId: '12345',
-      icon: 'fa-handshake-o',
+      icon: 'fa-head-side-cough-slash',
       description: 'wingman ofc',
       friendScore: 50,
       goals: {
@@ -45,7 +46,7 @@ export default {
         currentPhone: 0,
         currentText: 2,
         currentBeer: 0,
-        cadence: 'monthly',
+        cadence: 'Monthly',
       },
     },
     {
@@ -60,7 +61,7 @@ export default {
         currentPhone: 0,
         currentText: 2,
         currentBeer: 0,
-        cadence: 'monthly',
+        cadence: 'Monthly',
       },
     },
     {
@@ -76,7 +77,7 @@ export default {
         currentPhone: 0,
         currentText: 2,
         currentBeer: 0,
-        cadence: 'monthly',
+        cadence: 'Monthly',
       },
     },
     {
@@ -92,7 +93,7 @@ export default {
         currentPhone: 0,
         currentText: 2,
         currentBeer: 0,
-        cadence: 'monthly',
+        cadence: 'Monthly',
       },
     },
     {
@@ -108,7 +109,7 @@ export default {
         currentPhone: 0,
         currentText: 2,
         currentBeer: 0,
-        cadence: 'monthly',
+        cadence: 'Monthly',
       },
     },
     {
@@ -124,7 +125,7 @@ export default {
         currentPhone: 0,
         currentText: 2,
         currentBeer: 0,
-        cadence: 'monthly',
+        cadence: 'Monthly',
       },
     },
   ],

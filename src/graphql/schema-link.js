@@ -33,7 +33,7 @@ const mocks = {
   Query: () => ({
     user: () => new Promise((resolve) => setTimeout(() => resolve(user), latency)),
     friend: () => new Promise((resolve) => setTimeout(() => resolve(friendResponse), latency)),
-    friends: () => new Promise((resolve) => setTimeout(() => resolve(friendsResponse), latency)),
+    friends: () => new Promise((resolve) => setTimeout(() => resolve(friendsResponse.friends), latency)),
   }),
 };
 

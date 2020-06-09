@@ -8,6 +8,7 @@ const FriendItem = ({ data, username }) => {
     height: `${friendScore}%`,
     width: `${friendScore}%`,
     fontSize: `${(friendScore / 100 * 3)}em`,
+    filter: friendScore === 100 ? 'drop-shadow(0 0 1rem #00fbfb)' : '',
   };
 
   return (

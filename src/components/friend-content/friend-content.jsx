@@ -18,6 +18,7 @@ const FriendContent = ({
     height: `${goalState.friendScore}%`,
     width: `${goalState.friendScore}%`,
     fontSize: `${(goalState.friendScore / 100 * 3)}em`,
+    filter: friendScore === 100 ? 'drop-shadow(0 0 1rem #00fbfb)' : '',
   };
 
   return (

@@ -5,7 +5,7 @@ export default {
     {
       name: 'Jim',
       friendId: '1234',
-      icon: 'fa-bolt',
+      icon: 'fa fa-bolt',
       description: 'best bro',
       friendScore: 0,
       goals: {
@@ -20,7 +20,7 @@ export default {
     },
     {
       name: 'Jane',
-      icon: 'fa-book',
+      icon: 'fa fa-book',
       description: 'basic beach',
       friendScore: 25,
       goals: {
@@ -36,7 +36,7 @@ export default {
     {
       name: 'Joe',
       friendId: '12345',
-      icon: 'fa-head-side-cough-slash',
+      icon: 'fa fa-head-side-cough-slash',
       description: 'wingman ofc',
       friendScore: 50,
       goals: {
@@ -51,7 +51,7 @@ export default {
     },
     {
       name: 'Jiminy',
-      icon: 'fa-bath',
+      icon: 'fa fa-bath',
       description: 'a wise old cricket',
       friendScore: 75,
       goals: {
@@ -67,7 +67,7 @@ export default {
     {
       name: 'Keanu',
       friendId: '12346',
-      icon: 'fa-shower',
+      icon: 'fa fa-shower',
       description: 'an invader',
       friendScore: 50,
       goals: {
@@ -83,7 +83,7 @@ export default {
     {
       name: 'Joany',
       friendId: '12343',
-      icon: 'fa-anchor',
+      icon: 'fa fa-anchor',
       description: 'who knows',
       friendScore: 100,
       goals: {
@@ -99,7 +99,7 @@ export default {
     {
       name: 'James',
       friendId: '12342323',
-      icon: 'fa-500px',
+      icon: 'fab fa-500px',
       description: 'goes to shows',
       friendScore: 75,
       goals: {
@@ -115,7 +115,7 @@ export default {
     {
       name: 'Yeezus',
       friendId: '123232234',
-      icon: 'fa-book',
+      icon: 'fa fa-book',
       description: 'x gon give it to ya',
       friendScore: 25,
       goals: {

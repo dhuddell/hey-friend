@@ -30,6 +30,14 @@
       background-color: $navy-color;
       color: $orange-color;
     }
+
+    .details-max-score {
+      border: none;
+      filter: drop-shadow(0 0 0.5rem #00fbfb);
+      animation:
+        scale-up-icons 1.5s,
+        detailsTealPulse 2.5s 1.5s infinite;
+    }
   }
 }
 

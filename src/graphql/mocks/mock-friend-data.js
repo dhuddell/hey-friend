@@ -2,9 +2,9 @@ export default {
   username: 'dan',
   friendId: 'dummy-id',
   name: 'Brandon',
-  icon: 'fa-bolt',
+  icon: 'fa fa-bolt',
   description: 'who knows?',
-  friendScore: 75,
+  friendScore: 100,
   goals: {
     targetPhone: 1,
     targetText: 5,

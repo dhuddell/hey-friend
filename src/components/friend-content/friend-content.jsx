@@ -14,11 +14,11 @@ const FriendContent = ({
   const { name, icon, description, goals, friendScore } = friend;
   const [goalState, setGoalState] = useState({ goals, friendScore });
 
+  const maxScoreClass = friendScore === 100 ? 'details-max-score' : '';
   const friendScoreStyle = {
     height: `${goalState.friendScore}%`,
     width: `${goalState.friendScore}%`,
     fontSize: `${(goalState.friendScore / 100 * 3)}em`,
-    filter: friendScore === 100 ? 'drop-shadow(0 0 1rem #00fbfb)' : '',
   };
 
   return (
@@ -29,7 +29,7 @@ const FriendContent = ({
           <p className="friend-description">{description}</p>
         </div>
         <div className="icon-container">
-          <div className="icon-outer-circle">
+          <div className={`icon-outer-circle ${maxScoreClass}`}>
             <div className={'inner-icon-container'} style={friendScoreStyle}>
               <i className={`fa ${icon} friend-icon inner-friend-icon`} />
             </div>

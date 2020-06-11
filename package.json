@@ -1,15 +1,15 @@
 {
-  "name": "imissyou",
+  "name": "hey-friend",
   "version": "1.0.0",
   "description": "a place to help you keep in touch",
   "main": "src/app.js",
   "scripts": {
-    "build": "node-sass --output-style compressed src/app.scss dist/imissyou.css",
+    "build": "node-sass --output-style compressed src/app.scss dist/hey-friend.css",
     "lint": "eslint --ext js --ext jsx .",
     "lint:fix": "eslint --ext js --ext jsx --fix .",
     "lint:sass": "sass-lint -c '.sass-lint.yml' -v 'lib/**/*.scss, src/**/*.scss'",
-    "start": "webpack-dev-server --open --env.GRAPHQL_MOCK",
-    "start:prod": "webpack-dev-server --open",
+    "start:mock": "webpack-dev-server --open --env.GRAPHQL_MOCK",
+    "start": "webpack-dev-server --open",
     "test": "jest --config jest.json --no-coverage",
     "test:watch": "jest --config jest.json --no-coverage --watch"
   },
@@ -67,6 +67,7 @@
   "dependencies": {
     "@apollo/react-hooks": "^3.1.3",
     "@apollo/react-testing": "^3.1.3",
+    "@google-cloud/storage": "^5.0.1",
     "apollo-boost": "^0.4.4",
     "apollo-cache-inmemory": "^1.6.3",
     "apollo-client": "^2.6.4",

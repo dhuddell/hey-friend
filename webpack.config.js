@@ -10,7 +10,7 @@ module.exports = (env) => {
       port: 3000,
       historyApiFallback: true,
       proxy: {
-        '/graphql': process.env.SERVE_IMISSYOU,
+        '/graphql': process.env.SERVE_HEY_FRIEND,
       },
     },
     devtool: '#eval-source-map',

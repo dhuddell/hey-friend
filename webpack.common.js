@@ -15,13 +15,7 @@ module.exports = (env) => {
       },
     },
     devtool: 'source-map',
-    // entry: ['@babel/polyfill', './src/index.jsx'],
-    entry: [
-      'webpack-dev-server/client?http://localhost:3000/',
-      // {
-      //   app: './src/index.jsx',
-      // },
-    ],
+    entry: ['@babel/polyfill', './src/index.jsx'],
     output: {
       filename: 'hey-friend-client.bundle.js',
       publicPath: '/',
@@ -44,7 +38,6 @@ module.exports = (env) => {
         { // sass
           test: /\.scss$/,
           use: [
-            // this might be right???
             MiniCssExtractPlugin.loader,
             'css-loader',
             {

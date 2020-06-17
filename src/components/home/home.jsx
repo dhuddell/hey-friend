@@ -8,7 +8,6 @@ import {
   FriendItems,
 } from '..';
 
-
 const Home = () => {
   const username = localStorage.getItem('username') || null;
 
@@ -23,11 +22,10 @@ const Home = () => {
 
   if (loading) return <AppLoading />;
   if (error) {
-    // LOCAL schemalink not working, but when hitting API it's fine??
-    // assuming they are GQL errors
     const e = error.graphQLErrors[0];
-    console.log('GQL Error on load: ', e.message); // eslint-disable-line
-    return <AppError errors={e.message} />;
+    if (e) console.warn('GQL Error on load: ', e.message);
+    else console.warn('Network Error on load: ', error.networkError.message);
+    return <AppError errors={error} />;
   }
 
   return <FriendItems friends={data.friends} username={username} />;

@@ -1,8 +1,8 @@
-import { HttpLink } from 'apollo-link-http';
+import { createHttpLink } from 'apollo-link-http';
 import fetch from 'unfetch';
 
-export default new HttpLink({
-  uri: '/graphql',
-  credentials: 'include',
+export default createHttpLink({
+  uri: `${process.env.SERVE_HEY_FRIEND}`,
+  // credentials: 'include',
   fetch,
 });

@@ -21,12 +21,7 @@ const Home = () => {
   });
 
   if (loading) return <AppLoading />;
-  if (error) {
-    const e = error.graphQLErrors[0];
-    if (e) console.warn('GQL Error on load: ', e.message);
-    else console.warn('Network Error on load: ', error.networkError.message);
-    return <AppError errors={error} />;
-  }
+  if (error) return <AppError error={error} />;
 
   return <FriendItems friends={data.friends} username={username} />;
 };

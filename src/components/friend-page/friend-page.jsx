@@ -22,12 +22,7 @@ const Friend = (props) => {
     variables: { username, friendId },
   });
   if (loading) return <AppLoading />;
-  if (error) {
-    const e = error.graphQLErrors[0];
-    if (e) console.log('GQL Error on load: ', e.message);
-    else console.log('Network Error on load: ', error.networkError.message);
-    return <AppError errors={error} />;
-  }
+  if (error) return <AppError error={error} />;
 
   return (
     <Fragment>

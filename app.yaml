@@ -16,8 +16,8 @@ runtime: nodejs10
 # [END gae_quickstart_yaml]
 service: 'hey-friend-client'
 env_variables:
-  GRAPHQL_LATENC: 1000
-  SERVE_HEY_FRIEND: 'https://hey-friend-api-dot-heyfriend.ue.r.appspot.com'
-  TOKEN_MATCH: 'tempi is a dog'
+  PORT:  8080
+  GRAPHQL_LATENCY: 1000
+  SERVE_HEY_FRIEND: 'https://hey-friend-api-dot-heyfriend.ue.r.appspot.com/graphql'
   GRAPHQL_MOCK: false
   CLIENT_HEY_FRIEND: 'https://hey-friend-client-dot-heyfriend.ue.r.appspot.com'

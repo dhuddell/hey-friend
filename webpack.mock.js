@@ -1,33 +1,24 @@
-require('@babel/polyfill');
-const dotenv = require('dotenv');
-const path = require('path');
-const webpack = require('webpack');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
-const env = dotenv.config().parsed;
+require('@babel/polyfill');
+require('dotenv').config();
+const Webpack = require('webpack');
+const autoprefixer = require('autoprefixer');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = () => {
-  const envKeys = Object.keys(env).reduce((prev, next) => {
-    prev[`process.env.${next}`] = JSON.stringify(env[next]);
-    return prev;
-  }, {});
-
   const config = {
+    mode: 'development',
+    devtool: 'inline-source-map',
+    entry: {
+      app: './src/app.jsx',
+    },
     devServer: {
       port: 3000,
       historyApiFallback: true,
       proxy: {
-        '/': process.env.SERVE_HEY_FRIEND,
+        '/graphql': process.env.SERVE_HEY_FRIEND,
       },
-    },
-    // maybe works?
-    devtool: 'inline-source-map',
-    entry: ['@babel/polyfill', './src/index.jsx'],
-    output: {
-      filename: 'bundle.js',
-      publicPath: '/',
-      path: path.resolve(__dirname, 'dist'),
     },
     node: {
       fs: 'empty',
@@ -83,7 +74,11 @@ module.exports = () => {
       new HtmlWebpackPlugin({
         template: './src/index.html',
       }),
-      new webpack.DefinePlugin(envKeys),
+      autoprefixer,
+      new Webpack.NormalModuleReplacementPlugin(
+        /graphql\/http-link.js/,
+        './schema-link.js'
+      ),
     ],
   };
 

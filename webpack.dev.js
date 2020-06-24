@@ -1,21 +1,22 @@
+require('regenerator-runtime/runtime');
 const merge = require('webpack-merge');
 const autoprefixer = require('autoprefixer');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const common = require('./webpack.common.js')();
 
+// currently don't have a local env file
 module.exports = merge(common, {
   mode: 'development',
   devtool: 'inline-source-map',
-  entry: [
-    'webpack-dev-server/client?http://localhost:3000/',
-    './src/app.jsx',
-  ],
+  entry: {
+    app: './src/app.jsx',
+  },
   devServer: {
     port: 3000,
     historyApiFallback: true,
     proxy: {
-      '/graphql': process.env.SERVE_HEY_FRIEND,
+      '/': process.env.SERVE_HEY_FRIEND,
     },
   },
   plugins: [

@@ -21,8 +21,8 @@ const Login = () => (
                 <div className="home-link">
                   <Link to="/">{'Go see your friends!'}!</Link>
                 </div>
-              </div> :
-              <Formik
+              </div>
+              : <Formik
                 intialValues={{ username: '', password: '' }}
                 onSubmit={async ({ username, password }, { setSubmitting, setErrors }) => {
                   const loginInput = {

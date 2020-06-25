@@ -27,13 +27,19 @@ class NavMenu extends Component {
         <Link className="nav-menu-link" to="/">
           <span className="fa fa-users" />
         </Link>
+        <Link className="nav-menu-link" to="/">
+          <span className="fa fa-user-plus" />
+        </Link>
         <span className="nav-menu-link" >
           <ScrollToTop style={this.arrowStyle} showUnder={160}>
             <span className="fa fa-chevron-circle-up" />
           </ScrollToTop>
         </span>
+        <Link className="nav-menu-link" to="/">
+          <span className="fas fa-bacon" />
+        </Link>
         <Link className="nav-menu-link" to="/settings">
-          <span className="fa fa-gear" />
+          <span className="fa fa-cog" />
         </Link>
       </div>
     );

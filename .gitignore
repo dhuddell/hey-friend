@@ -6,5 +6,6 @@ npm-debug.log
 .env
 .DS_Store
 dist
+app.yaml
 /coverage.data
 /coverage/

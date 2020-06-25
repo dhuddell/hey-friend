@@ -13,23 +13,16 @@ const Friend = (props) => {
   const { username, friendId } = props.match.params;
 
   const userLoggedIn = localStorage.getItem('username') === username;
-
   if (!userLoggedIn) {
-    alert('Need to auth!'); // eslint-disable-line
+    alert('Please log in'); // eslint-disable-line
     return <Redirect to="/login" />;
   }
 
   const { data, error, loading } = useQuery(FRIEND_QUERY, {
     variables: { username, friendId },
   });
-
   if (loading) return <AppLoading />;
-  if (error) {
-    // assuming they are GQL errors
-    const e = error.graphQLErrors[0];
-    console.log('GQL Error on load: ', e.message); // eslint-disable-line
-    return <AppError errors={e.message} />;
-  }
+  if (error) return <AppError error={error} />;
 
   return (
     <Fragment>
@@ -37,9 +30,7 @@ const Friend = (props) => {
       <FriendContent
         friend={data.friend}
         username={username}
-        name={data.friend.name}
         friendId={friendId}
-        goalSetCollection={data.friend.goalSetCollection}
       />
     </Fragment>
   );

@@ -29,16 +29,21 @@ body {
 .btn {
   border: solid 1px $teal-color;
   border-radius: 20px;
-  font-size: 1.2rem;
+  font-size: 1.5rem;
   height: 50px;
   margin: 0.5rem;
   min-width: 40%;
 
   .btn-icon {
-    padding-left: 0.5rem;
+    padding-right: 1rem;
   }
 }
 
+.btn-primary {
+  background-color: $teal-color;
+  color: $navy-color;
+  font-weight: bold;
+}
 
 .btn-secondary {
   background-color: $navy-color;
@@ -50,7 +55,7 @@ body {
   height: 120px;
   justify-content: center;
   margin: 1rem 0;
-  width: 180px;
+  width: 160px;
 
   .icon-outer-circle {
     align-items: center;

@@ -5,25 +5,7 @@ export default gql`
     user (username: $username) {
       username
       name
-      friends {
-        name
-        icon
-        friendScore
-        description
-        goalSetCollection {
-          targetGoals {
-            phone
-            text
-            beer
-          }
-          currentGoals {
-            phone
-            text
-            beer
-          }
-          cadence
-        }
-      }
+      email
     }
   }
 `;

@@ -5,8 +5,8 @@ import typeDefs from './schema';
 import user from './mocks/mock-user-data';
 import loginResponse from './mocks/mock-user-login-data';
 import registrationResponse from './mocks/mock-user-registration-data';
-import friend from './mocks/mock-friend-data';
-import friends from './mocks/mock-friends-data';
+import friendResponse from './mocks/mock-friend-data';
+import friendsResponse from './mocks/mock-friends-data';
 
 
 const resolverValidationOptions = {
@@ -28,12 +28,12 @@ const mocks = {
   Mutation: () => ({
     loginUser: () => new Promise((resolve) => setTimeout(() => resolve(loginResponse), latency)),
     registerUser: () => new Promise((resolve) => setTimeout(() => resolve(registrationResponse), latency)),
-    updateFriendTargetGoals: () => new Promise((resolve) => setTimeout(() => resolve('response'), latency)),
+    updateFriend: () => new Promise((resolve) => setTimeout(() => resolve(friendResponse), latency)),
   }),
   Query: () => ({
     user: () => new Promise((resolve) => setTimeout(() => resolve(user), latency)),
-    friend: () => new Promise((resolve) => setTimeout(() => resolve(friend), latency)),
-    friends: () => new Promise((resolve) => setTimeout(() => resolve(friends), latency)),
+    friend: () => new Promise((resolve) => setTimeout(() => resolve(friendResponse), latency)),
+    friends: () => new Promise((resolve) => setTimeout(() => resolve(friendsResponse.friends), latency)),
   }),
 };
 

@@ -1,115 +1,131 @@
 import React from 'react';
 import { Mutation } from 'react-apollo';
 import { Formik, Form, Field } from 'formik';
-import { UPDATE_FRIEND_TARGET_GOALS } from '../../graphql/mutations';
+import { UPDATE_FRIEND_GOALS } from '../../graphql/mutations';
 
-const tenArray = Array.from(Array(10).keys());
+const twentyArray = Array.from(Array(21).keys());
 
 const ModalContent = ({
   onRequestClose,
   username,
   friendId,
-  targetGoals,
-  cadence,
+  setGoalState,
+  goalState,
 }) => (
-  <Mutation mutation={UPDATE_FRIEND_TARGET_GOALS}>
-    {(updateFriendTargetGoals, { data }) => (
+  <Mutation mutation={UPDATE_FRIEND_GOALS}>
+    {(updateFriend) => (
       <Formik
         className="modal-form"
-        intialValues={{
-          phone: targetGoals ? targetGoals.phone : null,
-          text: targetGoals ? targetGoals.text : null,
-          beer: targetGoals ? targetGoals.beer : null,
-          cadence: cadence || '',
-        }}
+        // this initialization isn't working so I hacked it.
+        // intialValues={{
+        //   targetPhone: goalState.targetPhone.toString(),
+        //   targetText: goalState.targetText.toString(),
+        //   targetBeer: goalState.targetBeer.toString(),
+        //   cadence: goalState.cadence,
+        // }}
 
-        onSubmit={async ({ phone, text, beer, cadence }, { props, setSubmitting, setErrors }) => {
-          const targetGoalsInput = {
+        // I'm diving more than I want to.
+        onSubmit={async ({
+          targetPhone = goalState.goals.targetPhone.toString(),
+          targetText = goalState.goals.targetText.toString(),
+          targetBeer = goalState.goals.targetBeer.toString(),
+          cadence = goalState.goals.cadence,
+        }, { setSubmitting }) => {
+          const updateFriendInput = {
             variables: {
-              updateFriendTargetGoalsInput: {
+              updateFriendInput: {
                 username,
                 friendId,
-                phone,
-                text,
-                beer,
-                cadence,
+                goals: {
+                  targetPhone: parseInt(targetPhone, 10),
+                  targetText: parseInt(targetText, 10),
+                  targetBeer: parseInt(targetBeer, 10),
+                  cadence,
+                },
               },
             },
           };
 
           try {
-            const response = await updateFriendTargetGoals(targetGoalsInput);
-            const updateGoalsData = response.data.updateFriendTargetGoals;
-            // TODO 3/16/2020 Use this data to update the UI
-            console.log('Boom', updateGoalsData) // eslint-disable-line
+            const response = await updateFriend(updateFriendInput);
+            const { goals, friendScore } = response.data.updateFriend;
+            setGoalState({ goals, friendScore });
+            setSubmitting(false);
             onRequestClose();
           } catch (e) {
-            if (e.graphQLErrors) {
+            if (e.graphQLErrors.length) {
               const errors = e.graphQLErrors.map((error) => error.message);
-              console.log(errors); // eslint-disable-line
-              setSubmitting(false);
-              setErrors({ username, name, form: errors });
+              console.log('GraphQL errors: ', errors);
+              // need to handle error state
+              // setErrors({ username, name, form: errors });
+              throw Error('Error object did not have graphQLErrors');
             } else {
-              console.log(e); // eslint-disable-line
-              throw Error('Error object did not have graphQLErros');
+              console.log('Network error: ', e.networkError);
+              // need to handle error state
+              // setErrors({ username, name, form: errors });
+              throw Error('Error object did not have graphQLErrors');
             }
           }
         }}
 
-        render={({ errors, status, touched, isSubmitting }) => (
+        render={() => (
           <Form className="modal-form">
             <div className="modal-form-selects">
               <div className="modal-form-row">
-                <span className="modal-form-cell-label">How many calls?</span>
+                <span className="modal-form-cell-label">Phone call goal: </span>
                 <Field
+                  defaultValue={goalState.goals.targetPhone.toString()}
                   component="select"
-                  name="phone"
+                  name="targetPhone"
                   className="modal-select"
                 >
                   {
-                    tenArray.map((val) => <option value={val} key={val}>{val}</option>)
+                    twentyArray.map((val) => <option value={val} key={val}>{val}</option>)
                   }
                 </Field>
               </div>
               <div className="modal-form-row">
-                <span className="modal-form-cell-label">How many texts?</span>
+                <span className="modal-form-cell-label">Text message goal: </span>
                 <Field
+                  defaultValue={goalState.goals.targetText.toString()}
                   component="select"
-                  name="text"
+                  name="targetText"
                   className="modal-select"
                 >
                   {
-                    tenArray.map((val) => <option value={val} key={val}>{val}</option>)
+                    twentyArray.map((val) => <option value={val} key={val}>{val}</option>)
                   }
                 </Field>
               </div>
               <div className="modal-form-row">
-                <span className="modal-form-cell-label">How many beers?</span>
+                <span className="modal-form-cell-label">Get a beer goal: </span>
                 <Field
+                  defaultValue={goalState.goals.targetBeer.toString()}
                   component="select"
-                  name="beer"
+                  name="targetBeer"
                   className="modal-select"
                 >
                   {
-                    tenArray.map((val) => <option value={val} key={val}>{val}</option>)
+                    twentyArray.map((val) => <option value={val} key={val}>{val}</option>)
                   }
                 </Field>
               </div>
               <div className="modal-form-row">
-                <span className="modal-form-cell-label">How often?</span>
+                <span className="modal-form-cell-label">Length of time: </span>
                 <Field
+                  defaultValue={goalState.goals.cadence}
                   component="select"
                   name="cadence"
                   className="modal-select"
                 >
-                  <option value="daily">Daily</option>
-                  <option value="weekly">Weekly</option>
-                  <option value="monthly">Monthly</option>
-                  <option value="yearly">Yearly</option>
+                  <option value="Daily">Daily</option>
+                  <option value="Weekly">Weekly</option>
+                  <option value="Monthly">Monthly</option>
+                  <option value="Yearly">Yearly</option>
                 </Field>
               </div>
             </div>
-            <button type="submit" className="btn modal-btn">
+            <button type="submit" className="btn btn-primary modal-btn">
               Save goals
             </button>
           </Form>

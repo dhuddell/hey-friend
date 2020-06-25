@@ -8,7 +8,7 @@ describe('FriendContent component', () => {
     description: 'literally my dog tempi',
     icon: 'fa-lafel',
     friendScore: 25,
-    goalSetCollection: {
+    goals: {
       targetGoals: {
         phone: 1,
         text: 5,

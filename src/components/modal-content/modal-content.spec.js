@@ -4,7 +4,7 @@ import { Mutation } from 'react-apollo';
 import ModalContent from './modal-content';
 
 describe('Modal content component', () => {
-  const goalSetCollection = {
+  const goals = {
     targetGoals: {
       phone: 1,
       text: 3,
@@ -15,14 +15,14 @@ describe('Modal content component', () => {
       text: 3,
       beer: 5,
     },
-    cadence: 'monthly',
+    cadence: 'Monthly',
   };
 
   const wrapper = shallow(
     <ModalContent
       username={'joe'}
       name={'Brandon'}
-      goalSetCollection={goalSetCollection}
+      goals={goals}
     />
   );
 

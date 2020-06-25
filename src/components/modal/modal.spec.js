@@ -3,7 +3,7 @@ import { shallow } from 'enzyme';
 import Modal from './modal';
 
 describe('Modal component', () => {
-  const goalSetCollection = {
+  const goals = {
     targetGoal: {
       phone: 1,
       text: 5,
@@ -25,7 +25,7 @@ describe('Modal component', () => {
       friendId={'1'}
       name={'Brandon'}
       username={'james'}
-      goalSetCollection={goalSetCollection}
+      goals={goals}
       onRequestClose={onRequestClose}
     />
   );
@@ -37,7 +37,7 @@ describe('Modal component', () => {
         name={'Brandon'}
         username={'james'}
         handleSubmit={handleSubmit}
-        goalSetCollection={goalSetCollection}
+        goals={goals}
       />
     );
     expect(wrapper.find('.modal-main')).toHaveLength(1);

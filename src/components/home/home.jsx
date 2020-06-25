@@ -8,7 +8,6 @@ import {
   FriendItems,
 } from '..';
 
-
 const Home = () => {
   const username = localStorage.getItem('username') || null;
 
@@ -22,12 +21,7 @@ const Home = () => {
   });
 
   if (loading) return <AppLoading />;
-  if (error) {
-    // assuming they are GQL errors
-    const e = error.graphQLErrors[0];
-    console.log('GQL Error on load: ', e.message); // eslint-disable-line
-    return <AppError errors={e.message} />;
-  }
+  if (error) return <AppError error={error} />;
 
   return <FriendItems friends={data.friends} username={username} />;
 };

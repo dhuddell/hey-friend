@@ -1,74 +1,91 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { ModalConsumer } from '../../modal-context';
 import { FriendGoal, Modal } from '..';
 
+// CONSTANTIZE A BUNCH OF STUFF
+// CONSTANTIZE A BUNCH OF STUFF
+// CONSTANTIZE A BUNCH OF STUFF
+// Currently does not rerender the style of the icon
 const FriendContent = ({
   friend,
   username,
-  name,
-  goalSetCollection,
   friendId,
 }) => {
-  const goalTargets = friend.goalSetCollection.targetGoals;
-  const goalCurrents = friend.goalSetCollection.currentGoals;
+  const { name, icon, description, goals, friendScore } = friend;
+  const [goalState, setGoalState] = useState({ goals, friendScore });
 
+  const maxScoreClass = friendScore === 100 ? 'details-max-score' : '';
   const friendScoreStyle = {
-    height: `${friend.friendScore}%`,
-    width: `${friend.friendScore}%`,
-    fontSize: `${(friend.friendScore / 100 * 3)}em`,
+    height: `${goalState.friendScore}%`,
+    width: `${goalState.friendScore}%`,
+    fontSize: `${(goalState.friendScore / 100 * 3)}em`,
   };
 
   return (
     <div className="content-wrapper">
       <div className="bio-space">
         <div className="friend-info">
-          <h1 className="friend-title">{friend.name}</h1>
-          <h5 className="friend-text">{friend.description}</h5>
+          <p className="friend-name">{name}</p>
+          <p className="friend-description">{description}</p>
         </div>
         <div className="icon-container">
-          <div className="icon-outer-circle">
+          <div className={`icon-outer-circle ${maxScoreClass}`}>
             <div className={'inner-icon-container'} style={friendScoreStyle}>
-              <i className={`fa ${friend.icon} friend-icon inner-friend-icon`} />
+              <i className={`fa ${icon} friend-icon inner-friend-icon`} />
             </div>
           </div>
         </div>
       </div>
+
       <div className="goal-space">
-        <h1 className="goal-title">{'Current amounts'}</h1>
+        <div className="goal-header">
+          <h3 className="goal-title">{'Goal Value'}</h3>
+          <h3 className="goal-title">{'Action'}</h3>
+          <h3 className="goal-title">{'Current Value'}</h3>
+        </div>
         <div className="friend-goals">
           <FriendGoal
-            type="phone"
-            target={goalTargets.phone}
-            current={goalCurrents.phone}
+            type="Phone"
+            icon="phone"
+            username={username}
+            friendId={friendId}
+            goalState={goalState}
+            setGoalState={setGoalState}
           />
           <FriendGoal
-            type="comment"
-            target={goalTargets.text}
-            current={goalCurrents.text}
+            type="Text"
+            icon="comment"
+            username={username}
+            friendId={friendId}
+            goalState={goalState}
+            setGoalState={setGoalState}
           />
           <FriendGoal
-            type="beer"
-            target={goalTargets.beer}
-            current={goalCurrents.beer}
+            className="last-goal-element"
+            type="Beer"
+            icon="beer"
+            username={username}
+            friendId={friendId}
+            goalState={goalState}
+            setGoalState={setGoalState}
           />
         </div>
-        <h1 className="goal-title">{'Monthly goals'}</h1>
+        <h1 className="goal-footer">{`${goalState.goals.cadence} goals`}</h1>
       </div>
       <div className="edit-space">
         <ModalConsumer>
           {({ showModal }) => (
             <button
-              className="btn btn-secondary"
+              className="btn btn-primary"
               onClick={() => showModal(Modal, {
                 isOpen: true,
-                goalSetCollection,
                 username,
-                name,
+                goalState,
+                setGoalState,
                 friendId,
               })}
             >
-              {'Edit'}
-              <i className={'fa fa-pencil btn-icon'} />
+              {'Edit goals'}
             </button>
           )}
         </ModalConsumer>

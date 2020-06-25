@@ -8,8 +8,8 @@
   font-size: 1em;
   font-weight: bold;
   justify-content: center;
-  margin: 2rem 1rem 0;
-  padding-top: 20px;
+  margin: 2rem 0.5rem 0;
+  padding-top: 10px;
   text-align: center;
   text-decoration: none;
 
@@ -17,5 +17,13 @@
     font-size: 2.5rem;
     margin: 0 auto;
     text-decoration: none;
+  }
+
+  .max-score {
+    border: none;
+    filter: drop-shadow(0 0 0.5rem #00fbfb);
+    animation:
+      scale-up-icons 1.5s,
+      tealPulse 2.5s 1.5s infinite;
   }
 }

@@ -8,10 +8,10 @@
   width: 100%;
 
   .modal-main {
-    background: $white-color;
+    background: $navy-color;
     border: solid 2px $navy-color;
     border-radius: 20px;
-    color: $orange-color;
+    color: $teal-color;
     height: auto;
     left: 50%;
     padding: 1rem;
@@ -23,7 +23,8 @@
     .modal-header {
       border-radius: 20px;
       display: flex;
-      font-size: 2rem;
+      font-weight: bold;
+      font-size: 1.8rem;
       justify-content: space-between;
       margin: 0 auto;
       max-width: 95%;
@@ -35,7 +36,8 @@
 .modal-form {
   display: flex;
   flex-direction: column;
-  width: 100%;
+  width: 95%;
+  margin: 0.5em;
 
   .modal-form-row {
     display: flex;
@@ -53,6 +55,9 @@
   .modal-select {
     border: $navy-color 2px solid;
     color: $navy-color;
+    padding: 0 10px;
+    border-radius: 15px;
+    outline: none;
     font-size: 1rem;
     margin: 0;
     max-width: 100px;
@@ -61,15 +66,12 @@
   }
 }
 
-
-
 .modal-btn {
-  background-color: $navy-color;
-  color: $teal-color;
-  margin-top: 2rem;
+  margin: 2rem 0 0;
 }
 
 .modal-close-btn {
-  background: $white-color;
+  background: $navy-color;
+  color: $teal-color;
   border: 0;
 }

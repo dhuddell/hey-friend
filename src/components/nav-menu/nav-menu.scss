@@ -3,7 +3,8 @@
   background-color: $orange-color;
   bottom: 0;
   display: flex;
-  justify-content: center;
+  align-items: center;
+  justify-content: space-between;
   min-height: 3rem;
   overflow: hidden;
   position: fixed;
@@ -14,7 +15,7 @@
     color: $navy-color;
     font-size: 2em;
     font-weight: bold;
-    margin: 0 3rem;
+    margin: 0 1rem;
     text-decoration: none;
   }
 

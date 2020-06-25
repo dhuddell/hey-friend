@@ -1,52 +1,46 @@
 import gql from 'graphql-tag';
 
-export default gql`
-  type GoalSet {
-    phone: Int
-    text: Int
-    beer: Int
-  }
-
-  input GoalSetInput {
-    phone: Int
-    text: Int
-    beer: Int
-  }
-  
-  type GoalSetResponse {
-    phone: Int
-    text: Int
-    beer: Int
+export default gql`  
+  type Goals {
+    currentText: Int
+    currentPhone: Int
+    currentBeer: Int
+    targetText: Int
+    targetPhone: Int
+    targetBeer: Int
     cadence: String
   }
 
-  type GoalSetCollection {
-    currentGoals: GoalSet
-    targetGoals: GoalSet
+  input GoalsInput {
+    currentText: Int
+    currentPhone: Int
+    currentBeer: Int
+    targetText: Int
+    targetPhone: Int
+    targetBeer: Int
     cadence: String
   }
 
-  input GoalSetCollectionInput {
-    targetGoals: GoalSetInput
-    currentGoals: GoalSetInput
-    cadence: String
+  type UpdateGoalResponse {
+    friendScore: Int
+    goals: Goals
   }
 
-  input FriendInput {
+  input AddFriendInput {
     username: String!
     name: String!
     icon: String
     description: String
-    goalSetCollection: GoalSetCollectionInput
+    goals: GoalsInput
   }
 
-  input FriendUpdateInput {
+  input UpdateFriendInput {
     username: String!
     friendId: String!
     name: String
     icon: String
     description: String
-    goalSetCollection: GoalSetCollectionInput
+    goals: GoalsInput
   }
 
   type Friend {
@@ -56,7 +50,7 @@ export default gql`
     icon: String
     description: String
     friendScore: Int
-    goalSetCollection: GoalSetCollection
+    goals: Goals
   }
 
   input LoginInput {
@@ -67,17 +61,28 @@ export default gql`
   input RegistrationInput {
     username: String!
     password: String!
+    email: String
+    name: String
+  }
+
+  input UpdateUserInput {
+    username: String!
+    password: String
+    email: String
+    name: String
   }
 
   type User {
-    username: String!
+    username: String
+    password: String
+    email: String
     name: String
-    friends: [Friend]
   }
 
   type AuthResponse {
     message: String
     username: String
+    name: String
     token: String
   }
 
@@ -86,17 +91,8 @@ export default gql`
   }
 
   input UpdateCurrentGoalInput {
-    goalKey: String!
     goalValue: Int!
-    username: String!
-    friendId: String!
-  }
-
-  input UpdateFriendTargetGoalsInput {
-    phone: Int
-    text: Int
-    beer: Int
-    cadence: String
+    goalKey: String!
     username: String!
     friendId: String!
   }
@@ -110,18 +106,18 @@ export default gql`
   }
 
   type Mutation {
-    registerUser(registrationInput: RegistrationInput!): AuthResponse
     loginUser(loginInput: LoginInput!): AuthResponse
+    registerUser(registrationInput: RegistrationInput!): AuthResponse
 
-    addFriendToUser(friendInput: FriendInput!): Friend
-    updateCurrentGoal(updateCurrentGoalInput: UpdateCurrentGoalInput!): GoalSetResponse
-    updateFriend(friendUpdateInput: FriendUpdateInput!): Friend
-    updateFriendTargetGoals(updateFriendTargetGoalsInput: UpdateFriendTargetGoalsInput!): GoalSetResponse
-
-    removeFriend(username: String, friendId: String!): ConfirmationResponse
-    removeFriends(username: String!): ConfirmationResponse
+    addFriendToUser(addFriendInput: AddFriendInput!): Friend
+    
+    updateUser(updateUserInput: UpdateUserInput!): User
+    updateFriend(updateFriendInput: UpdateFriendInput!): Friend
+    updateCurrentGoal(updateCurrentGoalInput: UpdateCurrentGoalInput!): UpdateGoalResponse
 
     removeUser(username: String): ConfirmationResponse
     removeUsers(ignoreString: String): ConfirmationResponse
+    removeFriend(username: String, friendId: String!): ConfirmationResponse
+    removeFriends(username: String!): ConfirmationResponse
   }
 `;

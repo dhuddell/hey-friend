@@ -1,17 +1,21 @@
 import gql from 'graphql-tag';
 
+
+// this isn't used yet
 export default gql`
-  query Friend ($username: String!, $friendId: String!) {
-    friend (username:$username, friendId: $friendId){
+  mutation UpdateFriend(
+    $updateFriendInput: UpdateFriendInput!
+  ) { 
+    updateFriend(
+      updateFriendInput: $updateFriendInput
+    ) {
+      username
       friendId
       name
       icon
       description
       friendScore
       goals {
-        currentPhone
-        currentText
-        currentBeer
         targetPhone
         targetText
         targetBeer

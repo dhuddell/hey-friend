@@ -34,13 +34,18 @@ module.exports = {
       'warn',
       2,
     ],
+    'operator-linebreak': [
+      "error",
+      "before"
+    ],
     'linebreak-style': [
       'warn',
       'unix',
     ],
-    'no-console': [
-      'warn',
-    ],
+    // quality of life for now
+    // 'no-console': [
+    //   'warn',
+    // ],
     'no-var': [
       'error',
     ],

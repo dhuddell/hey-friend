@@ -3,7 +3,7 @@
 import React from 'react';
 import { Redirect } from 'react-router-dom';
 import { shallow } from 'enzyme';
-import { Friend, AppLoading, AppError } from '..';
+import { FriendPage, AppLoading, AppError } from '..';
 import { Query } from 'react-apollo';
 import { FRIEND_QUERY } from '../../graphql/queries';
 
@@ -11,7 +11,7 @@ describe.skip('Friend component', () => {
   // TODO 3/15/2020 these are effed
   window.alert = jest.fn();
   const match = { params: { name: 'Brandon', username: 'james' } };
-  const wrapper = shallow(<Friend match={match} />);
+  const wrapper = shallow(<FriendPage match={match} />);
   const query = wrapper.find(Query);
 
   afterAll(jest.resetAllMocks);

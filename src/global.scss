@@ -2,6 +2,10 @@ html {
   box-sizing: border-box;
 }
 
+.container-spacer {
+  margin-bottom: 3rem;
+}
+
 html,
 body {
   color: $teal-color;
@@ -13,7 +17,7 @@ body {
 
 body {
   background-color: $navy-color;
-  font-family: Quicksand;
+  font-family: 'Quicksand';
   margin: 0;
   min-height: 100%;
 }
@@ -33,6 +37,8 @@ body {
   height: 50px;
   margin: 0.5rem;
   min-width: 40%;
+  font-weight: bold;
+  font-family: 'Quicksand';
 
   .btn-icon {
     padding-right: 1rem;

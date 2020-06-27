@@ -1,8 +1,9 @@
-.authorization-form {
+.input-form {
   display: flex;
   flex-wrap: wrap;
   float: left;
-  font-weight: $font-weight-bold;
+  text-align: center;
+  font-weight: bold;
   justify-content: space-around;
   width: 100%;
 }
@@ -12,6 +13,9 @@
   font-size: 1rem;
   margin: 10px 40px -20px;
 }
+.wait-wut {
+  display: flex;
+}
 
 .form-box {
   border: 1px solid $teal-color;
@@ -19,7 +23,7 @@
   color: $teal-color;
   flex-direction: column;
   font-size: 2rem;
-  margin: 2rem 1rem 0;
+  margin: 1rem 1rem;
   text-align: center;
   text-decoration: none;
   width: 80%;
@@ -30,20 +34,21 @@
     border-top-right-radius: 13px;
     color: $navy-color;
     margin: 0;
-    padding: 1rem 1rem 0.5rem;
+    padding: 0.5rem 1rem 0.5rem 1.5rem;
     text-decoration: underline;
+    text-align: center;
 
     .form-title-text {
       font-size: 2.5rem;
     }
+
   }
 
-  ::placeholder {
-    color: $white-color;
-    opacity: 1;
+  .add-friend-form-title {
+    text-align: center;
   }
 
-  .authorization-field {
+  .input-field {
     background-color: $navy-color;
     border: $teal-color 2px solid;
     border-radius: 15px;
@@ -55,23 +60,39 @@
     width: 50%;
   }
 
-  .authorization-btn {
+
+  .input-field::placeholder {
+    color: $placeholder-color;
+  }
+
+  .input-btn {
     background-color: $teal-color;
     border: $teal-color 2px solid;
     border-radius: 15px;
     color: $navy-color;
     font-family: 'Quicksand';
     font-size: 2rem;
-    font-weight: $font-weight-bold;
-    margin: 2rem 1rem 1rem;
+    font-weight: bold;
+    margin: 0.5rem 1rem 1.5rem;
     min-height: 2rem;
     text-align: center;
-    width: 50%;
+    width: 55%;
+  }
+
+  .add-friend-btn {
+    margin: 0 1rem 1rem;
   }
 
   .form-cell {
-    margin: 2rem 0 0;
+    margin: 1rem 0 0;
   }
+}
+
+.local-form {
+  display: flex;
+  flex-direction: column;
+  width: 90%;
+  margin: 0 0.5em 20px;
 }
 
 .home-link {
@@ -84,6 +105,7 @@
 
 .login-link {
   margin-top: 1rem;
+  font-size: 1.2rem;
 
   a {
     color: $teal-color;

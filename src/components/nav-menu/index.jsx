@@ -27,7 +27,7 @@ class NavMenu extends Component {
         <Link className="nav-menu-link" to="/">
           <span className="fa fa-users" />
         </Link>
-        <Link className="nav-menu-link" to="/">
+        <Link className="nav-menu-link" to="/add-friend">
           <span className="fa fa-user-plus" />
         </Link>
         <span className="nav-menu-link" >

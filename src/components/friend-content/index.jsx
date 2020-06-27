@@ -75,20 +75,50 @@ const FriendContent = ({
       <div className="edit-space">
         <ModalConsumer>
           {({ showModal }) => (
-            <button
-              className="btn btn-primary"
-              onClick={() => showModal(Modal, {
-                isOpen: true,
-                username,
-                goalState,
-                setGoalState,
-                friendId,
-              })}
-            >
-              {'Edit goals'}
-            </button>
+            <div>
+              <button
+                className="btn btn-primary"
+                onClick={() => showModal(Modal, {
+                  isOpen: true,
+                  modalType: 'editGoals',
+                  username,
+                  goalState,
+                  setGoalState,
+                  friendId,
+                })}
+              >
+                {'Edit goals'}
+              </button>
+              <button
+                className="btn btn-primary"
+                onClick={() => showModal(Modal, {
+                  isOpen: true,
+                  modalType: 'updateFriend',
+                  username,
+                  goalState,
+                  setGoalState,
+                  friendId,
+                })}
+              >
+                {'Update friend info'}
+              </button>
+
+            </div>
           )}
         </ModalConsumer>
+        <button
+          className="btn btn-primary"
+          onClick={() => {}}
+          // showModal(Modal, {
+          //   isOpen: true,
+          //   username,
+          //   goalState,
+          //   setGoalState,
+          //   friendId,
+          // })}
+        >
+          {'Clear current goals'}
+        </button>
       </div>
     </div>
   );

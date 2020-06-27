@@ -8,7 +8,7 @@ const Login = () => (
   <Mutation mutation={LOGIN_USER}>
     {
       (loginUser, { data }) => (
-        <div className="login authorization-form">
+        <div className="login input-form">
           <div className="form-box">
             <div className="form-title">
               <span className="form-title-text">
@@ -55,24 +55,34 @@ const Login = () => (
                 render={({ errors, status, isSubmitting }) => (
                   <Form>
                     { errors.username && <div className="error-label">{errors.message}</div> }
-                    <div className="form-cell">Username</div>
-                    <Field
-                      name="username"
-                      className="authorization-field"
-                      placeholder="George Michael"
-                    />
-                    <div className="form-cell">Password</div>
-                    <Field
-                      name="password"
-                      type="password"
-                      className="authorization-field"
-                      placeholder="p@ssword"
-                    />
+                    <div className="modal-form local-form">
+                      <div className="modal-form-selects">
+                        <div className="modal-form-row login-form-row">
+                          <div className="modal-form-cell-label">Username:</div>
+                          <Field
+                            required
+                            name="username"
+                            className="modal-select registration-input"
+                            placeholder="billmurray"
+                          />
+                        </div>
+                        <div className="modal-form-row login-form-row">
+                          <div className="modal-form-cell-label">Password:</div>
+                          <Field
+                            required
+                            name="password"
+                            type="password"
+                            className="modal-select registration-input"
+                            placeholder="passward"
+                          />
+                        </div>
+                      </div>
+                    </div>
                     { status && status.msg && <div>{status.msg}</div> }
                     <button
                       type="submit"
                       disabled={isSubmitting}
-                      className="btn modal-btn authorization-btn"
+                      className="btn modal-btn input-btn"
                     >
                       Login
                     </button>
@@ -85,7 +95,7 @@ const Login = () => (
             data && data.loginUser && data.loginUser.username ?
               null :
               <div className="login-link">
-                <Link to="/registration">Not Registered? Click here to register!</Link>
+                <Link to="/registration">Not registered? Click here to register!</Link>
               </div>
           }
         </div>

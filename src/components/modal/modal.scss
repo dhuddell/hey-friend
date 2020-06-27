@@ -24,6 +24,7 @@
       border-radius: 20px;
       display: flex;
       font-weight: bold;
+      align-items: flex-start;
       font-size: 1.8rem;
       justify-content: space-between;
       margin: 0 auto;
@@ -42,22 +43,60 @@
   .modal-form-row {
     display: flex;
     justify-content: space-between;
+    align-items: center;
     margin: 20px 0 0;
+    min-height: 36px;
     text-align: left;
 
     .modal-form-cell-label {
       display: inline-block;
       font-size: 16pt;
-      font-weight: $font-weight-bold;
     }
+  }
+
+  .login-form-row {
+    margin: 2rem 0 0;
   }
 
   .modal-select {
     border: $navy-color 2px solid;
+    background-color: $white-color;
     color: $navy-color;
     padding: 0 10px;
     border-radius: 15px;
     outline: none;
+    font-size: 1rem;
+    margin: 0;
+    max-width: 100px;
+    min-height: 2rem;
+    width: 60%;
+  }
+
+  .registration-input {
+    max-width: 125px;
+  }
+  
+  .modal-select::placeholder {
+    color: $placeholder-color;
+  }
+
+  .input-field {
+    background-color: $navy-color;
+    border: $teal-color 2px solid;
+    border-radius: 15px;
+    color: $white-color;
+    font-size: 1rem;
+    margin: 0;
+    min-height: 2rem;
+    padding: 0 1rem;
+    width: 50%;
+  }
+
+  .modal-text {
+    border: $navy-color 2px solid;
+    color: $navy-color;
+    padding: 0 10px;
+    border-radius: 15px;
     font-size: 1rem;
     margin: 0;
     max-width: 100px;
@@ -73,5 +112,7 @@
 .modal-close-btn {
   background: $navy-color;
   color: $teal-color;
+  font-size: 20pt;
+  width: 24px;
   border: 0;
 }

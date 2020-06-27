@@ -1,11 +1,10 @@
 import React from 'react';
 import { Mutation } from 'react-apollo';
 import { Formik, Form, Field } from 'formik';
+import { renderGoalOptions } from '../../utils';
 import { UPDATE_FRIEND_GOALS } from '../../graphql/mutations';
 
-const twentyArray = Array.from(Array(21).keys());
-
-const ModalContent = ({
+const UpdateFriendModalContent = ({
   onRequestClose,
   username,
   friendId,
@@ -79,22 +78,18 @@ const ModalContent = ({
                   name="targetPhone"
                   className="modal-select"
                 >
-                  {
-                    twentyArray.map((val) => <option value={val} key={val}>{val}</option>)
-                  }
+                  {renderGoalOptions()}
                 </Field>
               </div>
               <div className="modal-form-row">
-                <span className="modal-form-cell-label">Text message goal: </span>
+                <span className="modal-form-cell-label">Text msg goal: </span>
                 <Field
                   defaultValue={goalState.goals.targetText.toString()}
                   component="select"
                   name="targetText"
                   className="modal-select"
                 >
-                  {
-                    twentyArray.map((val) => <option value={val} key={val}>{val}</option>)
-                  }
+                  {renderGoalOptions()}
                 </Field>
               </div>
               <div className="modal-form-row">
@@ -105,13 +100,11 @@ const ModalContent = ({
                   name="targetBeer"
                   className="modal-select"
                 >
-                  {
-                    twentyArray.map((val) => <option value={val} key={val}>{val}</option>)
-                  }
+                  {renderGoalOptions()}
                 </Field>
               </div>
               <div className="modal-form-row">
-                <span className="modal-form-cell-label">Length of time: </span>
+                <span className="modal-form-cell-label">Timeframe:: </span>
                 <Field
                   defaultValue={goalState.goals.cadence}
                   component="select"
@@ -135,4 +128,4 @@ const ModalContent = ({
   </Mutation>
 );
 
-export default ModalContent;
+export default UpdateFriendModalContent;

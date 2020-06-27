@@ -1,6 +1,6 @@
 import React from 'react';
 
-const FriendCreationComponent = ({ showModal }) => (
+const FriendCreation = ({ showModal }) => (
   <div className="content-wrapper">
     <div className="bio-space">
       <div className="friend-info">
@@ -45,4 +45,4 @@ const FriendCreationComponent = ({ showModal }) => (
   </div>
 );
 
-export default FriendCreationComponent;
+export default FriendCreation;

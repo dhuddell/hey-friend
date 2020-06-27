@@ -10,7 +10,7 @@ module.exports = merge(common, {
   mode: 'development',
   devtool: 'inline-source-map',
   entry: {
-    app: './src/app.jsx',
+    app: './src/index.jsx',
   },
   devServer: {
     port: 3000,

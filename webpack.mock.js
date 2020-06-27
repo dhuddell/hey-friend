@@ -11,7 +11,7 @@ module.exports = () => {
     mode: 'development',
     devtool: 'inline-source-map',
     entry: {
-      app: './src/app.jsx',
+      app: './src/index.jsx',
     },
     devServer: {
       port: 3000,
@@ -22,6 +22,9 @@ module.exports = () => {
     },
     node: {
       fs: 'empty',
+    },
+    output: {
+      publicPath: '/',
     },
     module: {
       rules: [

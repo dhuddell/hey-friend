@@ -9,7 +9,7 @@ import {
   AppError,
 } from '..';
 
-const Friend = (props) => {
+const FriendPage = (props) => {
   const { username, friendId } = props.match.params;
 
   const userLoggedIn = localStorage.getItem('username') === username;
@@ -36,4 +36,4 @@ const Friend = (props) => {
   );
 };
 
-export default Friend;
+export default FriendPage;

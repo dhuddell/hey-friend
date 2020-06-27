@@ -1,6 +1,8 @@
 import React from 'react';
 import { useQuery } from '@apollo/react-hooks';
 import { Redirect } from 'react-router-dom';
+
+import { useToasts } from 'react-toast-notifications';
 import { FRIENDS_QUERY } from '../../graphql/queries';
 import {
   AppLoading,
@@ -10,8 +12,14 @@ import {
 
 const Home = () => {
   const username = localStorage.getItem('username') || null;
+  const { addToast } = useToasts();
 
   if (!username) {
+    addToast('Need to auth!', {
+      appearance: 'error',
+      // currently broken.
+      onDismiss: () => <Redirect to="/login" />,
+    });
     alert('Need to auth!'); // eslint-disable-line
     return <Redirect to="/login" />;
   }

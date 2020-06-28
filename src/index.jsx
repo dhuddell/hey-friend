@@ -29,16 +29,14 @@ class App extends Component {
               <div className="app-container">
                 <Header />
                 <NavMenu />
-                <div className="container-spacer" >
-                  <Switch>
-                    <Route exact path="/" component={Home} />
-                    <Route path="/settings" component={Settings} />
-                    <Route path="/registration" component={Registration} />
-                    <Route path="/login" component={Login} />
-                    <Route path="/add-friend" component={AddFriend} />
-                    <Route path="/:username/friends/:friendId" component={FriendPage} />
-                  </Switch>
-                </div>
+                <Switch>
+                  <Route exact path="/" component={Home} />
+                  <Route path="/settings" component={Settings} />
+                  <Route path="/registration" component={Registration} />
+                  <Route path="/login" component={Login} />
+                  <Route path="/add-friend" component={AddFriend} />
+                  <Route path="/:username/friends/:friendId" component={FriendPage} />
+                </Switch>
               </div>
             </Router>
           </ToastProvider>

@@ -1,8 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-const FriendItem = ({ data, username }) => {
-  const { name, icon, friendId, friendScore } = data;
+const FriendItem = ({ friend, username }) => {
+  const { name, icon, friendId, friendScore } = friend;
 
   const maxScoreClass = friendScore === 100 ? 'max-score' : '';
   const friendScoreStyle = {

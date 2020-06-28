@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 const Settings = () => (
-  <div className="settings-page" >
+  <div className="settings-page content-wrapper" >
     <div className="settings-header">
       <h3>Here are your SETTINGS!</h3>
     </div>

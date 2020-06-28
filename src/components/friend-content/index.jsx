@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
+import { useToasts } from 'react-toast-notifications';
+import { useMutation } from '@apollo/react-hooks';
 import { ModalConsumer } from '../../modal-context';
+import { REMOVE_FRIEND, CLEAR_CURRENT_GOALS } from '../../graphql/mutations';
 import { FriendGoal, Modal } from '..';
+import { Redirect } from 'react-router-dom';
 
-// CONSTANTIZE A BUNCH OF STUFF
-// CONSTANTIZE A BUNCH OF STUFF
 // CONSTANTIZE A BUNCH OF STUFF
 // Currently does not rerender the style of the icon
 const FriendContent = ({
@@ -12,7 +14,13 @@ const FriendContent = ({
   friendId,
 }) => {
   const { name, icon, description, goals, friendScore } = friend;
+  const { addToast } = useToasts();
+
   const [goalState, setGoalState] = useState({ goals, friendScore });
+  const [friendInfoState, setFriendInfoState] = useState({ name, icon, description });
+
+  const [removeFriend] = useMutation(REMOVE_FRIEND);
+  const [clearCurrentGoals] = useMutation(CLEAR_CURRENT_GOALS);
 
   const maxScoreClass = friendScore === 100 ? 'details-max-score' : '';
   const friendScoreStyle = {
@@ -21,17 +29,45 @@ const FriendContent = ({
     fontSize: `${(goalState.friendScore / 100 * 3)}em`,
   };
 
+  const handleDelete = async () => {
+    if (window.confirm('Are you sure you want to remove friend?')) {
+      await removeFriend({ variables: { removeFriendInput: { username, friendId } } });
+      addToast('Friend removed!', { appearance: 'success' });
+
+      // not working
+      return <Redirect to="/login" />;
+    }
+  };
+
+  const handleClear = async () => {
+    if (window.confirm('Are you sure you want to clear your current goals?')) {
+      const clearGoalsResponse = await clearCurrentGoals({
+        variables: {
+          clearCurrentGoalsInput: {
+            username,
+            friendId,
+            goals: { currentBeer: 0, currentPhone: 0, currentText: 0 },
+          },
+        },
+      });
+
+      const updatedGoalState = clearGoalsResponse.data.updateFriend;
+      setGoalState({ goals: updatedGoalState.goals, friendScore: updatedGoalState.friendScore });
+      addToast('Current goals cleared!', { appearance: 'success' });
+    }
+  };
+
   return (
     <div className="content-wrapper">
       <div className="bio-space">
         <div className="friend-info">
-          <p className="friend-name">{name}</p>
-          <p className="friend-description">{description}</p>
+          <p className="friend-name">{friendInfoState.name}</p>
+          <p className="friend-description">{friendInfoState.description}</p>
         </div>
         <div className="icon-container">
           <div className={`icon-outer-circle ${maxScoreClass}`}>
             <div className={'inner-icon-container'} style={friendScoreStyle}>
-              <i className={`fa ${icon} friend-icon inner-friend-icon`} />
+              <i className={`fa ${friendInfoState.icon} friend-icon inner-friend-icon`} />
             </div>
           </div>
         </div>
@@ -95,12 +131,14 @@ const FriendContent = ({
                   isOpen: true,
                   modalType: 'updateFriend',
                   username,
-                  goalState,
-                  setGoalState,
+                  name,
+                  icon,
+                  friendInfoState,
+                  setFriendInfoState,
                   friendId,
                 })}
               >
-                {'Update friend info'}
+                {'Update friend'}
               </button>
 
             </div>
@@ -108,16 +146,15 @@ const FriendContent = ({
         </ModalConsumer>
         <button
           className="btn btn-primary"
-          onClick={() => {}}
-          // showModal(Modal, {
-          //   isOpen: true,
-          //   username,
-          //   goalState,
-          //   setGoalState,
-          //   friendId,
-          // })}
+          onClick={handleClear}
         >
-          {'Clear current goals'}
+          {'Clear current'}
+        </button>
+        <button
+          className="btn btn-primary"
+          onClick={handleDelete}
+        >
+          {'Delete friend'}
         </button>
       </div>
     </div>

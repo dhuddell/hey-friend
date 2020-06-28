@@ -3,7 +3,6 @@ import { Redirect } from 'react-router-dom';
 import { useQuery } from '@apollo/react-hooks';
 import { FRIEND_QUERY } from '../../graphql/queries';
 import {
-  // FriendCreationComponent,
   FriendContent,
   AppLoading,
   AppError,
@@ -26,7 +25,6 @@ const FriendPage = (props) => {
 
   return (
     <Fragment>
-      {/* <FriendCreationComponent showModal={this.showModal} /> */}
       <FriendContent
         friend={data.friend}
         username={username}

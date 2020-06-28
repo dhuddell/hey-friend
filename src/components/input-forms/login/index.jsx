@@ -8,7 +8,7 @@ const Login = () => (
   <Mutation mutation={LOGIN_USER}>
     {
       (loginUser, { data }) => (
-        <div className="login input-form">
+        <div className="login input-form content-wrapper">
           <div className="form-box">
             <div className="form-title">
               <span className="form-title-text">

@@ -8,7 +8,7 @@ const Registration = () => (
   <Mutation mutation={REGISTER_USER}>
     {
       (registerUser, { data }) => (
-        <div className="registration input-form">
+        <div className="registration input-form content-wrapper">
           <div className="form-box">
             <div className="form-title">
               <span className="form-title-text">

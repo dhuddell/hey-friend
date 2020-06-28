@@ -4,11 +4,8 @@ import { UpdateFriendModalContent, EditGoalsModalContent } from '..';
 
 const Modal = ({
   onRequestClose,
-  goalState,
   modalType,
-  setGoalState,
-  username,
-  friendId,
+  ...props
 }) => (
   <ReactModal
     className="modal"
@@ -18,7 +15,13 @@ const Modal = ({
   >
     <section className="modal-main">
       <div className="modal-header">
-        <span className="modal-header-title">{'Update your goals'}</span>
+        <span className="modal-header-title">
+          {
+            modalType === 'updateFriend' ?
+              'Update friend info' :
+              'Edit your goals'
+          }
+        </span>
         <button className="modal-close-btn fa fa-times" onClick={onRequestClose} />
       </div>
       <div className="modal-content">
@@ -26,17 +29,11 @@ const Modal = ({
           modalType === 'updateFriend' ?
             <UpdateFriendModalContent
               onRequestClose={onRequestClose}
-              goalState={goalState}
-              setGoalState={setGoalState}
-              username={username}
-              friendId={friendId}
+              props={props}
             /> :
             <EditGoalsModalContent
               onRequestClose={onRequestClose}
-              goalState={goalState}
-              setGoalState={setGoalState}
-              username={username}
-              friendId={friendId}
+              props={props}
             />
         }
       </div>

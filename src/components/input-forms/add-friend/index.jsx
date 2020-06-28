@@ -11,7 +11,7 @@ const AddFriend = () => {
   const { addToast } = useToasts();
 
   return (
-    <div className="add-friend input-form">
+    <div className="add-friend input-form content-wrapper">
       <div className="form-box">
         <div className="form-title add-friend-form-title">
           <span className="form-title-text">
@@ -43,7 +43,6 @@ const AddFriend = () => {
                 }
 
                 addToast('They\'re added!', { appearance: 'success' });
-
               } catch (e) {
                 if (e.graphQLErrors) {
                   const errors = e.graphQLErrors.map((error) => error.message);
@@ -80,6 +79,16 @@ const AddFriend = () => {
                         placeholder="He's jiggy with it."
                       />
                     </div>
+                    {/* ICON ICON ICON
+                    <div className="modal-form-row">
+                      <div className="modal-form-cell-label">Description:</div>
+                      <Field
+                        name="icon"
+                        required
+                        className="modal-select"
+                        placeholder="fa-plus"
+                      />
+                    </div> */}
                     <div className="modal-form-row">
                       <span className="modal-form-cell-label">Get a beer goal: </span>
                       <Field

@@ -4,7 +4,6 @@ export { default as AppLoading } from './app-loading';
 export { default as FriendPage } from './friend-page';
 export { default as FriendGoal } from './friend-goal';
 export { default as FriendItem } from './friend-item';
-export { default as FriendItems } from './friend-items';
 export { default as FriendContent } from './friend-content';
 export { default as FriendCreation } from './friend-creation';
 export { default as Header } from './header';

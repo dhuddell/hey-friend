@@ -7,7 +7,7 @@ import { FRIENDS_QUERY } from '../../graphql/queries';
 import {
   AppLoading,
   AppError,
-  FriendItems,
+  FriendItem,
 } from '..';
 
 const Home = () => {
@@ -31,7 +31,11 @@ const Home = () => {
   if (loading) return <AppLoading />;
   if (error) return <AppError error={error} />;
 
-  return <FriendItems friends={data.friends} username={username} />;
+  return (
+    <div className="friend-items content-wrapper">
+      {data.friends.map((friend) => <FriendItem friend={friend} key={friend.name} username={username} />)}
+    </div>
+  );
 };
 
 export default Home;

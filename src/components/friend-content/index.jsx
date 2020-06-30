@@ -4,7 +4,7 @@ import { useMutation } from '@apollo/react-hooks';
 import { ModalConsumer } from '../../modal-context';
 import { REMOVE_FRIEND, CLEAR_CURRENT_GOALS } from '../../graphql/mutations';
 import { FriendGoal, Modal } from '..';
-import { Redirect } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 
 // CONSTANTIZE A BUNCH OF STUFF
 // Currently does not rerender the style of the icon
@@ -16,6 +16,7 @@ const FriendContent = ({
   const { name, icon, description, goals, friendScore } = friend;
   const { addToast } = useToasts();
 
+  const history = useHistory();
   const [goalState, setGoalState] = useState({ goals, friendScore });
   const [friendInfoState, setFriendInfoState] = useState({ name, icon, description });
 
@@ -23,6 +24,7 @@ const FriendContent = ({
   const [clearCurrentGoals] = useMutation(CLEAR_CURRENT_GOALS);
 
   const maxScoreClass = friendScore === 100 ? 'details-max-score' : '';
+  // 6/29/2020 need to figure out how to get this to re-render
   const friendScoreStyle = {
     height: `${goalState.friendScore}%`,
     width: `${goalState.friendScore}%`,
@@ -32,10 +34,13 @@ const FriendContent = ({
   const handleDelete = async () => {
     if (window.confirm('Are you sure you want to remove friend?')) {
       await removeFriend({ variables: { removeFriendInput: { username, friendId } } });
-      addToast('Friend removed!', { appearance: 'success' });
+      addToast('Friend removed!', {
+        autoDismissTimeout: 2500,
+        autoDismiss: true,
+        appearance: 'success',
+      });
 
-      // not working
-      return <Redirect to="/login" />;
+      return history.push('/');
     }
   };
 
@@ -53,7 +58,11 @@ const FriendContent = ({
 
       const updatedGoalState = clearGoalsResponse.data.updateFriend;
       setGoalState({ goals: updatedGoalState.goals, friendScore: updatedGoalState.friendScore });
-      addToast('Current goals cleared!', { appearance: 'success' });
+      addToast('Current goals cleared!', {
+        autoDismissTimeout: 2500,
+        autoDismiss: true,
+        appearance: 'success',
+      });
     }
   };
 
@@ -67,7 +76,7 @@ const FriendContent = ({
         <div className="icon-container">
           <div className={`icon-outer-circle ${maxScoreClass}`}>
             <div className={'inner-icon-container'} style={friendScoreStyle}>
-              <i className={`fa ${friendInfoState.icon} friend-icon inner-friend-icon`} />
+              <i className={`${friendInfoState.icon} friend-icon inner-friend-icon`} />
             </div>
           </div>
         </div>
@@ -75,14 +84,14 @@ const FriendContent = ({
 
       <div className="goal-space">
         <div className="goal-header">
-          <h3 className="goal-title">{'Goal Value'}</h3>
+          <h3 className="goal-title">{'Target Goal'}</h3>
           <h3 className="goal-title">{'Action'}</h3>
           <h3 className="goal-title">{'Current Value'}</h3>
         </div>
         <div className="friend-goals">
           <FriendGoal
             type="Phone"
-            icon="phone"
+            icon="fa fa-phone"
             username={username}
             friendId={friendId}
             goalState={goalState}
@@ -90,7 +99,7 @@ const FriendContent = ({
           />
           <FriendGoal
             type="Text"
-            icon="comment"
+            icon="fa fa-comment"
             username={username}
             friendId={friendId}
             goalState={goalState}
@@ -99,7 +108,7 @@ const FriendContent = ({
           <FriendGoal
             className="last-goal-element"
             type="Beer"
-            icon="beer"
+            icon="fa fa-beer"
             username={username}
             friendId={friendId}
             goalState={goalState}
@@ -154,7 +163,7 @@ const FriendContent = ({
           className="btn btn-primary"
           onClick={handleDelete}
         >
-          {'Delete friend'}
+          {'Remove friend'}
         </button>
       </div>
     </div>

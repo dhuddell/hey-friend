@@ -61,7 +61,7 @@ const FriendGoal = ({
       <div className="target-goal-text-container">
         <p className="target-goal-text goal-text">{goalState.goals[targetKey]}</p>
       </div>
-      <i className={`fa fa-${icon} goal-icon`} />
+      <i className={`${icon} goal-icon`} />
       <div className="current-goal-container">
         <div className="current-goal-value">
           <p className="current-goal-text goal-text">{`${goalState.goals[currentGoalKey]}`}</p>

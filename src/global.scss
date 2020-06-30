@@ -42,6 +42,11 @@ body {
   }
 }
 
+.link-no-style {
+  text-decoration: none;
+  color: $navy-color;
+}
+
 .btn-primary {
   background-color: $teal-color;
   color: $navy-color;

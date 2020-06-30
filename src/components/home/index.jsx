@@ -1,6 +1,6 @@
 import React from 'react';
 import { useQuery } from '@apollo/react-hooks';
-import { Redirect } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 
 import { useToasts } from 'react-toast-notifications';
 import { FRIENDS_QUERY } from '../../graphql/queries';
@@ -15,17 +15,18 @@ const Home = () => {
   const { addToast } = useToasts();
 
   if (!username) {
-    addToast('Need to auth!', {
+    addToast('Please sign in', {
       appearance: 'error',
-      // currently broken.
-      onDismiss: () => <Redirect to="/login" />,
+      autoDismissTimeout: 2500,
+      autoDismiss: true,
     });
-    alert('Need to auth!'); // eslint-disable-line
+
     return <Redirect to="/login" />;
   }
 
   const { data, error, loading } = useQuery(FRIENDS_QUERY, {
     variables: { username },
+    fetchPolicy: 'no-cache',
   });
 
   if (loading) return <AppLoading />;
@@ -33,7 +34,14 @@ const Home = () => {
 
   return (
     <div className="friend-items content-wrapper">
-      {data.friends.map((friend) => <FriendItem friend={friend} key={friend.name} username={username} />)}
+      {
+        data.friends.length
+          ? data.friends.map((friend) =>
+            <FriendItem friend={friend} key={friend.name} username={username} />)
+          : <button className="btn btn-primary">
+            <Link className="link-no-style" to="/add-friend">Add a friend!</Link>
+          </button>
+      }
     </div>
   );
 };

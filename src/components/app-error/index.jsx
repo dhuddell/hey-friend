@@ -1,9 +1,21 @@
-import React, { Fragment } from 'react';
+import React from 'react';
+import { useHistory } from 'react-router-dom';
 
 const getRandom = (min, max) => {
   const float = Math.random() * (max - min) + min;
   return Math.ceil(float);
 };
+
+const logOut = () => {
+  const history = useHistory();
+  window.localStorage.removeItem('token');
+  window.localStorage.removeItem('username');
+  return history.push('/login');
+};
+
+const renderBill = (width, height) => (
+  <img src={`https://www.fillmurray.com/${width}/${height}`} />
+);
 
 const AppError = ({ error }) => {
   const width = getRandom(210, 340);
@@ -16,21 +28,29 @@ const AppError = ({ error }) => {
 
     if (error.networkError.statusCode >= 500) {
       return (
-        <Fragment>
-          <h2>Sorry, you got a 500 error.</h2>
-          <h3>Bill Murray.</h3>
-          <img src={`https://www.fillmurray.com/${width}/${height}`} />
-        </Fragment>
+        <div className="content-wrapper">
+          <h3>I&apos;ve got 500 errors, and this one</h3>
+          <h2>Bill Murray.</h2>
+          {renderBill(width, height)}
+        </div>
       );
     }
 
-    if (error.networkError.statusCode === 404) {
+    if ([400, 401, 403, 404].includes(error.networkError.statusCode)) {
       return (
-        <Fragment>
-          <h2>So, I think you&apos;re lost, 404.</h2>
-          <h3>Bill Murray.</h3>
-          <img src={`https://www.fillmurray.com/${width}/${height}`} />
-        </Fragment>
+        <div className="content-wrapper">
+          <h3>{`You're lost bub, ${error.networkError.statusCode}`}</h3>
+          <h2>Bill Murray.</h2>
+          {renderBill(width, height)}
+          <div>
+            <button
+              className="btn btn-primary"
+              onClick={logOut}
+            >
+              {'Try logging out and logging in'}
+            </button>
+          </div>
+        </div>
       );
     }
   }
@@ -41,13 +61,19 @@ const AppError = ({ error }) => {
     console.log('<<<<<<<<<<GraphQL Errors');
 
     return (
-      <Fragment>
-        <h2>Sorry, Graph Q. L. is acting up.</h2>
-        <h3>Bill Murray.</h3>
-        <img src={`https://www.fillmurray.com/${width}/${height}`} />
-        {/* this is where we'd have log out */}
-        <h3>Try logging out and logging in</h3>
-      </Fragment>
+      <div className="content-wrapper">
+        <h3>This is an error, I blame Dan</h3>
+        <h2>Bill Murray.</h2>
+        {renderBill(width, height)}
+        <div>
+          <button
+            className="btn btn-primary"
+            onClick={logOut}
+          >
+            {'Try logging out and logging in'}
+          </button>
+        </div>
+      </div>
     );
   }
 

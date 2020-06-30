@@ -17,9 +17,6 @@ module.exports = () => {
     devServer: {
       port: 3000,
       historyApiFallback: true,
-      proxy: {
-        '/': process.env.SERVE_HEY_FRIEND,
-      },
     },
     // maybe works?
     devtool: 'inline-source-map',

@@ -1,14 +1,34 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 import { useMutation } from '@apollo/react-hooks';
 import { useToasts } from 'react-toast-notifications';
 import { Formik, Form, Field } from 'formik';
 import { renderGoalOptions } from '../../../utils';
 import { ADD_FRIEND } from '../../../graphql/mutations';
 
+const initialValues = {
+  name: '',
+  description: '',
+  targetText: 0,
+  targetPhone: 0,
+  targetBeer: 0,
+  cadence: 'Monthly',
+};
+
 const AddFriend = () => {
+  const username = localStorage.getItem('username') || null;
   const [addFriendToUser, { data }] = useMutation(ADD_FRIEND);
   const { addToast } = useToasts();
+
+  if (!username) {
+    addToast('Please sign in', {
+      appearance: 'error',
+      autoDismissTimeout: 2500,
+      autoDismiss: true,
+    });
+
+    return <Redirect to="/login" />;
+  }
 
   return (
     <div className="add-friend input-form content-wrapper">
@@ -21,15 +41,32 @@ const AddFriend = () => {
         { data && data.addFriendToUser && data.addFriendToUser.name
           ? <div>
             <p>{`Thanks for adding ${data.addFriendToUser.name}!`}</p>
+            <div className="home-link" onClick={() => {data.addFriendToUser = {};}}>
+              <Link to="/add-friend">{'Add another friend?'}!</Link>
+            </div>
             <div className="home-link">
               <Link to="/">{'Go see your friends!'}!</Link>
             </div>
           </div>
           : <Formik
-            intialValues={{ username: '', password: '', name: '', email: '' }}
-            onSubmit={async ({ username, password, name, email }, { setSubmitting, setErrors }) => {
+            intialValues={initialValues}
+            onSubmit={async ({ name, description, targetText, targetPhone, targetBeer, cadence },
+              { setSubmitting, setErrors }) => {
               const addFriendInput = {
-                variables: { addFriendInput: { username, password, name, email } },
+                variables: {
+                  addFriendInput: {
+                    username,
+                    name,
+                    description,
+                    icon: 'fab fa-500px', // 2020 HARD CODED UNTIL ICON PICKER
+                    goals: {
+                      targetText: parseInt(targetText, 10),
+                      targetPhone: parseInt(targetPhone, 10),
+                      targetBeer: parseInt(targetBeer, 10),
+                      cadence,
+                    },
+                  },
+                },
               };
 
               try {
@@ -37,20 +74,26 @@ const AddFriend = () => {
                 const addFriendData = response.data.addFriendToUser;
 
                 if (!addFriendData.username) {
-                  setErrors({ username, password, name, email, message: addFriendData.message });
-                  console.log('Registration error: ', addFriendData.message); // eslint-disable-line
+                  setErrors({ username, name, message: addFriendData.message });
+                  console.log('Registration error: ', addFriendData.message);
                   setSubmitting(false);
                 }
 
-                addToast('They\'re added!', { appearance: 'success' });
+                addToast('Friend added!', {
+                  appearance: 'success',
+                  autoDismissTimeout: 2500,
+                  autoDismiss: true,
+                });
+
+                return <Redirect to="/" />;
               } catch (e) {
                 if (e.graphQLErrors) {
                   const errors = e.graphQLErrors.map((error) => error.message);
-                  console.log(errors); // eslint-disable-line
+                  console.log(errors);
                   setSubmitting(false);
-                  setErrors({ username, password, name, email, errors });
+                  setErrors({ username, name, errors });
                 } else {
-                  console.log(e); // eslint-disable-line
+                  console.log(e);
                   throw Error('Error object did not have graphQLErrors');
                 }
               }
@@ -90,7 +133,7 @@ const AddFriend = () => {
                       />
                     </div> */}
                     <div className="modal-form-row">
-                      <span className="modal-form-cell-label">Get a beer goal: </span>
+                      <span className="modal-form-cell-label">Phone call goal: </span>
                       <Field
                         name="targetPhone"
                         required
@@ -102,7 +145,7 @@ const AddFriend = () => {
                       </Field>
                     </div>
                     <div className="modal-form-row">
-                      <span className="modal-form-cell-label">Get a beer goal: </span>
+                      <span className="modal-form-cell-label">Text msg goal: </span>
                       <Field
                         name="targetText"
                         required
@@ -128,10 +171,10 @@ const AddFriend = () => {
                     <div className="modal-form-row">
                       <span className="modal-form-cell-label">Timeframe: </span>
                       <Field
-                        defaultValue={'Monthly'}
-                        required
-                        component="select"
                         name="cadence"
+                        required
+                        defaultValue={'Monthly'}
+                        component="select"
                         className="modal-select"
                       >
                         <option value="Daily">Daily</option>

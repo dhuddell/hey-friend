@@ -17,18 +17,10 @@ const schema = makeExecutableSchema({
 
 const latency = process ? process.env.GRAPHQL_LATENCY : 0;
 
-// if (typeof process !== 'undefined') {
-//   latency = process.env.GRAPHQL_LATENCY;
-// }
-
 // updateUser(updateUserInput: UpdateUserInput!): User
-// updateFriendInfo(updateFriendInfoInput: UpdateFriendInfoInput!): Friend
-// updateFriendGoals(updateFriendGoalsInput: UpdateFriendGoalsInput!): Friend
 // updateCurrentGoal(updateCurrentGoalInput: UpdateCurrentGoalInput!): UpdateGoalResponse
-
 // removeUser(username: String): ConfirmationResponse
 // removeUsers(ignoreString: String): ConfirmationResponse
-// removeFriend(removeFriendInput: RemoveFriendInput!): ConfirmationResponse
 // removeFriends(username: String!): ConfirmationResponse
 
 const mocks = {
@@ -37,6 +29,7 @@ const mocks = {
     registerUser: () => new Promise((resolve) => setTimeout(() => resolve(registrationResponse), latency)),
     updateFriendInfo: () => new Promise((resolve) => setTimeout(() => resolve(friendResponse), latency)),
     updateFriendGoals: () => new Promise((resolve) => setTimeout(() => resolve(friendResponse), latency)),
+    updateCurrentGoal: () => new Promise((resolve) => setTimeout(() => resolve(friendResponse), latency)),
     AddFriendToUser: () => new Promise((resolve) => setTimeout(() => resolve(friendResponse), latency)),
     removeFriend: () => new Promise((resolve) => setTimeout(() => resolve({ message: 'Deleted.' }), latency)),
   }),

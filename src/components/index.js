@@ -9,7 +9,7 @@ export { default as FriendCreation } from './friend-creation';
 export { default as Header } from './header';
 export { default as Modal } from './modal';
 export { default as NavMenu } from './nav-menu';
-export { default as UpdateFriendModalContent } from './update-friend-modal-content';
+export { default as UpdateFriendInfoModalContent } from './update-friend-info-modal-content';
 export { default as EditGoalsModalContent } from './edit-goals-modal-content';
 export { default as AddFriend } from './input-forms/add-friend';
 export { default as Registration } from './input-forms/registration';

@@ -103,9 +103,9 @@ const Login = () => {
               }
             </div>
             {
-              data?.loginUser?.username &&
+              !data?.loginUser?.username &&
                 <div className="login-link">
-                  <Link to="/registration">Not registered? Click here to register!</Link>
+                  Not registered? <Link to="/registration"> Click here to register!</Link>
                 </div>
             }
           </div>

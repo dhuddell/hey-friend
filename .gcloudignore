@@ -13,6 +13,7 @@
 # below:
 .git
 .gitignore
+.env.dev
 
 # Prevent webpack from being uploaded
 dist

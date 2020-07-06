@@ -3,14 +3,14 @@ import { Mutation } from 'react-apollo';
 import { Formik, Form, Field } from 'formik';
 import { UPDATE_FRIEND_INFO } from '../../graphql/mutations';
 
-const UpdateFriendModalContent = ({
+const UpdateFriendInfoModalContent = ({
   onRequestClose,
   props,
 }) => {
   const { username, friendId, friendInfoState, setFriendInfoState } = props;
   return (
     <Mutation mutation={UPDATE_FRIEND_INFO}>
-      {(updateFriend) => (
+      {(updateFriendInfo) => (
         <Formik
           className="modal-form"
 
@@ -32,7 +32,7 @@ const UpdateFriendModalContent = ({
             };
 
             try {
-              const response = await updateFriend(updateFriendInfoInput);
+              const response = await updateFriendInfo(updateFriendInfoInput);
               const { name, description, icon } = response.data.updateFriendInfo;
               setFriendInfoState({ name, description, icon });
               setSubmitting(false);
@@ -98,4 +98,4 @@ const UpdateFriendModalContent = ({
   );
 };
 
-export default UpdateFriendModalContent;
+export default UpdateFriendInfoModalContent;

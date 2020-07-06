@@ -1,10 +1,17 @@
 
 require('@babel/polyfill');
 require('dotenv').config();
+const dotenv = require('dotenv');
 const Webpack = require('webpack');
 const autoprefixer = require('autoprefixer');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+
+const env = dotenv.config({ path: './.env.dev' }).parsed;
+const envKeys = Object.keys(env).reduce((prev, next) => {
+  prev[`process.env.${next}`] = JSON.stringify(env[next]);
+  return prev;
+}, {});
 
 module.exports = () => {
   const config = {
@@ -82,6 +89,7 @@ module.exports = () => {
         /graphql\/http-link.js/,
         './schema-link.js'
       ),
+      new Webpack.DefinePlugin(envKeys),
     ],
   };
 

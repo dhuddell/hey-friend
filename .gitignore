@@ -4,6 +4,7 @@ coverage
 build
 npm-debug.log
 .env
+.env.dev
 .DS_Store
 dist
 app.yaml

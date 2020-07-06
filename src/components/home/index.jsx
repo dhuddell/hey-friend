@@ -15,7 +15,7 @@ const Home = () => {
   const { addToast } = useToasts();
 
   if (!username) {
-    addToast('Please sign in', {
+    addToast('Please log in or register', {
       appearance: 'error',
       autoDismissTimeout: 2500,
       autoDismiss: true,

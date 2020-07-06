@@ -1,8 +1,17 @@
 const merge = require('webpack-merge');
 const common = require('./webpack.common.js')();
+const dotenv = require('dotenv');
+const webpack = require('webpack');
 const ManifestPlugin = require('webpack-manifest-plugin');
 const SWPrecacheWebpackPlugin = require('sw-precache-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
+
+const env = dotenv.config().parsed;
+
+const envKeys = Object.keys(env).reduce((prev, next) => {
+  prev[`process.env.${next}`] = JSON.stringify(env[next]);
+  return prev;
+}, {});
 
 module.exports = merge(common, {
   mode: 'production',
@@ -33,5 +42,6 @@ module.exports = merge(common, {
         { from: 'src/pwa' }, // define the path of the files to be copied
       ],
     }),
+    new webpack.DefinePlugin(envKeys),
   ],
 });

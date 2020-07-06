@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactModal from 'react-modal';
-import { UpdateFriendModalContent, EditGoalsModalContent } from '..';
+import { UpdateFriendInfoModalContent, EditGoalsModalContent } from '..';
 
 const Modal = ({
   onRequestClose,
@@ -17,7 +17,7 @@ const Modal = ({
       <div className="modal-header">
         <span className="modal-header-title">
           {
-            modalType === 'updateFriend' ?
+            modalType === 'updateFriendInfo' ?
               'Update friend info' :
               'Edit your goals'
           }
@@ -26,8 +26,8 @@ const Modal = ({
       </div>
       <div className="modal-content">
         {
-          modalType === 'updateFriend' ?
-            <UpdateFriendModalContent
+          modalType === 'updateFriendInfo' ?
+            <UpdateFriendInfoModalContent
               onRequestClose={onRequestClose}
               props={props}
             /> :

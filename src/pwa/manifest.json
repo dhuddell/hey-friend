@@ -16,7 +16,7 @@
   ],
   "start_url": "/?source=pwa",
   "background_color": "#123456",  
-  "display": "minimal-ui",
+  "display": "fullscreen",
   "scope": "/",
   "theme_color": "#00ffb1",
   "shortcuts": [

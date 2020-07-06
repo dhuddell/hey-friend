@@ -56,7 +56,7 @@ const FriendContent = ({
         },
       });
 
-      const updatedGoalState = clearGoalsResponse.data.updateFriend;
+      const updatedGoalState = clearGoalsResponse.data.updateFriendGoals;
       setGoalState({ goals: updatedGoalState.goals, friendScore: updatedGoalState.friendScore });
       addToast('Current goals cleared!', {
         autoDismissTimeout: 2500,
@@ -138,7 +138,7 @@ const FriendContent = ({
                 className="btn btn-primary"
                 onClick={() => showModal(Modal, {
                   isOpen: true,
-                  modalType: 'updateFriend',
+                  modalType: 'updateFriendInfo',
                   username,
                   name,
                   icon,

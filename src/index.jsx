@@ -5,6 +5,7 @@ import { ApolloProvider } from '@apollo/react-hooks';
 import { ToastProvider } from 'react-toast-notifications';
 import client from './graphql/apollo-client';
 import history from './history';
+import registerServiceWorker from './register-service-worker';
 import './main.scss';
 import {
   Home,
@@ -47,3 +48,5 @@ class App extends Component {
 }
 
 render(<App />, document.getElementById('app'));
+
+registerServiceWorker();

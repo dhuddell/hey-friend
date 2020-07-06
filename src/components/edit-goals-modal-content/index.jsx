@@ -12,7 +12,7 @@ const EditGoalsModalContent = ({
 
   return (
     <Mutation mutation={UPDATE_FRIEND_GOALS}>
-      {(updateFriend) => (
+      {(updateFriendGoals) => (
         <Formik
           className="modal-form"
 
@@ -23,9 +23,9 @@ const EditGoalsModalContent = ({
             targetBeer = goalState.goals.targetBeer.toString(),
             cadence = goalState.goals.cadence,
           }, { setSubmitting }) => {
-            const updateFriendInput = {
+            const updateFriendGoalsInput = {
               variables: {
-                updateFriendInput: {
+                updateFriendGoalsInput: {
                   username,
                   friendId,
                   goals: {
@@ -39,8 +39,8 @@ const EditGoalsModalContent = ({
             };
 
             try {
-              const response = await updateFriend(updateFriendInput);
-              const { goals, friendScore } = response.data.updateFriend;
+              const response = await updateFriendGoals(updateFriendGoalsInput);
+              const { goals, friendScore } = response.data.updateFriendGoals;
               setGoalState({ goals, friendScore });
               setSubmitting(false);
               onRequestClose();
@@ -119,7 +119,7 @@ const EditGoalsModalContent = ({
         />
       )}
     </Mutation>
-)
+  );
 };
 
 export default EditGoalsModalContent;

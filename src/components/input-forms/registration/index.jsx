@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link, Redirect } from 'react-router-dom';
 import { Mutation } from 'react-apollo';
 import { useToasts } from 'react-toast-notifications';
@@ -7,8 +7,9 @@ import { REGISTER_USER } from '../../../graphql/mutations';
 
 const Registration = () => {
   const { addToast } = useToasts();
+  const [loggedInState, setLoggedInState] = useState(false);
 
-  const redirectToHome = () => {
+  const toastAndRedirect = () => {
     addToast('Welcome!', {
       appearance: 'success',
       autoDismissTimeout: 2500,
@@ -29,8 +30,8 @@ const Registration = () => {
                   Registration
                 </span>
               </div>
-              { data && data.registerUser && data.registerUser.username
-                ? redirectToHome()
+              { data?.registerUser?.username && loggedInState
+                ? toastAndRedirect()
                 : <Formik
                   intialValues={{ username: '', password: '', name: '', email: '' }}
                   onSubmit={async ({ username, password, name, email }, { setSubmitting, setErrors }) => {
@@ -49,6 +50,7 @@ const Registration = () => {
                       } else {
                         window.localStorage.setItem('token', registerUserData.token);
                         window.localStorage.setItem('username', registerUserData.username);
+                        setLoggedInState(true);
                       }
                     } catch (e) {
                       if (e.graphQLErrors) {
@@ -108,7 +110,7 @@ const Registration = () => {
                           </div>
                         </div>
                       </div>
-                      { status && status.msg && <div>{status.msg}</div> }
+                      { status?.msg && <div>{status.msg}</div> }
                       <button
                         type="submit"
                         disabled={isSubmitting}
@@ -122,8 +124,7 @@ const Registration = () => {
               }
             </div>
             {
-              data && data.registerUser && data.registerUser.username ?
-                null :
+              data?.registerUser?.username &&
                 <div className="login-link">
                   <Link to="/login">Already registered? Click here to login!</Link>
                 </div>

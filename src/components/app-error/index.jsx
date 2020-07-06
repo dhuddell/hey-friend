@@ -6,13 +6,6 @@ const getRandom = (min, max) => {
   return Math.ceil(float);
 };
 
-const logOut = () => {
-  const history = useHistory();
-  window.localStorage.removeItem('token');
-  window.localStorage.removeItem('username');
-  return history.push('/login');
-};
-
 const renderBill = (width, height) => (
   <img src={`https://www.fillmurray.com/${width}/${height}`} />
 );
@@ -20,6 +13,15 @@ const renderBill = (width, height) => (
 const AppError = ({ error }) => {
   const width = getRandom(210, 340);
   const height = getRandom(200, 400);
+  const history = useHistory();
+
+  const logOut = () => {
+    if (window.localStorage) {
+      window.localStorage.removeItem('token');
+      window.localStorage.removeItem('username');
+    }
+    return history.push('/login');
+  };
 
   if (error.networkError) {
     console.log('Network Errors>>>>>>>>>>');

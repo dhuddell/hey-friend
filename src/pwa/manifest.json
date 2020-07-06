@@ -1,0 +1,38 @@
+{
+  "short_name": "hey friend",
+  "name": "hey friend",
+  "description": "A place to keep in touch",
+  "icons": [
+    {
+      "src": "/favboi192.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    },
+    {
+      "src": "/favboi512.png",
+      "type": "image/png",
+      "sizes": "512x512"
+    }
+  ],
+  "start_url": "/?source=pwa",
+  "background_color": "#123456",  
+  "display": "minimal-ui",
+  "scope": "/",
+  "theme_color": "#00ffb1",
+  "shortcuts": [
+    {
+      "name": "See your friends",
+      "short_name": "Friends",
+      "description": "See all your friends",
+      "url": "?source=pwa",
+      "icons": [{ "src": "src/assets/favboi.png", "sizes": "192x192" }]
+    },
+    {
+      "name": "Add a new friend?",
+      "short_name": "Add friend",
+      "description": "Add a new friend to keep in touch",
+      "url": "/addfriend?source=pwa",
+      "icons": [{ "src": "src/assets/favboi.png", "sizes": "192x192" }]
+    }
+  ]
+}

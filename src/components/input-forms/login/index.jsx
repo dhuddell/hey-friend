@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link, Redirect } from 'react-router-dom';
 import { Mutation } from 'react-apollo';
 import { useToasts } from 'react-toast-notifications';
@@ -7,15 +7,15 @@ import { LOGIN_USER } from '../../../graphql/mutations';
 
 const Login = () => {
   const { addToast } = useToasts();
+  const [loggedInState, setLoggedInState] = useState(false);
 
-  const redirectToHome = () => {
+  const toastAndRedirect = () => {
     addToast('Welcome back!', {
       appearance: 'success',
       autoDismissTimeout: 2500,
       autoDismiss: true,
     });
 
-    setTimeout(console.log(), 5000);
     return <Redirect to="/" />;
   };
 
@@ -30,8 +30,8 @@ const Login = () => {
                   Login
                 </span>
               </div>
-              { data && data.loginUser && data.loginUser.username
-                ? redirectToHome()
+              { data?.loginUser?.username && loggedInState
+                ? toastAndRedirect()
                 : <Formik
                   intialValues={{ username: '', password: '' }}
                   onSubmit={async ({ username, password }, { setSubmitting, setErrors }) => {
@@ -49,6 +49,7 @@ const Login = () => {
                       } else {
                         window.localStorage.setItem('token', loginUserData.token);
                         window.localStorage.setItem('username', loginUserData.username);
+                        setLoggedInState(true);
                       }
                     } catch (e) {
                       if (e.graphQLErrors) {
@@ -88,7 +89,7 @@ const Login = () => {
                           </div>
                         </div>
                       </div>
-                      { status && status.msg && <div>{status.msg}</div> }
+                      { status?.msg && <div>{status.msg}</div> }
                       <button
                         type="submit"
                         disabled={isSubmitting}
@@ -102,8 +103,7 @@ const Login = () => {
               }
             </div>
             {
-              data && data.loginUser && data.loginUser.username ?
-                null :
+              data?.loginUser?.username &&
                 <div className="login-link">
                   <Link to="/registration">Not registered? Click here to register!</Link>
                 </div>

@@ -1,8 +1,8 @@
 import gql from 'graphql-tag';
 
 export default gql`
-  mutation UpdateFriendGoals($updateFriendInput: UpdateFriendInput!) { 
-    updateFriend(updateFriendInput: $updateFriendInput) {
+  mutation UpdateFriendGoals($updateFriendGoalsInput: UpdateFriendGoalsInput!) { 
+    updateFriendGoals(updateFriendGoalsInput: $updateFriendGoalsInput) {
       friendScore
       goals {
         targetPhone

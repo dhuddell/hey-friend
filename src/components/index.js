@@ -1,5 +1,6 @@
 export { default as Home } from './home';
 export { default as AppError } from './app-error';
+export { default as Bacon } from './bacon';
 export { default as AppLoading } from './app-loading';
 export { default as FriendPage } from './friend-page';
 export { default as FriendGoal } from './friend-goal';
@@ -9,6 +10,7 @@ export { default as FriendCreation } from './friend-creation';
 export { default as Header } from './header';
 export { default as Modal } from './modal';
 export { default as NavMenu } from './nav-menu';
+export { default as AuthRedirect } from './auth-redirect';
 export { default as UpdateFriendInfoModalContent } from './update-friend-info-modal-content';
 export { default as EditGoalsModalContent } from './edit-goals-modal-content';
 export { default as AddFriend } from './input-forms/add-friend';

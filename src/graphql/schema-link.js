@@ -30,7 +30,7 @@ const mocks = {
     updateFriendInfo: () => new Promise((resolve) => setTimeout(() => resolve(friendResponse), latency)),
     updateFriendGoals: () => new Promise((resolve) => setTimeout(() => resolve(friendResponse), latency)),
     updateCurrentGoal: () => new Promise((resolve) => setTimeout(() => resolve(friendResponse), latency)),
-    AddFriendToUser: () => new Promise((resolve) => setTimeout(() => resolve(friendResponse), latency)),
+    addFriendToUser: () => new Promise((resolve) => setTimeout(() => resolve(friendResponse), latency)),
     removeFriend: () => new Promise((resolve) => setTimeout(() => resolve({ message: 'Deleted.' }), latency)),
   }),
   Query: () => ({

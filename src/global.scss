@@ -51,11 +51,22 @@ body {
   background-color: $teal-color;
   color: $navy-color;
   font-weight: bold;
+  
+  a {
+    text-decoration: none;
+    color: inherit;
+  }
+}
+
+.add-success-btn {
+  margin-bottom: 0.5rem
 }
 
 .btn-secondary {
   background-color: $navy-color;
   color: $teal-color;
+  font-weight: bold;
+  border: solid 2px #00ffb1;
 }
 
 .icon-container {
@@ -100,6 +111,38 @@ body {
   width: 180px;
 }
 
+.waving-image {
+  width: 6rem;
+  animation-name: waveAnimation;
+  animation-duration: 2s;
+  animation-iteration-count: infinite;
+  display: inline-block;
+}
+
+.waving-small-bacon {
+  font-size: 3rem;
+  margin: 0 1.5rem;
+  animation-name: waveAnimation;
+  animation-duration: 2s;
+  animation-iteration-count: infinite;
+  display: inline-block;
+}
+
+.waving-bacon {
+  font-size: 5rem;
+  animation-name: waveAnimation;
+  animation-duration: 2s;
+  animation-iteration-count: infinite;
+  display: inline-block;
+}
+
+.loading-page {
+  margin: 3rem 0 2rem;
+}
+
+.loading-text {
+  font-size: 1.5rem;
+}
 
 .login-link {
   margin-top: 1rem;

@@ -1,24 +1,23 @@
 import React, { Fragment } from 'react';
-import { Redirect } from 'react-router-dom';
 import { useQuery } from '@apollo/react-hooks';
 import { FRIEND_QUERY } from '../../graphql/queries';
 import {
   FriendContent,
   AppLoading,
   AppError,
+  AuthRedirect,
 } from '..';
 
 const FriendPage = (props) => {
   const { username, friendId } = props.match.params;
 
-  const userLoggedIn = localStorage.getItem('username') === username;
-  if (!userLoggedIn) {
-    alert('Please log in'); // eslint-disable-line
-    return <Redirect to="/login" />;
-  }
+  const localUsername = localStorage.getItem('username');
+  const token = localStorage.getItem('token') || null;
+  if (!localUsername || !token || (localUsername !== username)) return <AuthRedirect />;
 
   const { data, error, loading } = useQuery(FRIEND_QUERY, {
     variables: { username, friendId },
+    errorPolicy: 'all',
   });
   if (loading) return <AppLoading />;
   if (error) return <AppError error={error} />;

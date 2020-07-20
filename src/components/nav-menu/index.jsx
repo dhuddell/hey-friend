@@ -35,7 +35,7 @@ class NavMenu extends Component {
             <span className="fa fa-chevron-circle-up" />
           </ScrollToTop>
         </span>
-        <Link className="nav-menu-link" to="/">
+        <Link className="nav-menu-link" to="/bacon">
           <span className="fas fa-bacon" />
         </Link>
         <Link className="nav-menu-link" to="/settings">

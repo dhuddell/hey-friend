@@ -5,6 +5,7 @@ import { useToasts } from 'react-toast-notifications';
 import { Formik, Form, Field } from 'formik';
 import { renderGoalOptions } from '../../../utils';
 import { ADD_FRIEND } from '../../../graphql/mutations';
+import { AuthRedirect } from '../..';
 
 const initialValues = {
   name: '',
@@ -17,18 +18,11 @@ const initialValues = {
 
 const AddFriend = () => {
   const username = localStorage.getItem('username') || null;
-  const [addFriendToUser, { data }] = useMutation(ADD_FRIEND);
+  const token = localStorage.getItem('token') || null;
+  if (!username || !token) return <AuthRedirect />;
+
+  const [addFriendToUser, { data }] = useMutation(ADD_FRIEND, { errorPolicy: 'all' });
   const { addToast } = useToasts();
-
-  if (!username) {
-    addToast('Please log in or register', {
-      appearance: 'error',
-      autoDismissTimeout: 2500,
-      autoDismiss: true,
-    });
-
-    return <Redirect to="/login" />;
-  }
 
   return (
     <div className="add-friend input-form content-wrapper">
@@ -41,12 +35,14 @@ const AddFriend = () => {
         { data && data.addFriendToUser && data.addFriendToUser.name
           ? <div>
             <p>{`Thanks for adding ${data.addFriendToUser.name}!`}</p>
-            <div className="home-link" onClick={() => {data.addFriendToUser = {};}}>
-              <Link to="/add-friend">{'Add another friend?'}!</Link>
-            </div>
-            <div className="home-link">
-              <Link to="/">{'Go see your friends!'}!</Link>
-            </div>
+            <button className="btn btn-primary add-success-btn"
+              onClick={() => {data.addFriendToUser = {};}}
+            >
+              <Link to="/add-friend">{'Add another'}</Link>
+            </button>
+            <button className="btn btn-primary add-success-btn">
+              <Link to="/">{'See friends'}</Link>
+            </button>
           </div>
           : <Formik
             intialValues={initialValues}
@@ -72,7 +68,6 @@ const AddFriend = () => {
               try {
                 const response = await addFriendToUser(addFriendInput);
                 const addFriendData = response.data.addFriendToUser;
-
                 if (!addFriendData.username) {
                   setErrors({ username, name, message: addFriendData.message });
                   console.log('Registration error: ', addFriendData.message);
@@ -136,7 +131,6 @@ const AddFriend = () => {
                       <span className="modal-form-cell-label">Phone call goal: </span>
                       <Field
                         name="targetPhone"
-                        required
                         defaultValue={0}
                         component="select"
                         className="modal-select"
@@ -148,7 +142,6 @@ const AddFriend = () => {
                       <span className="modal-form-cell-label">Text msg goal: </span>
                       <Field
                         name="targetText"
-                        required
                         defaultValue={0}
                         component="select"
                         className="modal-select"
@@ -160,7 +153,6 @@ const AddFriend = () => {
                       <span className="modal-form-cell-label">Get a beer goal: </span>
                       <Field
                         name="targetBeer"
-                        required
                         defaultValue={0}
                         component="select"
                         className="modal-select"
@@ -172,7 +164,6 @@ const AddFriend = () => {
                       <span className="modal-form-cell-label">Timeframe: </span>
                       <Field
                         name="cadence"
-                        required
                         defaultValue={'Monthly'}
                         component="select"
                         className="modal-select"

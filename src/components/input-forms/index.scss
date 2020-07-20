@@ -87,6 +87,14 @@
     margin: 1rem 0 0;
   }
 }
+.error-container {
+  min-height: 2rem;
+}
+
+.form-error {
+  font-size: 1rem;
+  color: $orange-color;
+}
 
 .local-form {
   display: flex;

@@ -14,7 +14,7 @@ const FriendGoal = ({
   const targetKey = `target${type}`;
   const inactiveClass = goalState.goals[currentGoalKey] === 0 ? 'down-arrow-inactive' : '';
 
-  const [updateCurrentGoal] = useMutation(UPDATE_CURRENT_GOAL);
+  const [updateCurrentGoal] = useMutation(UPDATE_CURRENT_GOAL, { errorPolicy: 'all' });
 
   const handleDecrement = async () => {
     if (goalState.goals[currentGoalKey] !== 0) {

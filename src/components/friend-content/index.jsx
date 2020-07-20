@@ -20,8 +20,8 @@ const FriendContent = ({
   const [goalState, setGoalState] = useState({ goals, friendScore });
   const [friendInfoState, setFriendInfoState] = useState({ name, icon, description });
 
-  const [removeFriend] = useMutation(REMOVE_FRIEND);
-  const [clearCurrentGoals] = useMutation(CLEAR_CURRENT_GOALS);
+  const [removeFriend] = useMutation(REMOVE_FRIEND, { errorPolicy: 'all' });
+  const [clearCurrentGoals] = useMutation(CLEAR_CURRENT_GOALS, { errorPolicy: 'all' });
 
   const maxScoreClass = friendScore === 100 ? 'details-max-score' : '';
   // 6/29/2020 need to figure out how to get this to re-render
@@ -34,7 +34,7 @@ const FriendContent = ({
   const handleDelete = async () => {
     if (window.confirm('Are you sure you want to remove friend?')) {
       await removeFriend({ variables: { removeFriendInput: { username, friendId } } });
-      addToast('Friend removed!', {
+      addToast('Friend removed', {
         autoDismissTimeout: 2500,
         autoDismiss: true,
         appearance: 'success',
@@ -58,7 +58,7 @@ const FriendContent = ({
 
       const updatedGoalState = clearGoalsResponse.data.updateFriendGoals;
       setGoalState({ goals: updatedGoalState.goals, friendScore: updatedGoalState.friendScore });
-      addToast('Current goals cleared!', {
+      addToast('Current values reset', {
         autoDismissTimeout: 2500,
         autoDismiss: true,
         appearance: 'success',
@@ -147,20 +147,20 @@ const FriendContent = ({
                   friendId,
                 })}
               >
-                {'Update friend'}
+                {'Update info'}
               </button>
 
             </div>
           )}
         </ModalConsumer>
         <button
-          className="btn btn-primary"
+          className="btn btn-secondary"
           onClick={handleClear}
         >
-          {'Clear current'}
+          {'Reset values'}
         </button>
         <button
-          className="btn btn-primary"
+          className="btn btn-secondary"
           onClick={handleDelete}
         >
           {'Remove friend'}

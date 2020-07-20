@@ -10,10 +10,15 @@ const renderBill = (width, height) => (
   <img src={`https://www.fillmurray.com/${width}/${height}`} />
 );
 
+const mailToDetails = (username) => `mailto:dan.huddell@gmail.com
+?subject=HEYFRIEND_FEEDBACK?body=Username-${username}-has-some-feedback`;
+
 const AppError = ({ error }) => {
   const width = getRandom(210, 340);
   const height = getRandom(200, 400);
   const history = useHistory();
+  const username = window.localStorage.getItem('username');
+
 
   const logOut = () => {
     if (window.localStorage) {
@@ -34,6 +39,12 @@ const AppError = ({ error }) => {
           <h3>I&apos;ve got 500 errors, and this one</h3>
           <h2>Bill Murray.</h2>
           {renderBill(width, height)}
+          <button
+            className="btn btn-primary">
+            <a href={mailToDetails(username)}>
+              {'Tell Dan what happened'}
+            </a>
+          </button>
         </div>
       );
     }
@@ -42,7 +53,7 @@ const AppError = ({ error }) => {
       return (
         <div className="content-wrapper">
           <h3>{`You're lost bub, ${error.networkError.statusCode}`}</h3>
-          <h2>Bill Murray.</h2>
+          <h2>Bill Murray blames Dan.</h2>
           {renderBill(width, height)}
           <div>
             <button
@@ -51,6 +62,13 @@ const AppError = ({ error }) => {
             >
               {'Try logging out and logging in'}
             </button>
+            <a href={mailToDetails(username)}>
+              <button
+                className="btn btn-primary">
+                <span className="fas fa-envelope-open-text right-buff" />
+                {'Tell Dan what happened'}
+              </button>
+            </a>
           </div>
         </div>
       );
@@ -64,8 +82,8 @@ const AppError = ({ error }) => {
 
     return (
       <div className="content-wrapper">
-        <h3>This is an error, I blame Dan</h3>
-        <h2>Bill Murray.</h2>
+        <h3>This is an error.</h3>
+        <h2>Bill Murray blames Dan.</h2>
         {renderBill(width, height)}
         <div>
           <button
@@ -74,20 +92,44 @@ const AppError = ({ error }) => {
           >
             {'Try logging out and logging in'}
           </button>
+          <button
+            className="btn btn-primary">
+            <i className="fas fa-envelope-open-text right-buff" />
+            <a href={mailToDetails(username)}>
+              {'Tell Dan what happened'}
+            </a>
+          </button>
         </div>
       </div>
     );
   }
 
-  //  hilarious huge pink JSON blob bc I don't know how someone got here
   console.log('Unknown Errors>>>>>>>>>>');
   console.log(JSON.stringify(error));
   console.log('<<<<<<<<<<GraphQL Unknown');
 
   return (
-    <div>
-      <h1 style={{ color: 'pink' }}>Errors ¯\_(ツ)_/¯ Errors</h1>
-      <h1 style={{ color: 'pink' }}>{JSON.stringify(error)}</h1>
+    <div className="content-wrapper">
+      <h1 style={{ color: '#00ffb1' }}>¯\_(ツ)_/¯</h1>
+      <h1 style={{ color: '#00ffb1' }}>Unknown errors, sorry</h1>
+      {renderBill(width, height)}
+      <div>
+        <button
+          className="btn btn-primary"
+          onClick={logOut}
+        >
+          {'Try logging out and logging in'}
+        </button>
+        <h4>{'If you tried this ^^ sorry, the server is down.'}</h4>
+        <button
+          className="btn btn-primary">
+          <i className="fas fa-envelope-open-text right-buff" />
+          <a href={mailToDetails(username)}>
+            {'Tell Dan what happened'}
+          </a>
+        </button>
+      </div>
+
     </div>
   );
 };

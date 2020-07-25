@@ -45,7 +45,7 @@ const AddFriend = () => {
             </button>
           </div>
           : <Formik
-            intialValues={initialValues}
+            initialValues={initialValues}
             onSubmit={async ({ name, description, targetText, targetPhone, targetBeer, cadence },
               { setSubmitting, setErrors }) => {
               const addFriendInput = {

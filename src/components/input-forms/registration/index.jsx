@@ -32,7 +32,7 @@ const Registration = () => {
         {data?.registerUser?.username && loggedInState
           ? toastAndRedirect()
           : <Formik
-            intialValues={{ username: '', password: '', name: '', email: '' }}
+            initialValues={{ username: '', password: '', name: '', email: '' }}
             onSubmit={async ({ username, password, name, email }, { setSubmitting, setStatus }) => {
               const registrationInput = {
                 variables: { registrationInput: { username, password, name, email } },

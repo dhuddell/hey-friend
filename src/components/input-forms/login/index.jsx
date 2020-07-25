@@ -42,7 +42,7 @@ const Login = () => {
           {data?.loginUser?.username && loggedInState
             ? toastAndRedirect()
             : <Formik
-              intialValues={{ username: '', password: '' }}
+              initialValues={{ username: '', password: '' }}
               onSubmit={async ({ username, password }, { setSubmitting, setStatus }) => {
                 const loginInput = { loginInput: { username, password } };
 
@@ -54,6 +54,7 @@ const Login = () => {
 
                   if (!loginUserData.username) {
                     // Jul 19, 2020 could do something with these values down here.
+                    // could also use setErrors tbh
                     setStatus({ username, password, message: loginUserData.message });
                     console.log('Login error: ', loginUserData.message);
                     setSubmitting(false);
@@ -74,14 +75,12 @@ const Login = () => {
                 }
               }}
 
-              render={({ errors, status, isSubmitting }) => (
+              render={({ status, isSubmitting }) => (
                 <Form>
                   <div className="modal-form local-form">
                     <div className="modal-form-selects">
                       <div className="error-container">
                         {
-                          // Old way I handled errors.
-                          // {errors.username && <div className="error-label">{errors.message}</div>}
                           status?.errors &&
                           <p className="form-error">{`Error: ${status.errors}`}</p>
                         }

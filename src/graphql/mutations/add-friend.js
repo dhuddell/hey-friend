@@ -5,7 +5,7 @@ export default gql`
   mutation AddFriend(
     $addFriendInput: AddFriendInput!
   ) { 
-    addFriendToUser(
+    addFriend(
       addFriendInput: $addFriendInput
     ) {
       username

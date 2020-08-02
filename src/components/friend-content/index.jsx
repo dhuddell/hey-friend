@@ -91,7 +91,7 @@ const FriendContent = ({
         <div className="friend-goals">
           <FriendGoal
             type="Phone"
-            icon="fa fa-phone"
+            icon="fas fa-phone-alt"
             username={username}
             friendId={friendId}
             goalState={goalState}
@@ -149,7 +149,6 @@ const FriendContent = ({
               >
                 {'Update info'}
               </button>
-
             </div>
           )}
         </ModalConsumer>

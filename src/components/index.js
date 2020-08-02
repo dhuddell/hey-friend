@@ -11,6 +11,7 @@ export { default as Header } from './header';
 export { default as Modal } from './modal';
 export { default as NavMenu } from './nav-menu';
 export { default as AuthRedirect } from './auth-redirect';
+export { default as AddIconModalContent } from './add-icon-modal-content';
 export { default as UpdateFriendInfoModalContent } from './update-friend-info-modal-content';
 export { default as EditGoalsModalContent } from './edit-goals-modal-content';
 export { default as AddFriend } from './input-forms/add-friend';

@@ -80,13 +80,32 @@
   }
 
   .add-friend-btn {
-    margin: 0 1rem 1rem;
+    margin: 0;
+    width: 124px;
+    min-width: 124px;
   }
 
   .form-cell {
     margin: 1rem 0 0;
   }
 }
+
+.add-friend-icon-container {
+  width: 45px;
+  height: 45px;
+  margin: 0 50px 0 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.icon-container {
+  .add-friend-icon-circle {
+    width: 40px;
+    height: 40px;
+  }
+}
+
 .error-container {
   min-height: 2rem;
 }

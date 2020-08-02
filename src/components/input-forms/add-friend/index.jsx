@@ -1,11 +1,12 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link, Redirect } from 'react-router-dom';
 import { useMutation } from '@apollo/react-hooks';
 import { useToasts } from 'react-toast-notifications';
 import { Formik, Form, Field } from 'formik';
+import { ModalConsumer } from '../../../modal-context';
 import { renderGoalOptions } from '../../../utils';
 import { ADD_FRIEND } from '../../../graphql/mutations';
-import { AuthRedirect } from '../..';
+import { AuthRedirect, Modal } from '../..';
 
 const initialValues = {
   name: '',
@@ -20,8 +21,9 @@ const AddFriend = () => {
   const username = localStorage.getItem('username') || null;
   const token = localStorage.getItem('token') || null;
   if (!username || !token) return <AuthRedirect />;
+  const [iconState, setIconState] = useState('far fa-image');
 
-  const [addFriendToUser, { data }] = useMutation(ADD_FRIEND, { errorPolicy: 'all' });
+  const [addFriend, { data }] = useMutation(ADD_FRIEND, { errorPolicy: 'all' });
   const { addToast } = useToasts();
 
   return (
@@ -29,14 +31,14 @@ const AddFriend = () => {
       <div className="form-box">
         <div className="form-title add-friend-form-title">
           <span className="form-title-text">
-            Add friend
+            {'Add friend'}
           </span>
         </div>
-        { data && data.addFriendToUser && data.addFriendToUser.name
-          ? <div>
-            <p>{`Thanks for adding ${data.addFriendToUser.name}!`}</p>
+        {data && data.addFriend && data.addFriend.name ?
+          <div>
+            <p>{`Thanks for adding ${data.addFriend.name}!`}</p>
             <button className="btn btn-primary add-success-btn"
-              onClick={() => {data.addFriendToUser = {};}}
+              onClick={() => { data.addFriend = {}; }}
             >
               <Link to="/add-friend">{'Add another'}</Link>
             </button>
@@ -54,7 +56,7 @@ const AddFriend = () => {
                     username,
                     name,
                     description,
-                    icon: 'fab fa-500px', // 2020 HARD CODED UNTIL ICON PICKER
+                    icon: iconState,
                     goals: {
                       targetText: parseInt(targetText, 10),
                       targetPhone: parseInt(targetPhone, 10),
@@ -66,8 +68,8 @@ const AddFriend = () => {
               };
 
               try {
-                const response = await addFriendToUser(addFriendInput);
-                const addFriendData = response.data.addFriendToUser;
+                const response = await addFriend(addFriendInput);
+                const addFriendData = response.data.addFriend;
                 if (!addFriendData.username) {
                   setErrors({ username, name, message: addFriendData.message });
                   console.log('Registration error: ', addFriendData.message);
@@ -89,14 +91,14 @@ const AddFriend = () => {
                   setErrors({ username, name, errors });
                 } else {
                   console.log(e);
-                  throw Error('Error object did not have graphQLErrors');
+                  throw Error('Error object had unknown errors');
                 }
               }
             }}
 
             render={({ errors, status, isSubmitting }) => (
               <Form className="add-friend-form">
-                { errors.username && <div className="error-label">{errors.message}</div> }
+                {errors.username && <div className="error-label">{errors.message}</div>}
                 <div className="modal-form local-form">
                   <div className="modal-form-selects">
                     <div className="modal-form-row">
@@ -117,16 +119,6 @@ const AddFriend = () => {
                         placeholder="He's jiggy with it."
                       />
                     </div>
-                    {/* ICON ICON ICON
-                    <div className="modal-form-row">
-                      <div className="modal-form-cell-label">Description:</div>
-                      <Field
-                        name="icon"
-                        required
-                        className="modal-select"
-                        placeholder="fa-plus"
-                      />
-                    </div> */}
                     <div className="modal-form-row">
                       <span className="modal-form-cell-label">Phone call goal: </span>
                       <Field
@@ -175,16 +167,41 @@ const AddFriend = () => {
                       </Field>
                     </div>
                   </div>
+                  {status && status.msg && <div>{status.msg}</div>}
+                  <div className="modal-form-row">
+                    <div className="modal-form-cell-label">Icon:</div>
+                    <div className="modal-form-cell-label">
+                      <div className="icon-container add-friend-icon-container">
+                        <ModalConsumer>
+                          {({ showModal }) => (
+                            <div>
+                              <div
+                                className="icon-outer-circle add-friend-icon-circle"
+                                onClick={() => showModal(Modal, {
+                                  isOpen: true,
+                                  modalType: 'addIcon',
+                                  iconState,
+                                  setIconState,
+                                })}
+                              >
+                                <div className=" single-icon">
+                                  <i className={`${iconState} friend-icon inner-friend-icon`} />
+                                </div>
+                              </div>
+                            </div>
+                          )}
+                        </ModalConsumer>
+                      </div>
+                    </div>
+                    <button
+                      type="submit"
+                      disabled={isSubmitting}
+                      className="btn modal-btn input-btn add-friend-btn"
+                    >
+                      {'Add!'}
+                    </button>
+                  </div>
                 </div>
-
-                { status && status.msg && <div>{status.msg}</div> }
-                <button
-                  type="submit"
-                  disabled={isSubmitting}
-                  className="btn modal-btn input-btn add-friend-btn"
-                >
-                  Add!
-                </button>
               </Form>
             )}
           />

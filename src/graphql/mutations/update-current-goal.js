@@ -12,6 +12,8 @@ export default gql`
         currentText
         currentBeer
         cadence
+        updatedAt
+        lastViewedAt
       }
     }
   }

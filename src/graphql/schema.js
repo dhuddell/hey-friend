@@ -1,6 +1,8 @@
 import gql from 'graphql-tag';
 
 export default gql`  
+  scalar Date
+
   type Goals {
     currentText: Int
     currentPhone: Int
@@ -9,6 +11,8 @@ export default gql`
     targetPhone: Int
     targetBeer: Int
     cadence: String
+    updatedAt: Date
+    lastViewedAt: Date
   }
 
   input GoalsInput {
@@ -101,8 +105,8 @@ export default gql`
   }
 
   input UpdateCurrentGoalInput {
-    goalValue: Int!
     goalKey: String!
+    goalValue: Int!
     username: String!
     friendId: String!
   }
@@ -122,8 +126,8 @@ export default gql`
     addFriend(addFriendInput: AddFriendInput!): Friend
     
     updateUser(updateUserInput: UpdateUserInput!): User
-    updateFriendGoals(updateFriendGoalsInput: UpdateFriendGoalsInput!): Friend
     updateFriendInfo(updateFriendInfoInput: UpdateFriendInfoInput!): Friend
+    updateFriendGoals(updateFriendGoalsInput: UpdateFriendGoalsInput!): Friend
     updateCurrentGoal(updateCurrentGoalInput: UpdateCurrentGoalInput!): UpdateGoalResponse
 
     removeUser(username: String): ConfirmationResponse
